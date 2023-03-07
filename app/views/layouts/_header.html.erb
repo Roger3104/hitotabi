@@ -28,7 +28,7 @@
               <%end%>
             </li>
             <li>
-              <%= link_to admin_genres_path, class:"a-header" do %>
+              <%= link_to admin_tags_path, class:"a-header" do %>
                 <div class="nav-link text-light a-header">新規作成</div>
               <%end%>
             </li>
@@ -41,34 +41,34 @@
           <% elsif request.path.match(/\/admin(\/)?/) %>
             <li>
               <%= link_to new_admin_session_path, class:"a-header" do %>
-                <div class="nav-link text-light a-header">ログイン</div>
+                <div class="nav-link a-header">ログイン</div>
               <%end%>
             </li>
 
           <% elsif user_signed_in? %>
             <li>
               <%= link_to users_path, class:"a-header" do %>
-                <div class="nav-link text-light a-header mt-2">マイページ</div>
+                <div class="nav-link a-header mt-2">マイページ</div>
               <%end%>
             </li>
             <li>
               <%= link_to posts_path, class:"a-header" do %>
-                <div class="nav-link text-light a-header mt-2">場所をめぐる</div>
+                <div class="nav-link a-header mt-2">場所をめぐる</div>
               <%end%>
             </li>
             <li>
               <%= link_to posts_path, class:"a-header" do %>
-                <div class="nav-link text-light a-header mt-2">行きたい場所</div>
+                <div class="nav-link a-header mt-2">行きたい場所</div>
               <%end%>
             </li>
             <li>
               <%= link_to new_post_path, class:"a-header" do %>
-                <div class="nav-link text-light a-header mt-2">投稿する</div>
+                <div class="nav-link a-header mt-2">投稿する</div>
               <%end%>
             </li>
             <li>
               <%= link_to destroy_user_session_path, class:"a-header", method: :delete do %>
-                <div class="nav-link text-light a-header mt-2">ログアウト</div>
+                <div class="nav-link a-header mt-2">ログアウト</div>
               <%end%>
             </li>
 

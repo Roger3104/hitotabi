@@ -8,6 +8,14 @@ header {
     margin-left: 8%;
 }
 
+/*フッター固定*/
+html, body { height: 100%;}
+
+body > footer {
+  position: sticky;
+  top: 100vh;
+}
+/*フッター固定*/
 
 footer {
   background-color: #f8f9fa  !important;
@@ -40,6 +48,7 @@ body {
   font-size: 0.8rem;
   letter-spacing: 0.2em;
   font-weight: 700;
+  text-align: center !important
 }
 
 .a-header::after {
@@ -47,7 +56,7 @@ body {
   bottom: -4px;
   left: 0;
   content: '';
-  width: 100%;
+  width: 90%;
   height: 2px;
   background: #333;
   transform: scale(0, 1);
@@ -57,10 +66,6 @@ body {
 
 .a-header:hover::after {
     transform: scale(1, 1);
-}
-
-.navbar-nav > li{
-  text-align: center !important
 }
 
 /*リンクの色*/
