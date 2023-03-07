@@ -1,0 +1,125 @@
+header {
+  background-color: #f8f9fa !important
+}
+
+.content-wrap {
+    max-width: 1200px;
+    margin-right: 8%;
+    margin-left: 8%;
+}
+
+
+footer {
+  background-color: #f8f9fa  !important;
+  border: 1px;
+}
+
+body {
+  color: #1E1D1C !important;
+  background-color: #f8f9fa;
+  text-decoration: none !important;
+  font-family: "Overpass", sans-serif;
+}
+
+
+/*link hover*/
+.a {
+  transition: 0.4s;
+}
+.a:hover {
+    text-decoration: none !important;
+    font-size: 17px;;
+}
+
+.a-header{
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  color: #1E1D1C !important;
+  margin-right: 10px;
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  font-weight: 700;
+}
+
+.a-header::after {
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  content: '';
+  width: 100%;
+  height: 2px;
+  background: #333;
+  transform: scale(0, 1);
+  transform-origin: center top;
+  transition: transform .3s;
+}
+
+.a-header:hover::after {
+    transform: scale(1, 1);
+}
+
+.navbar-nav > li{
+  text-align: center !important
+}
+
+/*リンクの色*/
+.link{
+  text-decoration: none !important;
+  color: #1E1D1C !important
+}
+
+
+/*page title*/
+.heading__ttl:before {
+    height: 5px;
+    border-radius: 2px;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 46px;
+    margin-left: -23px;
+    background-color: #1E1D1C;
+}
+
+.heading__ttl .text-en {
+    display: block;
+    font-size: 2.3rem;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: 0.06em;
+}
+
+.heading__ttl .text-ja {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    display: block;
+    margin-top: 1.2rem;
+    font-weight: 700;
+}
+
+.heading__ttl {
+    position: relative;
+    text-align: center;
+    padding-top: 2.3rem;
+    word-break: break-all;
+}
+
+/*online button*/
+.online-btns .online-btn {
+    display: inline-block;
+    font-size: 14px;
+    color: #fff;
+    border-radius: 18px;
+    border: 1px solid #1E1D1C;
+    padding: 5px 16px;
+    transition: .3s;
+    background: #1E1D1C;
+}
+
+.online-btns .online-btn:hover {
+    color: #1E1D1C;
+    background-color: #D9FC18;
+    border: 1px solid #D9FC18;
+}
