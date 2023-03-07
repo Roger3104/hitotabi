@@ -1,0 +1,29 @@
+/*link hover*/
+.a {
+  transition: 0.4s;
+}
+.a:hover {
+    text-decoration: none !important;
+    font-size: 17px;;
+}
+
+.a-header{
+  transition: 0.2s;
+  text-decoration: none !important;
+}
+
+.a-header:hover {
+    text-decoration: none !important;
+    font-size: 17px;;
+    background-color: #bc484e;
+}
+
+.line-header{
+    color: #ffffff47;
+}
+
+/*リンクの色*/
+.link{
+  text-decoration: none !important;
+  color: #30547a
+}
