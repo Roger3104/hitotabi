@@ -12,7 +12,7 @@
             </h1>
           </header>
         </div>
-        <%= form_with model: @user, url: user_session_path do |f| %>
+        <%= form_with model: @user, url: admin_categories_path do |f| %>
             <div class="form-group row">
               <%= f.label :email, 'メールアドレス', class:'col-3 px-0 mx-auto' %>
               <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com", class:'col-7 mx-auto form-control' %>

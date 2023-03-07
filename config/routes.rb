@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'categories/new'
+    get 'categories/edit'
+  end
   namespace :public do
     get 'homes/top'
     get 'homes/about'
@@ -31,8 +35,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: "homes#top"
-    resources :posts, only: [:index, :show, :destroy]
+    resources :posts, only: [:index, :show]
     resources :users, only: [:index, :show, :edit, :update]
+    resources :categories, except: [:new, :show]
     resources :tags, except: [:destroy]
     resources :orders, only: [:show, :update]
     resources :order_products, only: [:update]
