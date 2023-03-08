@@ -1,18 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'tags/index'
-    get 'tags/new'
-    get 'tags/edit'
-  end
-  namespace :admin do
-    get 'categories/new'
-    get 'categories/edit'
-  end
-  namespace :public do
-    get 'homes/top'
-    get 'homes/about'
-  end
   scope module: :public do
     root to: "homes#top"
     get "/about"=>"homes#about"

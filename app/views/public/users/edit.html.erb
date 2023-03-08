@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-sm-12 mx-6 mx-sm-auto px-auto my-5">
+
+      <p class= "text-center text-danger"><%= flash[:withdrawal] %></p>
+
+      <div class="content-wrap">
+        <header class="page-header heading">
+          <h1 class="mb-5 heading__ttl">
+            <span class="text-en">Edit</span>
+            <span class="text-ja">会員編集</span>
+          </h1>
+        </header>
+      </div>
+
+      <%= form_with model: @user, url: users_path, method: :patch do |f| %>
+        <div class="form-group row my-3">
+          <%= f.label :name, 'ユーザー名', class:'col-4'%>
+          <%= f.text_field :name, placeholder: "Hitota", autocomplete: "name", class: "col-3 form-control" %>
+        </div>
+
+        <div class="form-group row">
+          <%= f.label :email, 'メールアドレス', class:'col-4' %>
+          <%= f.email_field :email, placeholder: "hitota@gmail.com", autocomplete: "email", class:'col-3 form-control' %>
+        </div>
+
+        <div class="form-group row">
+          <%= f.label :place, '住んでいる地域', class:'col-4'%>
+          <%= f.text_field :place, placeholder: "都道府県名や海沿いなど何でもありです", autocomplete: "place", class:'col-3 form-control' %>
+        </div>
+
+        <div class="form-group row my-5 online-btns">
+          <%= f.submit "保存", class:'online-btn col-4 offset-4'%>
+        </div>
+        <div class="form-group row my-5 online-btns">
+          <%= link_to "退会", check_users_path, class:'online-btn col-2 offset-11 text-center' %>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>

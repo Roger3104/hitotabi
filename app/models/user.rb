@@ -5,4 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   has_many :posts, dependent: :destroy
+  
+  # 退会処理用
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
 end
