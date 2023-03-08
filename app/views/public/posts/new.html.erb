@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-sm-12 mx-6 mx-sm-auto px-auto my-5">
+      <div class="content-wrap">
+        <header class="page-header heading">
+          <h1 class="mb-5 heading__ttl">
+            <span class="text-en">new post</span>
+            <span class="text-ja">新規投稿</span>
+          </h1>
+        </header>
+      </div>
+      <%= form_with model: @post, url: posts_path do |f| %>
+        <div class="form-group row">
+          <%= f.label :title, 'タイトル', class:'col-3 px-0 mx-auto' %>
+          <%= f.text_field :title, autofocus: true, class:'col-7 mx-auto form-control' %>
+        </div>
+        <div class="form-group row">
+          <%= f.label :date, '撮影日時', class:'col-3 px-0 mx-auto' %>
+          <%= f.date_field :date, value: @post.date, class:'col-7 mx-auto form-control' %>
+        </div>
+        <div class="form-group row">
+          <%= f.label :content, '紹介文', class:'col-3 px-0 mx-auto' %>
+          <%= f.text_area :content, class:'col-7 mx-auto form-control' %>
+        </div>
+        <div class="form-group row">
+          <%= f.label :image, '画像', class:'col-3 px-0 mx-auto' %>
+          <%= f.file_field :image, accept: "image/*", class:'col-3 px-0 mx-auto' %><!--accept: "image/*で画像のみに限定-->
+        </div>
+        <div class="row">
+          <%= f.label :latitude,"緯度" %>
+          <%= f.text_field :latitude,:value =>"緯度", id: :lat %>
+          <%= f.label :longitude,"経度" %>
+          <%= f.text_field :longitude,:value =>"経度", id: :lng %>
+        </div>
+        <div class="row">
+          <%= render "map" %>
+        </div>
+        <div class="form-group row online-btns">
+          <span class="col-5"></span>
+          <%= f.submit "投稿", class: "online-btn col-4" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
