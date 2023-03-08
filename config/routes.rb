@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
 
   namespace :admin do
+    get 'tags/index'
+    get 'tags/new'
+    get 'tags/edit'
+  end
+  namespace :admin do
     get 'categories/new'
     get 'categories/edit'
   end
