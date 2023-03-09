@@ -2,6 +2,7 @@ header {
   background-color: #f8f9fa !important
 }
 
+
 .content-wrap {
     max-width: 1200px;
     margin-right: 8%;
@@ -127,4 +128,5 @@ body {
     color: #1E1D1C;
     background-color: #D9FC18;
     border: 1px solid #D9FC18;
+    text-decoration: none;
 }

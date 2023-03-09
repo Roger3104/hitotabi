@@ -25,12 +25,11 @@
         <div class="form-group row">
           <%= f.label :image, '画像', class:'col-3 px-0 mx-auto' %>
           <%= f.file_field :image, accept: "image/*", class:'col-3 px-0 mx-auto' %><!--accept: "image/*で画像のみに限定-->
+          <!--できれば画像選択後に画像表示したい-->
         </div>
         <div class="row">
-          <%= f.label :latitude,"緯度" %>
-          <%= f.text_field :latitude,:value =>"緯度", id: :lat %>
-          <%= f.label :longitude,"経度" %>
-          <%= f.text_field :longitude,:value =>"経度", id: :lng %>
+          <%= f.hidden_field :latitude,:value =>"緯度", id: :lat %>
+          <%= f.hidden_field :longitude,:value =>"経度", id: :lng %>
         </div>
         <div class="row">
           <%= render "map" %>

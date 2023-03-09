@@ -7,13 +7,14 @@ Rails.application.routes.draw do
       resource :favorites, only: [:show, :create, :destroy]
       resources :comments, only: [:create, :destroy]
     end
-    resource :users, only: [:index, :show, :edit, :update] do
+    resource :users, only: [:show, :edit, :update] do
       get :check, on: :collection
       patch :withdrawal, on: :collection
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
     end
+    get 'users/index'
     resources :tags, only: [:index]
   end
 
