@@ -12,7 +12,11 @@
       <div class="col-md-10 my-5 ">
         <div class="row">
           <div class="col-5">
-            <%= image_tag @post.image, size: '400x300', class: 'img-fluid img-thumbnail shadow' %>
+            <% if @post.image.attached? %>
+              <%= image_tag @post.image, size: '400x300', class: 'img-fluid img-thumbnail shadow' %>
+            <% else %>
+              <%= image_tag 'no_image', size: "400x300", class:'img-fluid img-thumbnail shadow' %>
+            <% end %>
           </div>
           <div class="col-7 px-5">
             <h3><strong><%= @post.title %></strong></h3>
@@ -21,7 +25,7 @@
         </div>
       </div>
       <div class="row">
-        <%= render "show_map" %>
+        <%= render "show_map", post: @post %>
       </div>
     </div>
   </div>

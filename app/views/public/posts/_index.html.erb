@@ -4,7 +4,7 @@
       <% if post.image.attached? %>
         <%= image_tag post.image, size: "200x175", class:'rounded shadow' %>
        <% else %>
-        <%= image_tag 'no_image', size: "150x100", class:'rounded shadow' %>
+        <%= image_tag 'no_image', size: "200x175", class:'rounded shadow' %>
       <% end %>
       <div class="row"><span class="text-secondary mt-3"><strong><%= post.title %></strong></span></div>
     <% end %>
