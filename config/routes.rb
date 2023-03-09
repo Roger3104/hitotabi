@@ -31,7 +31,7 @@ Rails.application.routes.draw do
     resources :posts, only: [:index, :show]
     resources :users, only: [:index, :show, :edit, :update]
     resources :categories, except: [:new, :show]
-    resources :tags, except: [:destroy]
+    resources :tags, except: [:new, :show]
     resources :orders, only: [:show, :update]
     resources :order_products, only: [:update]
   end

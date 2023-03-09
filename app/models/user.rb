@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   has_many :posts, dependent: :destroy
+  has_many :tags, through: :post_tags
   
   # 退会処理用
   def active_for_authentication?

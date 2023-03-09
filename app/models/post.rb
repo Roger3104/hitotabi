@@ -10,4 +10,5 @@ class Post < ApplicationRecord
 
   geocoded_by :address    #Geocoding用
   after_validation :geocode
+  
 end
