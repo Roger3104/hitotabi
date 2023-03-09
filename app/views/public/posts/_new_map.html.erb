@@ -11,6 +11,7 @@
 </style>
 
 <script>
+
 //初期マップの設定
 let map
 let marker
@@ -23,6 +24,14 @@ function initMap(){
 
   });
 }
+
+// 位置情報を入力してenterを押したらMapに反映される KeyCodeが13なのはMacだけ?
+document.getElementById('address').addEventListener('keydown',(event) =>{
+  if (event.keyCode == 13) {
+    codeAddress();
+  }
+  return false;
+});
 
 //検索後のマップ作成
 let geocoder
@@ -65,3 +74,4 @@ function codeAddress(){
 
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['maps_javascript_API_KEY']%>&callback=initMap" async defer></script>
+<!--%のカッコでAPIを囲むのを忘れずに!-->

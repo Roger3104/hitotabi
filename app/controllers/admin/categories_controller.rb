@@ -2,6 +2,7 @@ class Admin::CategoriesController < ApplicationController
 
   def index
     @categories = Category.all
+    @category = Category.new
   end
 
   def create
@@ -37,7 +38,7 @@ class Admin::CategoriesController < ApplicationController
   private
 
     def category_params
-      params.permit(:name)
+      params.require(:category).permit(:name)
     end
 
 end

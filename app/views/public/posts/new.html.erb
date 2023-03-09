@@ -36,7 +36,8 @@
         </div>
         <div class="form-group row online-btns">
           <span class="col-5"></span>
-          <%= f.submit "投稿", class: "online-btn col-4" %>
+          <%#= f.button "投稿", onclick: "submit():", class: "online-btn col-4" %>
+          <input type="button" onclick="submit();" class="online-btn col-4" value="投稿">
         </div>
       <% end %>
     </div>
