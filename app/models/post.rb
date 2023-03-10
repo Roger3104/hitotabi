@@ -5,10 +5,15 @@ class Post < ApplicationRecord
   has_one_attached :image
 
   validates :title, presence: true
-  validates :date, presence: true
   validates :image, presence: true
+  validate :date_to_today
+
+  def date_to_today
+    return if date.blank?
+    errors.add(:date, "今日までの日付を指定してください") if date >Date.today
+  end
 
   geocoded_by :address    #Geocoding用
   after_validation :geocode
-  
+
 end

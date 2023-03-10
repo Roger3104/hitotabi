@@ -13,11 +13,6 @@ class Public::PostsController < ApplicationController
     else
       render 'new'
     end
-    
-    tag_list = params[:tag_name].split(",")
-    if @post.save
-      @post.save_posts(tag_list)
-    end
   end
 
   def show
