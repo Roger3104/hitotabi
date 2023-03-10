@@ -4,9 +4,14 @@ class Post < ApplicationRecord
   belongs_to :user
   has_one_attached :image
 
-  validates :title, presence: true
-  validates :image, presence: true
-  validate :date_to_today
+  with_options presence: true, on: :publicize do
+    validates :title
+    validates :image
+    validates :date_to_today
+    validates :latitude
+    validates :longitude
+  end
+
 
   def date_to_today
     return if date.blank?

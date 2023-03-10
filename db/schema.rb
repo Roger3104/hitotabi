@@ -73,12 +73,13 @@ ActiveRecord::Schema.define(version: 2023_03_08_113701) do
   create_table "posts", force: :cascade do |t|
     t.integer "user_id"
     t.integer "tag_id"
-    t.string "title", null: false
-    t.date "date", null: false
+    t.string "title"
+    t.date "date"
     t.text "content"
     t.string "address"
     t.float "latitude"
     t.float "longitude"
+    t.boolean "is_draft", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["tag_id"], name: "index_posts_on_tag_id"
