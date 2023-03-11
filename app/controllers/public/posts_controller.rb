@@ -15,12 +15,10 @@ class Public::PostsController < ApplicationController
         render 'new'
       end
     else
-      if @post.update(is_draft: true)
-        redirect_to users_path(@post), notice: "レシピを下書き保存しました！"
+      if @post.save(is_draft: true)
+        redirect_to users_path(@post), notice: "下書き保存しました"
       else
-        flash[:danger] = "入力内容に不備があります。<br>・#{@item.errors.full_messages.join('<br>・')}"
-        # render "new"
-        redirect_to request.referer
+        render "new"
       end
     end
   end
