@@ -6,7 +6,10 @@
        <% else %>
         <%= image_tag 'no_image', size: "200x175", class:'rounded shadow' %>
       <% end %>
-      <div class="row"><span class="text-secondary mt-3"><strong><%= post.title %></strong></span></div>
+      <div class="row">
+        <span class="text-secondary mt-3"><strong><%= post.title %></strong></span>
+        <div id="favorite-btn<%= post.id %>"><%= render "/public/favorites/btn", post: post %></div>
+      </div>
     <% end %>
   </div>
 <% end %>

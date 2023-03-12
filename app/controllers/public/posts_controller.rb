@@ -43,14 +43,21 @@ class Public::PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
-
   end
 
+  def update
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+      redirect_to post_path(@post), notice: "投稿を更新しました"
+    else
+      render "edit"
+    end
+  end
 
   private
 
     def post_params
-      params.require(:post).permit(:user_id, :title, :date, :content, :address, :latitude, :longitude, :image, :status)
+      params.require(:post).permit(:user_id, :title, :date, :content, :address, :latitude, :longitude, :image, :status).merge(tag_ids: params[:post][:tags].reject(&:empty?))
     end
 end
 

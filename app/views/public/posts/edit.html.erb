@@ -9,7 +9,7 @@
           </h1>
         </header>
       </div>
-      <%= form_with model: @post, url: edit_post_path do |f| %>
+      <%= form_with model: @post do |f| %>
         <div class="form-group row">
           <%= f.label :title, 'タイトル', class:'col-3 px-0 mx-auto' %>
           <%= f.text_field :title, autofocus: true, class:'col-7 mx-auto form-control' %>
@@ -25,20 +25,28 @@
         <div class="form-group row">
           <%# @categories.each do |category| %>
             <%#= category.name %>
-            <%= f.collection_check_boxes :tags, Tag.all, :id, :name %>
+            <% tag_ids = @post.tags.pluck(:id) %>
+            <%= f.collection_check_boxes :tags, Tag.all, :id, :name do |t|%>
+              <% if t.object.id.in?(tag_ids) %>
+                <%= t.label {t.check_box(checked: true) + t.text} %>
+              <% else %>
+                <%= t.label {t.check_box(checked: false) + t.text} %>
+              <% end %>
+            <% end %>
           <%# end %>
         </div>
         <div class="form-group row">
           <%= f.label :image, '画像', class:'col-3 px-0 mx-auto' %>
           <%= f.file_field :image, accept: "image/*", class:'col-3 px-0 mx-auto' %><!--accept: "image/*で画像のみに限定-->
           <!--できれば画像選択後に画像表示したい-->
+
         </div>
         <div class="row">
-          <%= f.hidden_field :latitude,:value =>"緯度", id: :lat %>
-          <%= f.hidden_field :longitude,:value =>"経度", id: :lng %>
+          <%= f.hidden_field :latitude,:value =>@post.latitude, id: :lat %>
+          <%= f.hidden_field :longitude,:value =>@post.longitude, id: :lng %>
         </div>
         <div class="row">
-          <%= render "new_map" %>
+          <%= render "edit_map", post: @post %>
         </div>
         <div class="form-group row online-btns">
           <span class="col-5"></span>

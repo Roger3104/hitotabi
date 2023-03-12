@@ -6,6 +6,7 @@ class User < ApplicationRecord
   
   has_many :posts, dependent: :destroy
   has_many :tags, through: :post_tags
+  has_many :favorites, dependent: :destroy
   
   # 退会処理用
   def active_for_authentication?
