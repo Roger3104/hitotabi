@@ -23,6 +23,12 @@
           <%= f.text_area :content, class:'col-7 mx-auto form-control' %>
         </div>
         <div class="form-group row">
+          <%# @categories.each do |category| %>
+            <%#= category.name %>
+            <%= f.collection_check_boxes :tags, Tag.all, :id, :name %>
+          <%# end %>
+        </div>
+        <div class="form-group row">
           <%= f.label :image, '画像', class:'col-3 px-0 mx-auto' %>
           <%= f.file_field :image, accept: "image/*", class:'col-3 px-0 mx-auto' %><!--accept: "image/*で画像のみに限定-->
           <!--できれば画像選択後に画像表示したい-->
@@ -36,16 +42,10 @@
         </div>
         <div class="form-group row online-btns">
           <span class="col-5"></span>
-          <%= f.button "投稿", :name => 'post', type: 'button', onclick: "submit();", class: "online-btn col-4" %>
-          <%= f.button "下書き保存", :name => 'draft', type: 'button', onclick: "submit();", class: "online-btn col-4" %>
-          <!--<input type="button" onclick="submit();" name = 'post' class="online-btn col-4" value="投稿">-->
-          <!--<input type="button" onclick="submit();" name = 'draft' class="online-btn col-4" value="下書き保存">-->
+          <%= f.select :status, Post.statuses.keys.map { |k| [t("enums.post.status.#{k}"),k]}, {}, {class: "custom-select w-25"} %>
+          <%= f.button "投稿", type: 'button', onclick: "submit();", class: "online-btn col-4" %> <!--Enter Keyで投稿処理を行わないためにf.buttonに変更-->
+         
         </div>
-      <% end %>
-      <% flash.each do |key, value| %>
-       <div class="alert alert-<%= key %>">
-        <button type="botton" class="close" data-dismiss="alert">&times;</button><%= sanitize value, tags: %w(br) %>
-       </div>
       <% end %>
     </div>
   </div>

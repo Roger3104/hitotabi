@@ -11,7 +11,7 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.string :address
       t.float :latitude
       t.float :longitude
-      t.boolean :is_draft, null: false, default: false
+      t.integer :status, null: false, default: 0
 
       t.timestamps
     end

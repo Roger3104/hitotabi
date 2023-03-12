@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-sm-12 mx-6 mx-sm-auto px-auto my-5">
+      <div class="content-wrap">
+        <header class="page-header heading">
+          <h1 class="mb-5 heading__ttl">
+            <span class="text-en">Edit</span>
+            <span class="text-ja">投稿編集</span>
+          </h1>
+        </header>
+      </div>
+      <%= form_with model: @post, url: edit_post_path do |f| %>
+        <div class="form-group row">
+          <%= f.label :title, 'タイトル', class:'col-3 px-0 mx-auto' %>
+          <%= f.text_field :title, autofocus: true, class:'col-7 mx-auto form-control' %>
+        </div>
+        <div class="form-group row">
+          <%= f.label :date, '撮影日時', class:'col-3 px-0 mx-auto' %>
+          <%= f.date_field :date, value: @post.date, class:'col-7 mx-auto form-control' %>
+        </div>
+        <div class="form-group row">
+          <%= f.label :content, '紹介文', class:'col-3 px-0 mx-auto' %>
+          <%= f.text_area :content, class:'col-7 mx-auto form-control' %>
+        </div>
+        <div class="form-group row">
+          <%# @categories.each do |category| %>
+            <%#= category.name %>
+            <%= f.collection_check_boxes :tags, Tag.all, :id, :name %>
+          <%# end %>
+        </div>
+        <div class="form-group row">
+          <%= f.label :image, '画像', class:'col-3 px-0 mx-auto' %>
+          <%= f.file_field :image, accept: "image/*", class:'col-3 px-0 mx-auto' %><!--accept: "image/*で画像のみに限定-->
+          <!--できれば画像選択後に画像表示したい-->
+        </div>
+        <div class="row">
+          <%= f.hidden_field :latitude,:value =>"緯度", id: :lat %>
+          <%= f.hidden_field :longitude,:value =>"経度", id: :lng %>
+        </div>
+        <div class="row">
+          <%= render "new_map" %>
+        </div>
+        <div class="form-group row online-btns">
+          <span class="col-5"></span>
+          <%= f.select :status, Post.statuses.keys.map { |k| [t("enums.post.status.#{k}"),k]}, {}, {class: "custom-select w-25"} %>
+          <%= f.button "投稿", type: 'button', onclick: "submit();", class: "online-btn col-4" %> <!--Enter Keyで投稿処理を行わないためにf.buttonに変更-->
+
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

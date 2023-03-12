@@ -3,40 +3,54 @@ class Public::PostsController < ApplicationController
 
   def new
     @post = Post.new
+    # @categories = Category.all
+    # @category = Category.find(params[:category_id])
+    # @tags = @category.tags
   end
 
   def create
+    @tags = Tag.all
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    if params[:post]
-      if @post.save(context: :publicize)
-        redirect_to post_path(@post)
-      else
-        render 'new'
+    if  @post.save
+      # ポストの保存にせいこうしたらに紐づくタグを保存する
+      params[:post][:tags].each do |tag_id|
+        if tag_id.present?
+          PostTag.new(post: @post, tag_id: tag_id).save
+        end
       end
+
+      redirect_to post_path(@post)
     else
-      if @post.save(is_draft: true)
-        redirect_to users_path(@post), notice: "下書き保存しました"
-      else
-        render "new"
-      end
+      render 'new'
     end
+  end
+
+  def confirm
+    @posts = current_user.posts.draft
   end
 
 
 
   def show
     @post = Post.find(params[:id])
+    @tags = @post.tag_id
   end
 
   def index
-    @posts = Post.all
+    @posts = Post.published
+  end
+
+  def edit
+    @post = Post.find(params[:id])
+
   end
 
 
   private
+
     def post_params
-      params.require(:post).permit(:user_id, :tag_id, :title, :date, :content, :address, :latitude, :longitude, :image, :is_draft)
+      params.require(:post).permit(:user_id, :title, :date, :content, :address, :latitude, :longitude, :image, :status)
     end
 end
 

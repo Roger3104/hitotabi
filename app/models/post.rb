@@ -4,14 +4,10 @@ class Post < ApplicationRecord
   belongs_to :user
   has_one_attached :image
 
-  with_options presence: true, on: :publicize do
-    validates :title
-    validates :image
-    validates :date_to_today
-    validates :latitude
-    validates :longitude
-  end
-
+  validates :title, presence: true
+  validates :date, presence: true
+  validates :image, presence: true
+  validate :date_to_today
 
   def date_to_today
     return if date.blank?
@@ -20,5 +16,7 @@ class Post < ApplicationRecord
 
   geocoded_by :address    #Geocoding用
   after_validation :geocode
+  
+  enum status: { published: 0, draft: 1 }
 
 end

@@ -6,6 +6,9 @@ Rails.application.routes.draw do
     resources :posts do
       resource :favorites, only: [:show, :create, :destroy]
       resources :comments, only: [:create, :destroy]
+      collection do
+        get 'confirm'
+      end
     end
     resource :users, only: [:show, :edit, :update] do
       get :check, on: :collection
