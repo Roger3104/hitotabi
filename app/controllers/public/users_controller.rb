@@ -2,11 +2,14 @@ class Public::UsersController < ApplicationController
   before_action :authenticate_user!, only: [:create, :destroy]
 
   def index
-    @user = User.find_by(params[:id])
-    @posts = @user.posts.published.page(params[:page])
   end
 
   def show
+  end
+
+  def user_index
+    @user = User.find(params[:id])
+    @posts = @user.posts.published.page(params[:page])
   end
 
   def edit

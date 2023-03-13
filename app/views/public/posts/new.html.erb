@@ -23,10 +23,23 @@
           <%= f.text_area :content, class:'col-7 mx-auto form-control' %>
         </div>
         <div class="form-group row">
-          <%# @categories.each do |category| %>
-            <%#= category.name %>
-            <%= f.collection_check_boxes :tags, Tag.all, :id, :name %>
-          <%# end %>
+          <table>
+            <% @categories.each do |category| %>
+            <tr>
+              <td><span><%= category.name %></span></td>
+              <% category.tags.each do |tag| %>
+              <td>
+                <label class="tag_area">
+                  <input class= "tag_input" type="checkbox" value="<%= tag.id %>" name="post[tags][]" id="post_tags_<%= tag.id %>">
+                  <div class="tag_list">
+                    <label for="post_tags_<%= tag.id %>" class= "tag_link"><div class="tag_text"><%= tag.name %></div></label>
+                  </div>
+                </label>
+              </td>
+              <% end %>
+            </tr>
+            <% end %>
+          </table>
         </div>
         <div class="form-group row">
           <%= f.label :image, '画像', class:'col-3 px-0 mx-auto' %>
@@ -44,7 +57,7 @@
           <span class="col-5"></span>
           <%= f.select :status, Post.statuses.keys.map { |k| [t("enums.post.status.#{k}"),k]}, {}, {class: "custom-select w-25"} %>
           <%= f.button "投稿", type: 'button', onclick: "submit();", class: "online-btn col-4" %> <!--Enter Keyで投稿処理を行わないためにf.buttonに変更-->
-         
+
         </div>
       <% end %>
     </div>

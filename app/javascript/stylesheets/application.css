@@ -2,7 +2,6 @@ header {
   background-color: #f8f9fa !important
 }
 
-
 .content-wrap {
     max-width: 1200px;
     margin-right: 8%;
@@ -40,6 +39,10 @@ body {
     font-size: 17px;;
 }
 
+/*-----------------------------------------------*/
+/*-----------------------------------------------*/
+
+/*header*/
 .a-header{
   position: relative;
   display: inline-block;
@@ -69,12 +72,17 @@ body {
     transform: scale(1, 1);
 }
 
+/*-----------------------------------------------*/
+/*-----------------------------------------------*/
+
 /*リンクの色*/
 .link{
   text-decoration: none !important;
   color: #1E1D1C !important
 }
 
+/*-----------------------------------------------*/
+/*-----------------------------------------------*/
 
 /*page title*/
 .heading__ttl:before {
@@ -112,6 +120,9 @@ body {
     word-break: break-all;
 }
 
+/*-----------------------------------------------*/
+/*-----------------------------------------------*/
+
 /*online button*/
 .online-btns .online-btn {
     display: inline-block;
@@ -131,23 +142,30 @@ body {
     text-decoration: none;
 }
 
-.tag_area ul {
+/*-----------------------------------------------*/
+/*-----------------------------------------------*/
+
+/*tag design for post new and show page*/
+.tag_input{
+  display:none
+}
+.tag_area > .tag_list {
   margin: 0;
   padding: 0;
   list-style: none;
 }
-.tag_area ul li {
+.tag_area > .tag_list > .tag_link {
   margin: 0 .3em .3em 0;
 }
-.tag_area ul li a {
+.tag_area > .tag_list > .tag_link > .tag_text {
   display: flex;
   justify-content: center;
   align-items: center;
   max-width: 100px;
   height: 34px;
   padding: 0 1em;
-  background-color: #fff;
-  border: 1px solid #aaa;
+  background-color: transparent;
+  border: 1px solid #1E1D1C;
   border-radius: 6px;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -159,12 +177,97 @@ body {
   transition: .2s;
   box-sizing: border-box;
 }
-.tag_area ul li a:hover {
+.tag_area > .tag_list > .tag_link > .tag_text:hover {
   background-color: #2196F3;
   border: 1px solid #2196F3;
   color: #fff;
 }
-.tag_area ul li a:before {
+.tag_area > .tag_list > .tag_link > .tag_text:before {
   content: "#";
   padding-right: 2px;
 }
+
+.tag_input:checked + .tag_list > .tag_link > .tag_text{
+  background-color: #2196F3;
+  border: 1px solid #2196F3;
+  color: #fff;
+  font-size: 13px;
+}
+
+/*-----------------------------------------------*/
+/*-----------------------------------------------*/
+/*tag design for checkbox*/
+/*.checkbox_tag {*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*  cursor: pointer;*/
+/*  border: 1px;*/
+/*  border-radius: 9px;*/
+/*  border-color: #1E1D1C;*/
+/*  padding: 0px 15px 0px 10px;*/
+/*}*/
+/*.checkbox_tag_input {*/
+/*  margin: 0;*/
+/*  width: 0;*/
+/*  opacity: 0;*/
+/*}*/
+/*.checkbox_tag:hover{*/
+/*  background: rgba(0,0,0,.05) !important;*/
+/*  border: 1px;*/
+/*  border-radius: 9px;*/
+/*  border-color: #1E1D1C;*/
+/*  padding: 0px 15px 0px 10px;*/
+/*}*/
+/*.checkbox_tag:hover > .checkbox_tag_dummy{*/
+/*  transform: scale(1.1);*/
+/*}*/
+/*.checkbox_tag_input:focus + .checkbox_tag_dummy{*/
+/*  transform: scale(1.1);*/
+/*}*/
+/*.checkbox_tag_input:checked + .checkbox_tag_dummy {*/
+/*  background: #2196F3;*/
+/*}*/
+/*.checkbox_tag_input:checked + .checkbox_tag_dummy::before {*/
+/*  content: "";*/
+/*  display: block;*/
+/*  position: absolute;*/
+/*  top: 17%;*/
+/*  left: 60%;*/
+/*  width: 28%;*/
+/*  height: 3px;*/
+/*  border-radius: 2px;*/
+/*  transform: translate(-6px, 5px) rotateZ(-135deg);*/
+/*  transform-origin: 2px 2px;*/
+/*  background: #FFFFFF;*/
+/*}*/
+/*.checkbox_tag_input:checked + .checkbox_tag_dummy::after {*/
+/*  content: "";*/
+/*  display: block;*/
+/*  position: absolute;*/
+/*  top: 25%;*/
+/*  left: 70%;*/
+/*  width: 70%;*/
+/*  height: 3px;*/
+/*  border-radius: 2px;*/
+/*  transform: translate(-6px, 5px) rotateZ(-45deg);*/
+/*  transform-origin: 2px 2px;*/
+/*  background: #FFFFFF;*/
+/*}*/
+/*.checkbox_tag_dummy {*/
+/*  position: relative;*/
+/*  top: 0;*/
+/*  left: 0;*/
+/*  display: block;*/
+/*  width: 20px;*/
+/*  height: 20px;*/
+/*  border: solid 2px transparent;*/
+/*  background: rgba(0, 0, 0, .15);*/
+/*  border-radius: 50%;*/
+/*  transition: all .15s linear;*/
+/*}*/
+/*.checkbox_tag_label {*/
+/*  margin-left: 12px;*/
+/*  display: block;*/
+/*  font-size: 16px;*/
+/*  font-weight: bold;*/
+/*}*/

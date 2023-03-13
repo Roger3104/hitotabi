@@ -10,12 +10,16 @@ Rails.application.routes.draw do
         get 'confirm'
       end
     end
+    get "users/:id/index" => "users#user_index", as: "user_index"
     resource :users, only: [:show, :edit, :update] do
       get :check, on: :collection
       patch :withdrawal, on: :collection
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
+      member do
+        get :favorites
+      end
     end
     get 'users/index'
     resources :tags, only: [:index, :show]

@@ -3,7 +3,7 @@ class Public::PostsController < ApplicationController
 
   def new
     @post = Post.new
-    # @categories = Category.all
+    @categories = Category.all
     # @category = Category.find(params[:category_id])
     # @tags = @category.tags
   end
@@ -48,7 +48,7 @@ class Public::PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    if @post.update(post_params)
+    if @post.update(edit_post_params)
       redirect_to post_path(@post), notice: "投稿を更新しました"
     else
       render "edit"
@@ -58,6 +58,12 @@ class Public::PostsController < ApplicationController
   private
 
     def post_params
+      # params.require(:post).permit(:user_id, :title, :date, :content, :address, :latitude, :longitude, :image, :status).merge(tag_ids: params[:post][:tags].reject(&:empty?))
+      params.require(:post).permit(:user_id, :title, :date, :content, :address, :latitude, :longitude, :image, :status)
+      # params.require(:post).permit(:user_id, :title, :date, :content, :address, :latitude, :longitude, :image, :status, tags: [])
+    end
+
+    def edit_post_params
       params.require(:post).permit(:user_id, :title, :date, :content, :address, :latitude, :longitude, :image, :status).merge(tag_ids: params[:post][:tags].reject(&:empty?))
     end
 end
