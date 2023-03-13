@@ -1,10 +1,4 @@
 class Public::FavoritesController < ApplicationController
-  
-  def index
-    @user = User.find_by(params[:id])
-    @favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
-    @favorite_posts = Post.find(likes)
-  end
 
   def create
     @post = Post.find_by(params[:id])

@@ -32,7 +32,7 @@ class Public::UsersController < ApplicationController
     flash[:thank_you] = "ご利用ありがとうございました"
     redirect_to root_path
   end
-  
+
   def likes
     likes = Like.where(user_id: @user.id).pluck(:post_id)
     @like_posts = Post.find(likes)
@@ -43,6 +43,6 @@ class Public::UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :place, :email)
   end
-  
+
 
 end

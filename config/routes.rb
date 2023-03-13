@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     root to: "homes#top"
     get "/about"=>"homes#about"
     resources :posts do
-      resources :favorites, only: [:index, :create, :destroy]
+      resources :favorites, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
       collection do
         get 'confirm'

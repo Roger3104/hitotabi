@@ -1,5 +1,5 @@
 class Public::PostsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user! , only: [:edit, :create, :destroy]
 
   def new
     @post = Post.new

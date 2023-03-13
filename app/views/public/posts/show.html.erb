@@ -31,7 +31,9 @@
             </div>
             <div class="my-3">
               <% @post.tags.each do |tag| %>
-                <%=link_to tag.name, tag_path(tag.id), class: "a-tag"%>
+                <div class= "tag_area">
+                  <ul><li><%=link_to tag.name, tag_path(tag.id)%></li></ul>
+                </div>
               <% end %>
             </div>
             <p class="my-3"><strong><%= @post.content %></strong></p>

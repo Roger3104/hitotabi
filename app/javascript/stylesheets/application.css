@@ -131,14 +131,40 @@ body {
     text-decoration: none;
 }
 
-.a-tag{
-	display: inline-block;
-	margin: 0 .1em .6em 0;
-	padding: .6em;
-	line-height: 1;
-	text-decoration: none !important;
-	color: #1E1D1C;
-	background-color: transparent;
-	border: 1px solid #1E1D1C;
-	border-left: 5px solid #1E1D1C;
+.tag_area ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.tag_area ul li {
+  margin: 0 .3em .3em 0;
+}
+.tag_area ul li a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100px;
+  height: 34px;
+  padding: 0 1em;
+  background-color: #fff;
+  border: 1px solid #aaa;
+  border-radius: 6px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  color: #333;
+  font-size: 12px;
+  text-decoration: none;
+  -webkit-transition: .2s;
+  transition: .2s;
+  box-sizing: border-box;
+}
+.tag_area ul li a:hover {
+  background-color: #2196F3;
+  border: 1px solid #2196F3;
+  color: #fff;
+}
+.tag_area ul li a:before {
+  content: "#";
+  padding-right: 2px;
 }

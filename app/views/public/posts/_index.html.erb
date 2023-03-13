@@ -8,7 +8,7 @@
       <% end %>
       <div class="row">
         <span class="text-secondary mt-3"><strong><%= post.title %></strong></span>
-        <div class=<%= "favorite-" + post.id.to_s %>>
+        <div class= "favorite-<%= post.id %>">
           <%= render "/public/favorites/btn", post: post %>
         </div>
       </div>

@@ -14,7 +14,7 @@ class Post < ApplicationRecord
     return if date.blank?
     errors.add(:date, "今日までの日付を指定してください") if date >Date.today
   end
-  
+
   def favorited?(user) #行ってみたいボタン用
    favorites.where(user_id: user.id).exists?
   end
