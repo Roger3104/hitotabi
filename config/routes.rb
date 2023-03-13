@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     root to: "homes#top"
     get "/about"=>"homes#about"
     resources :posts do
-      resource :favorites, only: [:create, :destroy]
+      resources :favorites, only: [:index, :create, :destroy]
       resources :comments, only: [:create, :destroy]
       collection do
         get 'confirm'
@@ -18,7 +18,7 @@ Rails.application.routes.draw do
       get 'followers' => 'relationships#followers', as: 'followers'
     end
     get 'users/index'
-    resources :tags, only: [:index]
+    resources :tags, only: [:index, :show]
   end
 
   # 顧客用

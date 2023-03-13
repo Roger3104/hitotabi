@@ -4,14 +4,17 @@
       <div class="content-wrap">
         <header class="page-header heading">
           <h1 class="mb-5 heading__ttl">
-            <span class="text-en">my posts</span>
-            <span class="text-ja">投稿履歴</span>
+            <span class="text-en">posts</span>
+            <span class="text-ja"><%= @user.name%>さんの投稿履歴</span>
           </h1>
         </header>
       </div>
       <div class='col-md-12 mb-5'>
         <div class="d-flex align-content-start row flex-wrap py-1">
           <%= render '/public/posts/index', posts: @posts %>
+        </div>
+        <div class="d-flex align-content-center row py-1">
+          <%= paginate @posts %>
         </div>
         <div class="d-flex align-content-center row py-1">
           <%= render "/public/posts/index_map", posts: @posts %>

@@ -1,8 +1,9 @@
 class Public::UsersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:create, :destroy]
 
   def index
-    @posts = current_user.posts
+    @user = User.find_by(params[:id])
+    @posts = @user.posts.published.page(params[:page])
   end
 
   def show
@@ -31,12 +32,17 @@ class Public::UsersController < ApplicationController
     flash[:thank_you] = "ご利用ありがとうございました"
     redirect_to root_path
   end
-
+  
+  def likes
+    likes = Like.where(user_id: @user.id).pluck(:post_id)
+    @like_posts = Post.find(likes)
+  end
 
 
   private
   def user_params
     params.require(:user).permit(:name, :place, :email)
   end
+  
 
 end

@@ -20,10 +20,18 @@
           </div>
           <div class="col-7 px-5">
             <h3><strong><%= @post.title %></strong></h3>
+            <div><%= link_to @post.user.name, users_index_path(@user.id)%></div>
             <p class="my-3"><strong><%#= l @post.date %></strong></p>
+            <div>
+              <% if current_user.following?(@user) %>
+                <%= link_to "フォロー外す", users_relationships_path(@user.id), method: :delete %>
+              <% else %>
+                <%= link_to "フォローする", users_relationships_path(@user.id), method: :post %>
+              <% end %>
+            </div>
             <div class="my-3">
               <% @post.tags.each do |tag| %>
-                <%=tag.name%>
+                <%=link_to tag.name, tag_path(tag.id), class: "a-tag"%>
               <% end %>
             </div>
             <p class="my-3"><strong><%= @post.content %></strong></p>

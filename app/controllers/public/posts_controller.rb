@@ -35,10 +35,11 @@ class Public::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @tags = @post.tag_id
+    @user = User.find_by(params[:id])
   end
 
   def index
-    @posts = Post.published
+    @posts = Post.published.page(params[:page])
   end
 
   def edit
