@@ -22,11 +22,12 @@
             <h3><strong><%= @post.title %></strong></h3>
             <div><%= link_to @post.user.name, user_index_path(@post.user.id)%></div>
             <p class="my-3"><strong><%#= l @post.date %></strong></p>
+            <div class= "follow-<%= @user.id %>">
+              <%= render "/public/relationships/btn", user: @user, post: @post %>
+            </div>
             <div>
-              <% if current_user.following?(@user) %>
-                <%= link_to "フォロー外す", users_relationships_path(user_id: @user.id), method: :delete %>
-              <% else %>
-                <%= link_to "フォローする", users_relationships_path(user_id: @user.id), method: :post %>
+              <% if @post.user == current_user %>
+                <%= @post.status %>
               <% end %>
             </div>
             <div class="my-3">
@@ -40,10 +41,12 @@
           </div>
         </div>
       </div>
-      <div class="row online-btns my-5 ">
+      <% if @post.user == current_user %>
+        <div class="row online-btns my-5 ">
           <span class="col-4"></span>
           <%= link_to "edit post", edit_post_path, class: "online-btn col-4 text-center" %>
         </div>
+      <% end %>
       <div class="row">
         <%= render "show_map", post: @post %>
       </div>

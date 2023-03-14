@@ -4,8 +4,6 @@ class Public::PostsController < ApplicationController
   def new
     @post = Post.new
     @categories = Category.all
-    # @category = Category.find(params[:category_id])
-    # @tags = @category.tags
   end
 
   def create

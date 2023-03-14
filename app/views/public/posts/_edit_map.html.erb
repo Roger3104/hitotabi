@@ -1,4 +1,4 @@
-<input id="address" type="textbox" value="GeekSalon">
+<input id="address" type="textbox" placeholder="施設名や住所">
 <input type="button" value="検索" onclick="codeAddress()">
 <p>マーカーをドラック＆ドロップで位置の調整ができます。<p>
 <div id='map'></div>
@@ -21,7 +21,7 @@ function initMap(){
   map = new google.maps.Map(document.getElementById('map'), {
     center:  {lat: <%= post.latitude %>, lng:<%= post.longitude %>},  //東京
     zoom: 15,
-    styles:[
+    styles:[ // Mapデザイン変更
           {
               "featureType": "all",
               "elementType": "labels.text",
@@ -79,7 +79,7 @@ function initMap(){
       ]
   });
   marker = new google.maps.Marker({
-    position:  {lat: <%= post.latitude %>, lng: <%= post.longitude %>},
+    position:  {lat: <%= post.latitude %>, lng: <%= post.longitude %>},  //投稿の緯度と経度を取得
     map: map
   });
 }
@@ -134,4 +134,3 @@ function codeAddress(){
 
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['maps_javascript_API_KEY']%>&callback=initMap" async defer></script>
-<!--%のカッコでAPIを囲むのを忘れずに!-->

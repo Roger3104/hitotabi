@@ -23,7 +23,8 @@
           <%= f.text_area :content, class:'col-7 mx-auto form-control' %>
         </div>
         <div class="form-group row">
-          <table>
+          <span class = "col-3 mx-auto">タグ選択</span>
+          <table class="col-9 my-4 mx-auto">
             <% @categories.each do |category| %>
             <tr>
               <td><span><%= category.name %></span></td>

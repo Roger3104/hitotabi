@@ -1,0 +1,5 @@
+<% if current_user.following?(user) && current_user != post.user %>
+  <%= link_to "フォロー外す", users_relationships_path(user_id: user.id), method: :delete, remote: true %>
+<% elsif current_user != post.user%>
+  <%= link_to "フォローする", users_relationships_path(user_id: user.id), method: :post, remote: true %>
+<% end %>
