@@ -5,14 +5,23 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    @tags = Tag.all
+    @categories = Category.all
+    super
+  end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super
+    # @user = User.new(user_params)
+      # Userの保存にせいこうしたらに紐づくタグを保存する
+      params[:user][:tags].each do |tag_id|
+        if tag_id.present?
+          UserTag.new(user: @user, tag_id: tag_id).save
+        end
+    end
+  end
 
   # GET /resource/edit
   # def edit

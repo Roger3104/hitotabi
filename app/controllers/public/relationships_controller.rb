@@ -1,10 +1,16 @@
 class Public::RelationshipsController < ApplicationController
   def create
+    @user = User.find(params[:user_id])
+    @post = Post.find(params[:post_id])
     current_user.follow(params[:user_id])
+    render :replace
   end
 
   def destroy
+    @user = User.find(params[:user_id])
+    @post = Post.find(params[:post_id])
     current_user.unfollow(params[:user_id])
+    render :replace
   end
 
   def followings

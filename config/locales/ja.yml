@@ -1,5 +1,5 @@
 ja:
-  time:
+  date:
     formats:
       default: "%Y/%m/%d %H:%M:%S"
       short: "%m/%d %H:%M"
@@ -8,3 +8,6 @@ ja:
       status:
         published: '投稿する'
         draft: '下書きする'
+  views:
+    pagination:
+      truncate: "..."

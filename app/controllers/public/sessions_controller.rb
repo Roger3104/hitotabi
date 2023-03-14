@@ -33,7 +33,6 @@ class Public::SessionsController < Devise::SessionsController
         redirect_to new_user_registration_path
     end
   end
-
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])

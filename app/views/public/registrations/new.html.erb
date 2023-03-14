@@ -12,9 +12,7 @@
             </h1>
           </header>
         </div>
-
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-
             <div class="form-group row my-3">
               <%= f.label :name, 'ユーザー名', class:'col-4'%>
               <%= f.text_field :name, placeholder: "Hitota", autocomplete: "name", class: "col-3 form-control" %>
@@ -39,11 +37,32 @@
               <%= f.label :password_confirmation, 'パスワード(確認用)',class:'col-4' %>
               <%= f.password_field :password_confirmation, autocomplete: "new-password", class:'col-3 form-control' %>
             </div>
+            <div class="form-group row">
+          <span class = "col-3 mx-auto">タグ選択</span>
+          <table class="col-9 my-4 mx-auto">
+            <% @categories.each do |category| %>
+            <tr>
+              <td><span><%= category.name %></span></td>
+              <% category.tags.each do |tag| %>
+              <td>
+                <label class="tag_area">
+                  <input class= "tag_input" type="checkbox" value="<%= tag.id %>" name="user[tags][]" id="user_tags_<%= tag.id %>">
+                  <div class="tag_list">
+                    <label for="user_tags_<%= tag.id %>" class= "tag_link"><div class="tag_text"><%= tag.name %></div></label>
+                  </div>
+                </label>
+              </td>
+              <% end %>
+            </tr>
+            <% end %>
+          </table>
+        </div>
 
-            <div class="online-btns row">
-              <%= f.submit "新規登録", class:'col-2 offset-4 online-btn'%>
-            </div>
+          <div class="online-btns row">
+            <%= f.submit "新規登録", class:'col-2 offset-4 online-btn'%>
+          </div>
         <% end %>
+        <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
         <h3 class="mb-5 pt-3 border-bottom "><span>すでに登録済みの方</span></h3>
         <p class="form-group form-inline offset-4"><%= render "public/shared/links" %>からログインしてください</p>
       </div>
