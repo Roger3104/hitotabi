@@ -1,5 +1,5 @@
 <% posts.each do |post| %>
-  <div class='col-lg-4 col-md-4 col-sm-6 my-5'>
+  <div class='col-lg-4 col-md-4 col-sm-6 my-5 image-area align-self-start'>
     <%= link_to post_path(post.id), class:"a" do %>
       <% if post.image.attached? %>
         <%= image_tag post.image, class:'rounded shadow post-image' %>
