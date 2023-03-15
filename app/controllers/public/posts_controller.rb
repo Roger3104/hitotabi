@@ -34,6 +34,7 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @tags = @post.tag_id
     @user = User.find_by(params[:id])
+    @comment = Comment.new
   end
 
   def index

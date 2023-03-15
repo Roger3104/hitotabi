@@ -11,19 +11,19 @@
       </div>
       <%= form_with model: @post, url: posts_path do |f| %>
         <div class="form-group row">
-          <%= f.label :title, 'タイトル', class:'col-3 px-0 mx-auto' %>
+          <%= f.label :title, 'タイトル :', class:'col-3 px-0 mx-auto' %>
           <%= f.text_field :title, autofocus: true, class:'col-7 mx-auto form-control' %>
         </div>
         <div class="form-group row">
-          <%= f.label :date, '撮影日時', class:'col-3 px-0 mx-auto' %>
+          <%= f.label :date, '撮影日時 :', class:'col-3 px-0 mx-auto' %>
           <%= f.date_field :date, value: @post.date, class:'col-7 mx-auto form-control' %>
         </div>
         <div class="form-group row">
-          <%= f.label :content, '紹介文', class:'col-3 px-0 mx-auto' %>
+          <%= f.label :content, '紹介文 :', class:'col-3 px-0 mx-auto' %>
           <%= f.text_area :content, class:'col-7 mx-auto form-control' %>
         </div>
         <div class="form-group row">
-          <span class = "col-3 mx-auto">タグ選択</span>
+          <span class = "col-3 mx-auto">タグ選択 :</span>
           <table class="col-9 my-4 mx-auto">
             <% @categories.each do |category| %>
             <tr>
@@ -43,7 +43,7 @@
           </table>
         </div>
         <div class="form-group row">
-          <%= f.label :image, '画像', class:'col-3 px-0 mx-auto' %>
+          <%= f.label :image, '画像 :', class:'col-3 px-0 mx-auto' %>
           <%= f.file_field :image, accept: "image/*", class:'col-3 px-0 mx-auto' %><!--accept: "image/*で画像のみに限定-->
           <!--できれば画像選択後に画像表示したい-->
         </div>
