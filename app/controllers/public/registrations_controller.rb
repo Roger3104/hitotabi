@@ -16,10 +16,10 @@ class Public::RegistrationsController < Devise::RegistrationsController
     super
     # @user = User.new(user_params)
       # Userの保存にせいこうしたらに紐づくタグを保存する
-      params[:user][:tags].each do |tag_id|
-        if tag_id.present?
-          UserTag.new(user: @user, tag_id: tag_id).save
-        end
+    params[:user][:tags].each do |tag_id|
+      if tag_id.present?
+        UserTag.new(user: @user, tag_id: tag_id).save!
+      end
     end
   end
 

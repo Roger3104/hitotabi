@@ -27,18 +27,16 @@ class Public::PostsController < ApplicationController
   def confirm
     @posts = current_user.posts.draft
   end
-
-
+  
+  def index
+    @posts = Post.published.page(params[:page])
+  end
 
   def show
     @post = Post.find(params[:id])
     @tags = @post.tag_id
     @user = User.find_by(params[:id])
     @comment = Comment.new
-  end
-
-  def index
-    @posts = Post.published.page(params[:page])
   end
 
   def edit

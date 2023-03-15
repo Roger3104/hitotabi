@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       get 'followers' => 'relationships#followers', as: 'followers'
       member do
         get :favorites
+        get :recommend
       end
     end
     resources :tags, only: [:index, :show]
