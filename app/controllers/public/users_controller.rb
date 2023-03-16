@@ -40,6 +40,7 @@ class Public::UsersController < ApplicationController
     @user = User.find_by(params[:id])
     favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
     @favorite_posts = Post.find(favorites)
+    @favorite_posts = @favorite_posts.page(params[:page])
   end
 
   def recommend

@@ -15,6 +15,7 @@
           <%= f.file_field :image, accept: "image/*", class:'col-3 px-0 mx-auto' %><!--accept: "image/*で画像のみに限定-->
           <!--できれば画像選択後に画像表示したい-->
         </div>
+        <div id="new-image"><!--プレビュー--></div>
         <div class="form-group row">
           <%= f.label :title, 'タイトル :', class:'col-3 px-0 mx-auto' %>
           <%= f.text_field :title, autofocus: true, class:'col-7 mx-auto form-control' %>

@@ -10,24 +10,41 @@ class Public::PostsController < ApplicationController
     @tags = Tag.all
     @post = Post.new(post_params)
     @post.user_id = current_user.id
+    # if params[:post][:status] = Post.statuses.key(0)
     if  @post.save
-      # ポストの保存にせいこうしたらに紐づくタグを保存する
-      params[:post][:tags].each do |tag_id|
-        if tag_id.present?
-          PostTag.new(post: @post, tag_id: tag_id).save
+      if params[:post][:tags].present?
+        params[:post][:tags].each do |tag_id| # ポストの保存にせいこうしたらに紐づくタグを保存する
+          if tag_id.present?
+            PostTag.new(post: @post, tag_id: tag_id).save
+          end
         end
       end
-
       redirect_to post_path(@post)
     else
+      @categories = Category.all
       render 'new'
     end
+    # else
+    #   if  @post.save
+    #     if params[:post][:tags].present?
+    #       params[:post][:tags].each do |tag_id| # ポストの保存にせいこうしたらに紐づくタグを保存する
+    #         if tag_id.present?
+    #           PostTag.new(post: @post, tag_id: tag_id).save
+    #         end
+    #       end
+    #     end
+    #     redirect_to post_path(@post)
+    #   else
+    #     @categories = Category.all
+    #     render 'new'
+    #   end
+    # end
   end
 
   def confirm
     @posts = current_user.posts.draft
   end
-  
+
   def index
     @posts = Post.published.page(params[:page])
   end

@@ -78,6 +78,30 @@ input::placeholder {
 
 /*-----------------------------------------------*/
 /*-----------------------------------------------*/
+/*Serach*/
+.search-control{
+  color: #1E1D1C !important;
+  background-color: #EBE9E4 !important;
+  border: #EBE9E4 !important;
+  border-radius: 2rem !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+.search-control::placeholder {
+  color: #EBE9E4 !important;
+}
+
+.search-control:focus{
+  box-shadow: 0 0 0 0.2rem #f8f9fa38 !important;
+}
+
+.search-control:hover{
+  box-shadow: 0 0 0 0.2rem #f8f9fa38 !important;
+}
+
+/*-----------------------------------------------*/
+/*-----------------------------------------------*/
 
 /*リンクの色*/
 .link{
@@ -307,4 +331,14 @@ input::placeholder {
   width:100%;
   object-fit:cover;
 }
+
+/*-----------------------------------------------*/
+/*-----------------------------------------------*/
+/*image preview*/
+.new-img{
+  width: 400px;
+  object-fit: cover;
+}
+
+
 

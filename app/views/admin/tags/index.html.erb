@@ -26,23 +26,18 @@
       <div>
         <% @categories.each do |category| %>
           <div class="border-bottom">
-            <div class="row offset-1 my-4">
-              <div class="col-lg-12 col-md-12">
-                <span class="col-4"><%= category.name %></span>
+            <div class="row my-4">
+              <span class="col-4"><%= category.name %></span>
+              <div class="col-6 d-flex flex-row">
                 <% category.tags.each do |tag| %>
-                  <div class= "card text-center px-3 py-2 mr-3" style="width: auto">
-                    <div class="flex-row">
-                      <div class="col-8">
-                        <%=link_to "#" + tag.name, tag_path(tag.id), class:"card-title text-dark mr-3" %>
-
-                        <%= link_to edit_admin_tag_path(tag), class: "text-dark " do %>
-                          <i class="fas fa-edit"></i>
-                        <% end %>
-                        <%= link_to admin_tag_path(tag), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "text-dark" do %>
-                          <i class="far fa-trash-alt"></i>
-                        <% end %>
-                      </div>
-                    </div>
+                  <div class= "text-center px-3 py-2 mr-3 border border-secondary d-flex">
+                    <%=link_to tag.name, tag_path(tag.id), class:"text-dark mr-4 text-nowrap" %>
+                    <%= link_to edit_admin_tag_path(tag), class: "text-dark mr-2" do %>
+                      <i class="fas fa-edit"></i>
+                    <% end %>
+                    <%= link_to admin_tag_path(tag), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "text-dark" do %>
+                      <i class="far fa-trash-alt"></i>
+                    <% end %>
                   </div>
                 <% end %>
               </div>
