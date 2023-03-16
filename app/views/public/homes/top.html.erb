@@ -15,7 +15,7 @@
             <% if user_signed_in? %>
               <li><%= link_to "行ってみたい場所", favorites_users_path(@user), class:"link" %></li>
               <li><%= link_to "おすすめ", recommend_users_path(@user), class:"link" %></li>
-              <li><%= link_to "タグから探す", favorites_users_path(@user), class:"link" %></li>
+              <li><%= link_to "タグから探す", tags_path, class:"link" %></li>
             <% end %>
           </ul>
         </div>

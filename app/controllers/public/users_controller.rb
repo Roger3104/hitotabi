@@ -47,7 +47,7 @@ class Public::UsersController < ApplicationController
     # @user_tags = UserTag.where(user_id: @user.id).pluck(:tag_id).sort_by{rand}.first(3)
     # @posts = Post.published.joins(:post_tags).where('post_tags.tag_id in (?)', @user_tags).page(params[:page])
     @posts = {}
-    UserTag.where(user_id: @user.id).pluck(:tag_id).each do |tag_id|
+    UserTag.where(user_id: @user.id).pluck(:tag_id).sort_by{rand}.first(3).each do |tag_id|
       @posts[tag_id] = Post.published.joins(:post_tags).where('post_tags.tag_id = ?', tag_id).sort_by{rand}.first(3)
     end
   end

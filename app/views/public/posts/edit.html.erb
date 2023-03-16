@@ -52,7 +52,10 @@
           <span class="col-5"></span>
           <%= f.select :status, Post.statuses.keys.map { |k| [t("enums.post.status.#{k}"),k]}, {}, {class: "custom-select w-25"} %>
           <%= f.button "投稿", type: 'button', onclick: "submit();", class: "online-btn col-4" %> <!--Enter Keyで投稿処理を行わないためにf.buttonに変更-->
-
+        </div>
+        <div class="row online-btns my-5 ">
+          <span class="col-4"></span>
+          <%= link_to "delete post", @post, method: :delete, data: { confirm: '本当に削除しますか？' }, class: "online-btn col-4 text-center" %>
         </div>
       <% end %>
     </div>

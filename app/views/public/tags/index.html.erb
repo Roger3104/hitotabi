@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-sm-12 mx-6 mx-sm-auto px-auto my-5">
+      <div class="content-wrap">
+        <header class="page-header heading">
+          <h1 class="mb-5 heading__ttl">
+            <span class="text-en">tags</span>
+            <span class="text-ja">タグ一覧</span>
+          </h1>
+        </header>
+      </div>
+      <div class="my-3">
+        <% @categories.each do |category| %>
+          <div class="border-bottom">
+            <div class="row offset-1 my-4">
+              <span class="col-4"><%= category.name %></span>
+              <% category.tags.each do |tag| %>
+                <div class= "tag_area">
+                  <div class= "tag_list d-flex">
+                    <span class="tag_link flex-fill"><%=link_to tag.name, tag_path(tag.id), class:"tag_text"%></span>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
