@@ -4,49 +4,51 @@
         <div class="row justify-content-center">
           <div class="col-lg-7 col-md-8 col-sm-12 post-img pb-0 text-center my-4">
             <% if @post.image.attached? %>
-              <%= image_tag @post.image, class: ' shadow' %>
+              <%= image_tag @post.image, class: 'shadow' %>
             <% else %>
-              <%= image_tag 'no_image', class:'img-fluid img-thumbnail shadow ' %>
+              <%= image_tag 'no_image', class:'shadow ' %>
             <% end %>
           </div>
           <div class="col-lg-7 col-md-8 col-sm-12 px-5">
             <h1 class="post-header_ttl"><%= @post.title %></h1>
-            <h2 class="sub-header">detail</h2>
+            <h2 class="sub-header">outline</h2>
             <table>
               <tbody>
                 <tr>
-                  <td>user name</td>
-                  <td><%= link_to @post.user.name, user_index_path(@post.user.id)%></td>
+                  <td class="pb-3"><strong>user</strong></td>
+                  <td class="link pl-5 pb-3"><%= link_to @post.user.name, user_index_path(@post.user.id)%></td>
                 </tr>
                 <tr>
-                  <td>date</td>
-                  <td class="my-3"><strong><%= l @post.date %></strong></td>
+                  <td class="pb-3"><strong>date</strong></td>
+                  <td class="pl-5 pb-3"><%= l @post.date, format: :short %></td>
                 </tr>
                 <tr>
-                  <td></td>
-                  <td class= "follow-<%= @user.id %>">
+                  <td class="pb-3"></td>
+                  <td class= "follow-<%= @user.id %> pl-5 pb-3">
                     <%= render "/public/relationships/btn", user: @user, post: @post %>
                   </td>
                 </tr>
                 <tr>
                   <% if @post.user == current_user %>
-                    <td>post status</td>
-                    <td><%= @post.status %></td>
+                    <td class="pl-5 pb-3">post status</td>
+                    <td class="pb-3"><%= @post.status %></td>
                   <% end %>
                 </tr>
                 <tr>
-                  <td>tags</td>
-                  <td class="my-3">
+                  <td class="pb-3 d-flex align-items-start"><strong>tags</strong></td>
+                  <td class="my-3 pl-5 pb-3">
                     <% @post.tags.each do |tag| %>
-                      <div class= "tag_area">
+                      <div class= "tag_area d-inline-flex">
                         <div class= "tag_list"><p class="tag_link"><%=link_to tag.name, tag_path(tag.id), class:"tag_text"%></p></div>
                       </div>
                     <% end %>
                   </td>
                 </tr>
-                <tr><td class="my-3"><%= @post.content %></td></tr>
               </tbody>
             </table>
+            <div class="border-top border-bottom">
+              <div class="post-content my-3 py-4"><%= @post.content %></div>
+            </div>
           </div>
         </div>
       <% if @post.user == current_user %>
@@ -59,7 +61,7 @@
           <%= link_to "delete post", @post, method: :delete, data: { confirm: '本当に削除しますか？' }, class: "online-btn col-4 text-center" %>
         </div>
       <% end %>
-      <div class="row">
+      <div class="row justify-content-center my-5">
         <%= render "show_map", post: @post %>
       </div>
       <div class="row">
