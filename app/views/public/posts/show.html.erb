@@ -85,12 +85,12 @@
       <div class="row justify-content-center my-5">
         <%= render "show_map", post: @post %>
       </div>
+      <h2 class="sub-header">comment</h2>
       <div class="row">
-        <div class="offset-2">
+        <div class="mx-auto col-lg-9 col-md-9 col-sm-12 mb-5">
           <%= render "public/comments/index", post: @post %>
         </div>
       </div>
-      <h2 class="sub-header">comment</h2>
       <div class="row">
         <div class="mx-auto col-lg-9 col-md-9 col-sm-12">
           <%= render "public/comments/form", post: @post, comment: @comment %>

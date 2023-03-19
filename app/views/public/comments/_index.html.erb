@@ -2,16 +2,19 @@
   <tbody>
       <% post.comments.each do |comment| %>
       <tr>
-
-        <td>
-          <%= link_to users_path(comment.user) do %>
-            <%= comment.user.name %>
+        <td class="pt-4">
+          <%= link_to users_path(comment.user), class:"link" do %>
+            <strong><%= comment.user.name %></strong>さん
           <% end %>
         </td>
-        <td><%= comment.content %></td>
-        <td>
+      </tr>
+      <tr class="border-bottom">
+        <td class="pb-4"><%= safe_join(comment.content.split("\n"),tag(:br)) %></td> <!--改行したものを表記-->
+        <td class="pl-5">
           <% if comment.user == current_user %>
-            <%= link_to "Destroy", post_comment_path(post, comment), method: :delete, class: "btn btn-danger pull-right"%>
+            <%= link_to post_comment_path(post, comment), method: :delete do%>
+              <i class="far fa-trash-alt" style="color: gray;"></i>
+            <% end %>
           <% end %>
         </td>
       </tr>
