@@ -1,5 +1,9 @@
 <% if current_user.following?(user) && current_user != post.user %>
-  <%= link_to "フォロー外す", users_relationships_path(user_id: user.id, post_id: post.id), method: :delete, remote: true %>
+  <%= link_to users_relationships_path(user_id: user.id, post_id: post.id), method: :delete, class:"link", remote: true do%>
+    <sapn class="btn-text"><i class="fas fa-user-plus" style="color: black;"></i>フォロー済み</span>
+  <% end %>
 <% elsif current_user != post.user%>
-  <%= link_to "フォローする", users_relationships_path(user_id: user.id, post_id: post.id), method: :post, remote: true %>
+  <%= link_to users_relationships_path(user_id: user.id, post_id: post.id), method: :post, class:"link", remote: true do %>
+    <span class="btn-text"><i class="fas fa-user-plus" style="color: darkgray;"></i>フォローする</span>
+  <% end %>
 <% end %>
