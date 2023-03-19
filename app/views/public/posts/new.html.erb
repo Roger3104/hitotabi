@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-8 col-sm-12 mx-6 mx-sm-auto px-auto my-5">
+    <div class="col-lg-12 col-md-12 col-sm-12 mx-6 mx-sm-auto px-auto my-5">
       <div class="content-wrap">
         <header class="page-header heading">
           <h1 class="mb-5 heading__ttl">
@@ -9,59 +9,63 @@
           </h1>
         </header>
       </div>
-      <%= form_with model: @post, url: posts_path do |f| %>
-        <div class="form-group row">
-          <%= f.label :image, '画像 :', class:'col-3 px-0 mx-auto' %>
-          <%= f.file_field :image, accept: "image/*", class:'col-3 px-0 mx-auto' %><!--accept: "image/*で画像のみに限定-->
-          <!--できれば画像選択後に画像表示したい-->
-        </div>
-        <div id="new-image"><!--プレビュー--></div>
-        <div class="form-group row">
-          <%= f.label :title, 'タイトル :', class:'col-3 px-0 mx-auto' %>
-          <%= f.text_field :title, autofocus: true, class:'col-7 mx-auto form-control' %>
-        </div>
-        <div class="form-group row">
-          <%= f.label :date, '撮影日時 :', class:'col-3 px-0 mx-auto' %>
-          <%= f.date_field :date, value: @post.date, class:'col-7 mx-auto form-control' %>
-        </div>
-        <div class="form-group row">
-          <%= f.label :content, '紹介文 :', class:'col-3 px-0 mx-auto' %>
-          <%= f.text_area :content, class:'col-7 mx-auto form-control' %>
-        </div>
-        <div class="form-group row">
-          <span class = "col-3 mx-auto">タグ選択 :</span>
-          <table class="col-9 my-4 mx-auto">
-            <% @categories.each do |category| %>
-            <tr>
-              <td><span><%= category.name %></span></td>
-              <% category.tags.each do |tag| %>
-              <td>
-                <label class="tag_area">
-                  <input class= "tag_input" type="checkbox" value="<%= tag.id %>" name="post[tags][]" id="post_tags_<%= tag.id %>">
-                  <div class="tag_list">
-                    <label for="post_tags_<%= tag.id %>" class= "tag_link"><div class="tag_text"><%= tag.name %></div></label>
-                  </div>
-                </label>
-              </td>
+      <div class="col-lg-8 col-md-8 col-sm-12 mx-auto">
+        <%= form_with model: @post, url: posts_path do |f| %>
+          <h2 class="sub-header">画像</h2>
+          <div class="col-3 file-area">
+            <%= f.label :image, '画像を選択する', class:'px-0 mx-auto file-label' %>
+            <span class="label-text_bar" data-v-c486c198=""></span>
+            <span class="label-text_bar" data-v-c486c198=""></span>
+            <%= f.file_field :image, accept: "image/*", class:'col-3 px-0 mx-auto file-input' %><!--accept: "image/*で画像のみに限定-->
+          </div>
+          <div id="new-image"><!--プレビュー--></div>
+          <div class="form-group row mt-5">
+            <%= f.label :title, 'タイトル :', class:'col-3 px-0 mx-auto' %>
+            <%= f.text_field :title, autofocus: true, class:'col-7 mx-auto form-control' %>
+          </div>
+          <div class="form-group row">
+            <%= f.label :date, '撮影日時 :', class:'col-3 px-0 mx-auto' %>
+            <%= f.date_field :date, value: @post.date, class:'col-7 mx-auto form-control' %>
+          </div>
+          <div class="form-group row">
+            <%= f.label :content, '紹介文 :', class:'col-3 px-0 mx-auto' %>
+            <%= f.text_area :content, class:'col-7 mx-auto form-control' %>
+          </div>
+          <div class="form-group row">
+            <span class = "col-3 mx-auto">タグ選択 :</span>
+            <table class="col-9 my-4 mx-auto">
+              <% @categories.each do |category| %>
+              <tr>
+                <td><span><%= category.name %></span></td>
+                <% category.tags.each do |tag| %>
+                <td>
+                  <label class="tag_area">
+                    <input class= "tag_input" type="checkbox" value="<%= tag.id %>" name="post[tags][]" id="post_tags_<%= tag.id %>">
+                    <div class="tag_list">
+                      <label for="post_tags_<%= tag.id %>" class= "tag_link"><div class="tag_text"><%= tag.name %></div></label>
+                    </div>
+                  </label>
+                </td>
+                <% end %>
+              </tr>
               <% end %>
-            </tr>
-            <% end %>
-          </table>
-        </div>
-        <div class="row">
-          <%= f.hidden_field :latitude,:value =>"緯度", id: :lat %>
-          <%= f.hidden_field :longitude,:value =>"経度", id: :lng %>
-        </div>
-        <div class="row">
-          <%= render "new_map" %>
-        </div>
-        <div class="form-group row online-btns">
-          <span class="col-5"></span>
-          <%= f.select :status, Post.statuses.keys.map { |k| [t("enums.post.status.#{k}"),k]}, {}, {class: "custom-select w-25"} %>
-          <%= f.button "投稿", type: 'button', onclick: "submit();", class: "online-btn col-4" %> <!--Enter Keyで投稿処理を行わないためにf.buttonに変更-->
+            </table>
+          </div>
+          <div class="row">
+            <%= f.hidden_field :latitude,:value =>"緯度", id: :lat %>
+            <%= f.hidden_field :longitude,:value =>"経度", id: :lng %>
+          </div>
+          <div class="row">
+            <%= render "new_map" %>
+          </div>
+          <div class="form-group row online-btns">
+            <span class="col-5"></span>
+            <%= f.select :status, Post.statuses.keys.map { |k| [t("enums.post.status.#{k}"),k]}, {}, {class: "custom-select w-25"} %>
+            <%= f.button "投稿", type: 'button', onclick: "submit();", class: "online-btn col-4" %> <!--Enter Keyで投稿処理を行わないためにf.buttonに変更-->
 
-        </div>
-      <% end %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

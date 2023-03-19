@@ -458,6 +458,43 @@ td > .link:hover {
   object-fit: cover;
 }
 
+.file-area{
+  background-color: #e6e2d8;
+}
+
+.file-label{
+  display: inline-block;
+  position: relative;
+  background-color: transparent;
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: all 0.5s;
+  color: #1E1D1C;
+  padding: 10px 0px 0px 20px;
+}
+
+.file-area:hover{
+  background-color: #d2f703;
+  color: #1E1D1C;
+}
+
+.file-input{
+  display: none;
+}
+
+.label-text_bar:nth-of-type(1){
+  transform: rotate(90deg);
+}
+.label-text_bar{
+  top: calc(19 / 1380 * 100vw);
+  position: absolute;
+  width: 16px;
+  height: 2px;
+  right: 0;
+  background-color: #2c2c2c;
+  margin-right: 18px;
+}
 /*-----------------------------------------------*/
 /*-----------------------------------------------*/
 /*posts show page*/
@@ -552,7 +589,7 @@ td > .link:hover {
   background-color: #ebe9e3;
   border-color: #ebe9e3;
   outline: 0;
-  box-shadow: 0 0 0 0.2rem #645f5a;
+  box-shadow: 0 0 0 0.15rem #645f5a;
 }
 
 
