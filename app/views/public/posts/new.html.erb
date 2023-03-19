@@ -9,16 +9,17 @@
           </h1>
         </header>
       </div>
-      <div class="col-lg-8 col-md-8 col-sm-12 mx-auto">
+      <div class="col-lg-7 col-md-8 col-sm-12 mx-auto">
         <%= form_with model: @post, url: posts_path do |f| %>
           <h2 class="sub-header">画像</h2>
-          <div class="col-3 file-area">
+          <div class="col-4 file-area">
             <%= f.label :image, '画像を選択する', class:'px-0 mx-auto file-label' %>
-            <span class="label-text_bar" data-v-c486c198=""></span>
-            <span class="label-text_bar" data-v-c486c198=""></span>
+            <span class="label-text_bar"></span>
+            <span class="label-text_bar"></span>
             <%= f.file_field :image, accept: "image/*", class:'col-3 px-0 mx-auto file-input' %><!--accept: "image/*で画像のみに限定-->
           </div>
-          <div id="new-image"><!--プレビュー--></div>
+          <div id="new-image" class="mt-4 d-flex justify-content-center"><!--プレビュー--></div>
+          <h2 class="sub-header mt-5">内容</h2>
           <div class="form-group row mt-5">
             <%= f.label :title, 'タイトル :', class:'col-3 px-0 mx-auto' %>
             <%= f.text_field :title, autofocus: true, class:'col-7 mx-auto form-control' %>
