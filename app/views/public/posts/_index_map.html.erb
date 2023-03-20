@@ -42,8 +42,8 @@
 //マーカーをクリックしたとき、詳細情報を表示
           let infowindow = new google.maps.InfoWindow({
             position: markerLatLng,
-            content: "<a href='<%= post_path(post.id) %>' target='_blank'><%= post.content.gsub(/[\r\n]/,"") %></a>"
-          }); //ここで詳細ページへのリンクを表示させる
+            content: "<a href='<%= post_path(post.id) %>' target='_blank'><%= post.title.gsub(/[\r\n]/,"") %></a>"
+          }); //ここで詳細ページへのリンクを表示させる 改行コードがエラーを起こすので空白にする必要あり<%#= post.content.gsub(/[\r\n]/,"") %>
           marker.addListener('click', function() {
             infowindow.open(map, marker);
           });

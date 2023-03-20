@@ -5,6 +5,8 @@ class Public::UsersController < ApplicationController
   end
 
   def show
+    @user = current_user
+    @tags = @user.tag_id
   end
 
   def user_index
@@ -58,7 +60,7 @@ class Public::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :place, :email)
+    params.require(:user).permit(:name, :place, :email, :tag_id)
   end
 
   def set_user

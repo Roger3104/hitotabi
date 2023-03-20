@@ -9,6 +9,46 @@
           </h1>
         </header>
       </div>
+      <div class="col-lg-8 col-md-8 col-sm-12">
+        <h2 class="sub-header">my page</h2>
+        <table>
+          <tbody>
+            <tr>
+              <td class="pb-3"><strong>name</strong></td>
+              <td class="pl-5 pb-3">
+                <% if @user == current_user %>
+                  <%= current_user.name %>
+                <% else %>
+                  <%= link_to @name, user_index_path(@user.id), class:"link"%>
+                  <span class= "follow-<%= @user.id %> pl-3 mb-0">
+                    <%= render "/public/relationships/btn", user: @user, post: @post %>
+                  </span>
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <td class="pb-3"><strong>place</strong></td>
+              <td class="pl-5 pb-3"><%= @user.place %></td>
+            </tr>
+            <tr>
+              <td class="pb-3 d-flex align-items-start"><strong>tags</strong></td>
+              <td class="my-3 pl-5 pb-3">
+                <% @tags.each do |tag| %>
+                  <div class= "tag_area d-inline-flex">
+                    <div class= "tag_list"><p class="tag_link"><%=link_to tag.name, tag_path(tag.id), class:"tag_text"%></p></div>
+                  </div>
+                <% end %>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+
+
+
+
       <table class="table">
           <tbody>
               <tr>
