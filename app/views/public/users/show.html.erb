@@ -16,14 +16,14 @@
             <tr>
               <td class="pb-3"><strong>name</strong></td>
               <td class="pl-5 pb-3">
-                <% if @user == current_user %>
-                  <%= current_user.name %>
-                <% else %>
-                  <%= link_to @name, user_index_path(@user.id), class:"link"%>
+                  <%= @user.name %>
+                <%# else %>
+                  <%#= link_to @name, user_index_path(@user.id), class:"link"%>
+                  <%# if @user == current_user %>
                   <span class= "follow-<%= @user.id %> pl-3 mb-0">
                     <%= render "/public/relationships/btn", user: @user, post: @post %>
                   </span>
-                <% end %>
+                <%# end %>
               </td>
             </tr>
             <tr>
@@ -33,11 +33,11 @@
             <tr>
               <td class="pb-3 d-flex align-items-start"><strong>tags</strong></td>
               <td class="my-3 pl-5 pb-3">
-                <% @tags.each do |tag| %>
+                <%# @tags.each do |tag| %>
                   <div class= "tag_area d-inline-flex">
-                    <div class= "tag_list"><p class="tag_link"><%=link_to tag.name, tag_path(tag.id), class:"tag_text"%></p></div>
+                    <div class= "tag_list"><p class="tag_link"><%#=link_to tag.name, tag_path(tag.id), class:"tag_text"%></p></div>
                   </div>
-                <% end %>
+                <%# end %>
               </td>
             </tr>
           </tbody>

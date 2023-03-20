@@ -5,8 +5,13 @@ class Public::UsersController < ApplicationController
   end
 
   def show
-    @user = current_user
-    @tags = @user.tag_id
+    if params[:format].present?
+      @user = User.find(params[:format])
+      @post = Post.find(params[:id])
+    else
+      @user = current_user
+    end
+    # @tags = @user.tag_id
   end
 
   def user_index

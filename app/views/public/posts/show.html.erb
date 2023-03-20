@@ -29,7 +29,7 @@
             <tr>
               <td class="pb-3"><strong>user</strong></td>
               <td class="pl-5 pb-3">
-                <%= link_to @post.user.name, user_index_path(@post.user.id), class:"link"%>
+                <%= link_to @post.user.name, users_path(@post.user.id, id: @post), class:"link"%>
                 <span class= "follow-<%= @user.id %> pl-3 mb-0">
                   <%= render "/public/relationships/btn", user: @user, post: @post %>
                 </span>
