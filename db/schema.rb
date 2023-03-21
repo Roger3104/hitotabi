@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(version: 2023_03_15_061655) do
     t.integer "user_id"
     t.integer "tag_id"
     t.string "title"
-    t.date "date"
+    t.datetime "date"
     t.text "content"
     t.string "address"
     t.float "latitude"
