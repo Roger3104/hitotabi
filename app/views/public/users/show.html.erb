@@ -4,13 +4,17 @@
       <div class="content-wrap">
         <header class="page-header heading">
           <h1 class="mb-5 heading__ttl">
-            <span class="text-en">my page</span>
+            <% if @user == current_user%>
+              <span class="text-en">my page</span>
+            <% else %>
+              <span class="text-en">user page</span>
+            <% end %>
             <span class="text-ja">会員ページ</span>
           </h1>
         </header>
       </div>
       <div class="col-lg-8 col-md-8 col-sm-12">
-        <h2 class="sub-header">my page</h2>
+        <h2 class="sub-header">infomation</h2>
         <table>
           <tbody>
             <tr>

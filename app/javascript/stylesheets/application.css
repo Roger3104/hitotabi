@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;/*ページ内リンク用*/
+}
+
 header {
   background-color: #F3F2EE !important
 }
@@ -33,6 +37,7 @@ body {
   background-color: #F3F2EE;
   text-decoration: none !important;
   font-family: "Overpass", sans-serif;
+  overflow-x: hidden; /*一部背景が飛び出さないよう*/
 }
 
 input::placeholder {
@@ -41,6 +46,13 @@ input::placeholder {
 
 a{
   text-decoration: none
+}
+
+/*一部濃い背景用*/
+.dark_bg{
+  background-color: #EEECE7;
+  margin: 0 -200%;
+  padding: 0 200%;
 }
 
 /*-----------------------------------------------*/
@@ -542,6 +554,19 @@ td > .link:hover {
   line-height: 2.0em;
 }
 
+.in_page_link{
+  padding: 0.7rem 2rem;
+  background-color: #F3F2EE;
+  border: 2px #1E1D1C solid;
+  color: #1E1D1C;
+  text-decoration: none !important;
+}
+
+.in_page_link:hover{
+  color: #1E1D1C;
+  text-decoration: none !important;
+}
+
 .link-btn {
     display: inline-block;
     padding: 0.7rem 2rem 0.6rem;
@@ -593,6 +618,14 @@ td > .link:hover {
   border-color: #ebe9e3;
   outline: 0;
   box-shadow: 0 0 0 0.15rem #645f5a;
+}
+
+/*-----------------------------------------------*/
+/*-----------------------------------------------*/
+/*favorite button*/
+
+.favorite-btn:hover{
+  text-decoration: none;
 }
 
 

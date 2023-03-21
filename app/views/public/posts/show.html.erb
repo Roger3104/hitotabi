@@ -41,8 +41,13 @@
             </tr>
             <tr>
               <% if @post.user == current_user %>
-                <td class="pl-5 pb-3">post status</td>
-                <td class="pb-3"><%= @post.status %></td>
+                <td class="pb-3"><strong>post status</strong></td>
+                <td class="pl-5 pb-3">
+                  <%= @post.status_i18n %>
+                  <%= link_to edit_post_path, class:"link ml-2" do%>
+                    <i class="fas fa-edit"></i>
+                  <% end %>
+                </td>
               <% end %>
             </tr>
             <tr>
@@ -55,6 +60,9 @@
                 <% end %>
               </td>
             </tr>
+            <tr>
+              <td class="py-4"><%= link_to "コメントを投稿", {anchor: "in_page_link-comment"}, class: "in_page_link" %></td>
+            </tr>
           </tbody>
         </table>
         <div class="border-top border-bottom">
@@ -65,27 +73,25 @@
             <%= render "favorite_btn", post: @post %>
           </div>
           <div id="follow2-<%= @user.id %>" class="col-lg-5 col-md-5 col-sm-10 ml-lg-2 ml-md-2">
-            <%= render "relationship_btn", post: @post, user: @user %>
+            <% if current_user == @post.user%>
+              <%= link_to edit_post_path, class:"link-btn" do%>
+                <i class="fas fa-edit" style="color: black;"></i><span> 投稿を編集する</span>
+              <% end %>
+            <% else%>
+              <%= render "relationship_btn", post: @post, user: @user %>
+            <% end %>
           </div>
         </div>
       </div>
     </div>
     <div class="col-lg-8 col-md-8 col-sm-12 mx-auto">
-      <% if @post.user == current_user %>
-        <div class="row online-btns my-5 ">
-          <span class="col-4"></span>
-          <%= link_to "edit post", edit_post_path, class: "online-btn col-4 text-center" %>
+      <div class="dark_bg py-2">
+        <h2 class="sub-header">map</h2>
+        <div class="row justify-content-center my-5">
+          <%= render "show_map", post: @post %>
         </div>
-        <div class="row online-btns my-5 ">
-          <span class="col-4"></span>
-          <%= link_to "delete post", @post, method: :delete, data: { confirm: '本当に削除しますか？' }, class: "online-btn col-4 text-center" %>
-        </div>
-      <% end %>
-      <h2 class="sub-header">map</h2>
-      <div class="row justify-content-center my-5">
-        <%= render "show_map", post: @post %>
       </div>
-      <h2 class="sub-header">comment</h2>
+      <h2 class="sub-header" id="in_page_link-comment">comment</h2>
       <div class="row">
         <div class="mx-auto col-lg-9 col-md-9 col-sm-12 mb-5">
           <%= render "public/comments/index", post: @post %>
