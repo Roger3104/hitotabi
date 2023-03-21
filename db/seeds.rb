@@ -10,16 +10,19 @@ Admin.create!(
     email: 'hitotabi@admin',
     password: 'hitotabi'
 )
+puts "Adminをさくせいしました"
 
 user = User.create!(
     email: 'testuser@testuser',
     password: 'testuser',
     name: 'testuser'
 )
+puts "Userを作成しました"
 
 Post.create!(
     user_id: user.id,
     tag_id: nil,
-    title: 'testpost',
-    status: 
+    title: 'testpost'
+
 )
+puts "Postを作成しました"
