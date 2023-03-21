@@ -23,6 +23,6 @@ Post.create!(
     user_id: user.id,
     tag_id: nil,
     title: 'testpost',
-    status: 'published'
+    status: 'draft'
 )
 puts "Postを作成しました"

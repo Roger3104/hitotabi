@@ -5,7 +5,7 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.references :tag, foreign_key: true
       t.string :title
       # t.datetime :date, null: false, default: -> { 'CURRENT_TIMESTAMP' } # 2023-03-08 19:41:55
-      t.date :date, default: "CURRENT_DATE" # 2023-03-08
+      t.date :date, default: ->{ '(CURRENT_DATE)' } # 2023-03-08
       # defaultを投稿作成日時に設定
       t.text :content
       t.string :address
