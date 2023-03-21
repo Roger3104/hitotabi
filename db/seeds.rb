@@ -19,5 +19,7 @@ user = User.create!(
 
 Post.create!(
     user_id: user.id,
-    title: 'testpost'
+    tag_id: nil,
+    title: 'testpost',
+    status: 
 )
