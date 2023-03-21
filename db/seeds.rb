@@ -22,7 +22,7 @@ puts "Userを作成しました"
 Post.create!(
     user_id: user.id,
     tag_id: nil,
-    title: 'testpost'
-
+    title: 'testpost',
+    status: 'published'
 )
 puts "Postを作成しました"
