@@ -11,12 +11,13 @@ Admin.create!(
     password: 'hitotabi'
 )
 
-User.create!(
+user = User.create!(
     email: 'testuser@testuser',
     password: 'testuser',
     name: 'testuser'
 )
 
 Post.create!(
+    user_id: user.id,
     title: 'testpost'
 )
