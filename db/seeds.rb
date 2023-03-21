@@ -10,3 +10,13 @@ Admin.create!(
     email: 'hitotabi@admin',
     password: 'hitotabi'
 )
+
+User.create!(
+    email: 'testuser@testuser',
+    password: 'testuser',
+    name: 'testuser'
+)
+
+Post.create!(
+    title: 'testpost'
+)
