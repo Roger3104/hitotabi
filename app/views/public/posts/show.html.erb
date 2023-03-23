@@ -60,11 +60,11 @@
                 <% end %>
               </td>
             </tr>
-            <tr>
-              <td class="py-4"><%= link_to "コメントを投稿", {anchor: "in_page_link-comment"}, class: "in_page_link" %></td>
-            </tr>
           </tbody>
         </table>
+        <div class="row py-4">
+          <%= link_to "コメントを投稿", {anchor: "in_page_link-comment"}, class: "in_page_link" %>
+        </div>
         <div class="border-top border-bottom">
           <div class="post-content my-3 py-4"><%= @post.content %></div>
         </div>

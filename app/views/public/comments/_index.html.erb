@@ -9,7 +9,7 @@
         </td>
       </tr>
       <tr class="border-bottom">
-        <td class="pb-4"><%= safe_join(comment.content.split("\n"),tag(:br)) %></td> <!--改行したものを表記-->
+        <td class="py-3"><%= safe_join(comment.content.split("\n"),tag(:br)) %></td> <!--改行したものを表記-->
         <td class="pl-5">
           <% if comment.user == current_user %>
             <%= link_to post_comment_path(post, comment), method: :delete do%>

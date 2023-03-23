@@ -15,7 +15,21 @@ import "../stylesheets/application";
 import '@fortawesome/fontawesome-free/js/all';
 import '../stylesheets/application.css';
 import './preview';
+//= require　jquery.jscroll.min.js
 
 Rails.start();
 // Turbolinks.start()
 ActiveStorage.start();
+
+// 無限スクロールの処理
+// <script>
+//   $(document).on('turbolinks:load', function() {
+//     /*global $ */
+//     $('.jscroll-div').jscroll({ // 追加したdivのclass名と合わせる
+//       contentSelector: '.jscroll',
+//       nextSelector: '.next a',  // 次ページリンクのセレクタ
+//       loadingHtml: '読み込み中',
+//       padding: 10
+//     })
+//   });
+// </script>

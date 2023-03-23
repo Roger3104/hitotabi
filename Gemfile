@@ -61,7 +61,6 @@ gem 'kaminari','~>1.2.1'
 gem "enum_help"
 gem 'gon'
 gem 'geocoder'
-gem 'dotenv-rails'
 gem 'jquery-rails'
 gem 'dotenv-rails' #本番開発用
 group :production do
