@@ -21,13 +21,33 @@
       <div class="row">
         <div class='col-md-12 mb-5'>
           <div class="d-flex align-content-start row flex-wrap py-1">
-            <%= render 'index', posts: @posts %>
+            <%#= render 'index', posts: @posts %>
+            <div class="scroll-list jscroll">
+              <% @posts.each do |post| %>
+                <div class='col-lg-4 col-md-4 col-sm-6 my-5'>
+                  <%= link_to post_path(post.id), class:"a" do %>
+                    <% if post.image.attached? %>
+                      <%= image_tag post.image, class:'rounded shadow post-image' %>
+                     <% else %>
+                      <%= image_tag 'no_image', class:'rounded shadow post-image' %>
+                    <% end %>
+                    <div class="row mt-2 ml-1">
+                      <span class="index-post-ttl mr-2"><%= post.title %></span>
+                      <div class= "favorite-<%= post.id %>">
+                        <%= render "/public/favorites/btn", post: post %>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              <% end %>
+              <%= paginate @posts %>
+            </div>
           </div>
         </div>
       </div>
       <div class="row py-1">
         <div class='col-md-12 d-flex justify-content-center mb-5'>
-          <%= paginate @posts %>
+          <%#= paginate @posts %>
         </div>
       </div>
     </div>

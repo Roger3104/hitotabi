@@ -1,4 +1,4 @@
-<!--<div class="jscroll-div">-->
+<div class="jscroll-div">
   <% posts.each do |post| %>
     <div class='col-lg-4 col-md-4 col-sm-6 my-5'>
       <%= link_to post_path(post.id), class:"a" do %>
@@ -16,4 +16,5 @@
       <% end %>
     </div>
   <% end %>
-<!--</div>-->
+  <%= paginate posts %>
+</div>

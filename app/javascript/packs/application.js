@@ -16,21 +16,56 @@ import '@fortawesome/fontawesome-free/js/all';
 import '../stylesheets/application.css';
 import './preview';
 import './script';
-//= require　jquery.jscroll.min.js
+// import './jquery.jscroll.min.js';
 
 Rails.start();
 // Turbolinks.start()
 ActiveStorage.start();
 
 // 無限スクロールの処理
-// <script>
-//   $(document).on('turbolinks:load', function() {
-//     /*global $ */
-//     $('.jscroll-div').jscroll({ // 追加したdivのclass名と合わせる
+// window.addEventListener("DOMContentLoaded", function() {
+//   console.log($('.jscroll'))
+//   $('.jscroll').jscroll({ // 追加したdivのclass名と合わせる
 //       contentSelector: '.jscroll',
-//       nextSelector: '.next a',  // 次ページリンクのセレクタ
+//       nextSelector: 'a[rel~="next"]',  // 次ページリンクのセレクタ
+//       autoTrigger: true,
 //       loadingHtml: '読み込み中',
-//       padding: 10
 //     })
+//     console.log("ssssss")
+// })
+
+$(document).ready(function () {
+  $(window).on('scroll', function() {
+    var scrollHeight = $(document).height();
+    var scrollPosition = $(window).height() + $(window).scrollTop();
+    if ( (scrollHeight - scrollPosition) / scrollHeight <= 0.05) {
+      $('.jscroll').jscroll({
+        contentSelector: '.jscroll',
+        nextSelector: 'a[rel~="next"]',  // 次ページリンクのセレクタ
+        autoTrigger: true,
+        loadingHtml: '読み込み中',
+      });
+    }
+  });
+})
+
+
+// (function() {
+//   $('.jscroll').jscroll({
+//     nextSelector: 'span.next a'
 //   });
-// </script>
+//   console.log("kkkk")
+// })();
+// $(document).on('turbolinks:load', function() {
+//   /*global $ */
+//   console.log("ggggggg")
+//   $('.jscroll-div').jscroll({ // 追加したdivのclass名と合わせる
+//     contentSelector: '.jscroll',
+//     nextSelector: '.next a',  // 次ページリンクのセレクタ
+//     loadingHtml: '読み込み中',
+//     padding: 10
+//   })
+// });
+
+
+/*global $ */
