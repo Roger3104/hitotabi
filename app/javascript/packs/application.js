@@ -15,6 +15,7 @@ import "../stylesheets/application";
 import '@fortawesome/fontawesome-free/js/all';
 import '../stylesheets/application.css';
 import './preview';
+import './script';
 //= require　jquery.jscroll.min.js
 
 Rails.start();
