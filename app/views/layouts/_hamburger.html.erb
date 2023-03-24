@@ -1,0 +1,99 @@
+<header class="sticky-top">
+  <nav class="navbar navbar-expand-lg pl-0">
+    <div class="container mt-3 pl-0">
+      <div class="collapse navbar-collapse" id="g-nav">
+        <ul class="navbar-nav ml-auto d-flex flex-column">
+          <% if request.path.match(/\/admin(\/)?/) && admin_signed_in?%>
+            <li>
+              <%= link_to admin_users_path, class:"d-flex justify-content-start" do %>
+                <div class="nav-link a-header  mt-2 pr-3">会員一覧</div>
+              <%end%>
+            </li>
+            <li>
+              <%= link_to admin_posts_path, class:"d-flex justify-content-start" do %>
+                <div class="nav-link a-header mt-2 pr-3">投稿一覧</div>
+              <%end%>
+            </li>
+            <li>
+              <%= link_to admin_tags_path, class:"d-flex justify-content-start" do %>
+                <div class="nav-link a-header mt-2 pr-3">タグ</div>
+              <%end%>
+            </li>
+            <li>
+              <%= link_to admin_categories_path, class:"d-flex justify-content-start" do %>
+                <div class="nav-link a-header mt-2 pr-3">カテゴリー</div>
+              <%end%>
+            </li>
+            <li>
+              <%= link_to destroy_admin_session_path, class:"d-flex justify-content-start", method: :delete do %>
+                <div class="nav-link a-header mt-2 pr-3">ログアウト</div>
+              <%end%>
+            </li>
+
+          <% elsif request.path.match(/\/admin(\/)?/) %>
+            <li>
+              <%= link_to new_admin_session_path, class:"d-flex justify-content-start" do %>
+                <div class="nav-link a-header mt-2 pr-3">ログイン</div>
+              <%end%>
+            </li>
+
+          <% elsif user_signed_in? %>
+            <li>
+              <%= link_to users_path, class:"d-flex justify-content-start" do %>
+                <div class="nav-link a-header mt-2 pr-3">マイページ</div>
+              <%end%>
+            </li>
+            <li>
+              <%= link_to posts_path, class:"d-flex justify-content-start" do %>
+                <div class="nav-link a-header mt-2 pr-3">ひと旅</div>
+              <%end%>
+            </li>
+            <li>
+              <%= link_to favorites_users_path(@user), class:"d-flex justify-content-start" do %>
+                <div class="nav-link a-header mt-2 pr-3">行きたい場所</div>
+              <%end%>
+            </li>
+            <li>
+              <%= link_to new_post_path, class:"d-flex justify-content-start" do %>
+                <div class="nav-link a-header mt-2 pr-3"><i class="fa fa-camera mr-2" aria-hidden="true"></i>投稿する</div>
+              <%end%>
+            </li>
+            <li>
+              <%= link_to destroy_user_session_path, class:"d-flex justify-content-start", method: :delete do %>
+                <div class="nav-link a-header mt-2 pr-3">ログアウト</div>
+              <%end%>
+            </li>
+
+          <% else %>
+            <li>
+              <%= link_to about_path, class:"d-flex justify-content-start" do %>
+                <div class="nav-link a-header mt-2 pr-3">About</div>
+              <%end%>
+            </li>
+            <li>
+              <%= link_to posts_path, class:"d-flex justify-content-start" do %>
+                <div class="nav-link a-header mt-2 pr-3">ひと旅</div>
+              <%end%>
+            </li>
+            <li>
+              <%= link_to new_user_registration_path, class:"d-flex justify-content-start" do %>
+                <div class="nav-link a-header mt-2 pr-3">新規登録</div>
+              <%end%>
+            </li>
+            <li>
+              <%= link_to new_user_session_path, class:"d-flex justify-content-start" do %>
+                <div class="nav-link a-header mt-2 pr-3">ログイン</div>
+              <%end%>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <% if request.path.match(/\/admin(\/)?/) && admin_signed_in? %>
+      <% else %>
+      <% end %>
+      <!--検索機能用-->
+    </div>
+  </nav>
+</header>
