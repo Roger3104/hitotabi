@@ -13,7 +13,7 @@ class Public::UsersController < ApplicationController
       @user = current_user
       @posts = @user.posts.published.page(params[:page])
     end
-    @tags = @user.tag_ids
+    @tags = @user.tags
   end
 
   def user_index
