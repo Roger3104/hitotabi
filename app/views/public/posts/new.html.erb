@@ -77,9 +77,11 @@
             <%= render "new_map" %>
           </div>
           <div class="form-group row d-flex justify-content-center mt-5">
-            <p class="text-center font-weight-light pb-3 ">個人情報の記載がないか、<br>
+            <p class="text-center text-sm pb-3 ">個人情報の記載がないか、<br>
             投稿内容を再度確認した上での投稿をお願いいたします。<br>
-            *下書きの場合は公開されません</p>
+            ※下書きの場合は公開されません</p>
+          </div>
+          <div class="form-group row d-flex justify-content-center">
             <%= f.button "投稿する", type: 'button', onclick: "submit();", class: "link-btn-lg col-6" %> <!--Enter Keyで投稿処理を行わないためにf.buttonに変更-->
           </div>
         <% end %>

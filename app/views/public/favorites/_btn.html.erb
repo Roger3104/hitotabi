@@ -1,36 +1,36 @@
 <% if user_signed_in? %>
   <% if post.favorited?(current_user) %>
-    <%= link_to post_favorites_path(post.id), method: :delete, id:"favorite-btn-dstry", remote: true, data: {toggle: "tooltip", placement: "left"},  title: "行ってみたい場所から外す" do %>
+    <%= link_to post_favorites_path(post.id), method: :delete, class:"favorite-btn", id:"favorite-btn1", remote: true, data: {toggle: "tooltip", placement: "left"},  title: "行ってみたいから外す" do %>
       <i class="fas fa-map-marker-alt" aria-hidden="true" style="color: red;" ></i>
     <% end %>
   <% else %>
-    <%= link_to post_favorites_path(post.id), method: :post, id:"favorite-btn-crt", remote: true, data: {toggle: "tooltip", placement: "left"}, title: "行ってみたい場所に追加" do %>
+    <%= link_to post_favorites_path(post.id), method: :post, class:"favorite-btn", id:"favorite-btn2", remote: true, data: {toggle: "tooltip", placement: "left"}, title: "行ってみたいに追加" do %>
       <i class="fas fa-map-marker-alt" aria-hidden="true" style="color: gray;"></i>
     <% end %>
   <% end %>
 <% else %>
-  <%= link_to new_user_session_path, class:"favorite-btn", data: {toggle: "tooltip", placement: "left"}, title: "利用にはログインが必要です" do %>
+  <%= link_to new_user_session_path, class:"favorite-btn", data: {toggle: "tooltip", placement: "left"}, title: "ご利用にはログインが必要です" do %>
     <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
   <% end %>
 <% end %>
+
+<!--ツールチップ切り替え用-->
 <script>
   $(document).ready(function() {
     $('[data-toggle="tooltip"]').tooltip();
   });
-  btn1 = document.getElementById('favorite-btn-dstry')
-  btn2 = document.getElementById('favorite-btn-crt')
+  btn1 = document.getElementById('favorite-btn1')
+  btn2 = document.getElementById('favorite-btn2')
   if (btn1) {
     btn1.addEventListener('click', function(){
-    console.log("test2")
     $(btn1).tooltip('hide');
     $(btn1).tooltip();
-  });
+    });
   }
   if (btn2) {
    btn2.addEventListener('click', function(){
-    console.log("test2")
     $(btn2).tooltip('hide');
     $(btn2).tooltip();
-  });
+    });
   }
-    </script>
+</script>

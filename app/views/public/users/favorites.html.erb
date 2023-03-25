@@ -18,13 +18,13 @@
         </ul>
       </div>
       <div class='col-md-12 mb-5'>
-        <div class="d-flex align-content-center justify-content-center row py-1">
+        <div class="d-flex align-content-center justify-content-center row py-1 border-bottom">
           <div class='col-lg-10 col-md-10 col-sm-12 mb-5'>
             <h2 class="sub-header">map</h2>
             <%= render "/public/posts/index_map", posts: @favorite_posts %>
           </div>
         </div>
-        <div class="d-flex align-content-start row flex-wrap py-1" id="bottom">
+        <div class="d-flex justify-content-center row flex-wrap py-1" id="bottom">
           <%= render 'public/posts/index', posts: @favorite_posts %>
         </div>
         <div class="text-center row py-1">

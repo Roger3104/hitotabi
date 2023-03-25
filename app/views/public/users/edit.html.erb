@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-8 col-sm-12 mx-6 mx-sm-auto px-auto my-5">
+    <div class="col-lg-12 col-md-12 col-sm-12 mx-6 mx-sm-auto px-auto my-5">
 
       <p class= "text-center text-danger"><%= flash[:withdrawal] %></p>
 
@@ -12,31 +12,69 @@
           </h1>
         </header>
       </div>
-
-      <%= form_with model: @user, url: users_path, method: :patch do |f| %>
-        <div class="form-group row my-3">
-          <%= f.label :name, 'ユーザー名', class:'col-4'%>
-          <%= f.text_field :name, placeholder: "Hitota", autocomplete: "name", class: "col-3 form-control" %>
-        </div>
-
-        <div class="form-group row">
-          <%= f.label :email, 'メールアドレス', class:'col-4' %>
-          <%= f.email_field :email, placeholder: "hitota@gmail.com", autocomplete: "email", class:'col-3 form-control' %>
-        </div>
-
-        <div class="form-group row">
-          <%= f.label :place, '住んでいる地域', class:'col-4'%>
-          <%= f.text_field :place, placeholder: "都道府県名や海沿いなど何でもありです", autocomplete: "place", class:'col-3 form-control' %>
-        </div>
-
-        <div class="form-group row my-5 online-btns" id="bottom">
-          <%= f.submit "保存", class:'online-btn col-4 offset-4'%>
-        </div>
-        <div class="form-group row my-5 online-btns">
-          <%= link_to "退会", check_users_path, class:'online-btn col-2 offset-11 text-center' %>
-        </div>
-      <% end %>
-
+      <% tag_ids = @user.tags.pluck(:id) %> <!--tagを引っ張る、毎回読み込んでしまうからEACH文には置かないほうが良い-->
+      <div class="col-lg-7 col-md-8 col-sm-12 mx-auto">
+        <%= form_with model: @user, url: users_path, method: :patch do |f| %>
+          <div class="form-group row mt-5">
+            <%= f.label :name, class:'col-2 offset-1 pl-0' do%>
+              <span><strong>user name</strong></span>
+            <% end %>
+            <%= f.text_field :name, class:'col-7 mx-auto form-control' %>
+          </div>
+          <div class="form-group row">
+            <%= f.label :email, class:'col-2 offset-1 pl-0' do%>
+              <span><strong>email</strong></span>
+            <% end %>
+            <%= f.text_field :email, class:'col-7 mx-auto form-control' %>
+          </div>
+          <div class="form-group row">
+            <%= f.label :place, class:'col-2 offset-1 pl-0' do%>
+              <span class="text-nowrap"><strong>favorite place</strong></span>
+            <% end %>
+            <%= f.text_field :place, class:'col-7 mx-auto form-control' %>
+          </div>
+          <div class="form-group row">
+            <ul class="accordion-area">
+              <li>
+                <section>
+                  <span class = "category-name"><strong>タグ選択</strong></span>
+                  <table class="box mt-4">
+                    <% @categories.each do |category| %>
+                      <tr>
+                        <td class="col-3 align-top"><span class="mr-3"><%= category.name %></span></td>
+                        <td class="d-flex flex-wrap">
+                          <% category.tags.each do |tag| %>
+                            <label class="tag_area d-flex">
+                              <% if tag.id.in?(tag_ids)%>
+                              <input class= "tag_input" type="checkbox" checked=true value="<%= tag.id %>" name="user[tags][]" id="user_tags_<%= tag.id %>">
+                              <% else%>
+                              <input class= "tag_input" type="checkbox" value="<%= tag.id %>" name="user[tags][]" id="user_tags_<%= tag.id %>">
+                              <% end %>
+                              <div class="tag_list d-flex">
+                                <label for="user_tags_<%= tag.id %>" class= "tag_link"><div class="tag_text"><%= tag.name %></div></label>
+                              </div>
+                            </label>
+                          <% end %>
+                        </td>
+                      </tr>
+                    <% end %>
+                  </table>
+                </section>
+              </li>
+            </ul>
+          </div>
+          <div class="form-group row d-flex justify-content-center mt-4 border-top">
+            <p class="text-center text-sm">内容にお間違いがないか、<br>
+            再度確認した上での変更をお願いいたします。</p>
+          </div>
+          <div class="form-group row d-flex justify-content-center">
+            <%= f.button "保存", type: 'button', onclick: "submit();", class: "link-btn-lg col-6" %> <!--Enter Keyで投稿処理を行わないためにf.buttonに変更-->
+          </div>
+          <div class="form-group row my-5 online-btns">
+            <%= link_to "退会", check_users_path, class:'online-btn col-2 offset-11 text-center' %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

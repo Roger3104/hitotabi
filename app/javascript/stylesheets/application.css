@@ -44,6 +44,10 @@ a{
   text-decoration: none
 }
 
+.text-sm{
+  font-size: 12px
+}
+
 /*一部濃い背景用*/
 .dark_bg{
   background-color: #EEECE7;
@@ -632,13 +636,7 @@ td > .link:hover {
   height:auto;
   vertical-align: bottom;/*画像の下にできる余白を削除*/}
 
-/*　横幅900px以下の段組み設定　*/
-@media only screen and (max-width: 900px) {
-  .gallery{
-  columns:3;
-  }
-}
-
+/*　横幅768px以下の段組み設定　*/
 @media only screen and (max-width: 768px) {
   .gallery{
   columns: 2;
@@ -952,6 +950,10 @@ opacity: 0;
   padding: 3%;
 }
 
-.accordion-area li > .close{
+.accordion-area li > .close, .accordion-area li section > .close{
   float: none !important;
+}
+
+.accordion-area li section{
+  padding: 0px 0px;
 }

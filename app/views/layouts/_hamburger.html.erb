@@ -4,6 +4,7 @@
       <div class="collapse navbar-collapse" id="g-nav">
         <ul class="navbar-nav ml-auto d-flex flex-column">
           <%= render 'layouts/search' %>
+          <hr class="my-4">
           <% if request.path.match(/\/admin(\/)?/) && admin_signed_in?%>
             <li>
               <%= link_to admin_users_path, class:"d-flex justify-content-start" do %>

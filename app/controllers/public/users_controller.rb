@@ -23,6 +23,7 @@ class Public::UsersController < ApplicationController
 
   def edit
     @user = current_user
+    @categories = Category.all
   end
 
   def update
