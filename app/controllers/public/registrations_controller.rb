@@ -13,10 +13,8 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    super
-    # @user = User.new(user_params)
-      # Userの保存にせいこうしたらに紐づくタグを保存する
-    params[:user][:tags].each do |tag_id|
+    super# @user = User.new(user_params)はsuperにあるので今回いらない
+    params[:user][:tags].each do |tag_id| # Userの保存にせいこうしたらに紐づくタグを保存する
       if tag_id.present?
         UserTag.new(user: @user, tag_id: tag_id).save!
       end

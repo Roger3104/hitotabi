@@ -22,7 +22,7 @@
               <td class="pl-5 pb-3">
                   <% if current_user %>
                     <%= @user.name %>
-                    <%= link_to edit_users_path, class:"link ml-2" do%>
+                    <%= link_to edit_users_path, class:"link ml-2", data: {toggle: "tooltip", placement: "right"}, title: "編集する" do%>
                       <i class="fas fa-edit"></i>
                     <% end %>
                   <% elsif @user != current_user %>
