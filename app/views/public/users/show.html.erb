@@ -44,11 +44,11 @@
             <tr>
               <td class="pb-3 d-flex align-items-start"><strong>tags</strong></td>
               <td class="my-3 pl-5 pb-3">
-                <%# @tags.each do |tag| %>
+                <% @tags.each do |tag| %>
                   <div class= "tag_area d-inline-flex">
-                    <div class= "tag_list"><p class="tag_link"><%#=link_to tag.name, tag_path(tag.id), class:"tag_text"%></p></div>
+                    <div class= "tag_list"><p class="tag_link"><%=link_to tag.name, tag_path(tag.id), class:"tag_text"%></p></div>
                   </div>
-                <%# end %>
+                <% end %>
               </td>
             </tr>
           </tbody>

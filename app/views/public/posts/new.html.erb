@@ -46,23 +46,27 @@
           </div>
           <div class="form-group row">
             <span class = "col-2 offset-1 pl-0"><strong>タグ選択</strong></span>
-            <table class="col-10 my-4 mx-auto">
+            <div class="col-10 my-4 mx-auto">
               <% @categories.each do |category| %>
-              <tr>
-                <td class="col-3 align-top"><span class="mr-3"><%= category.name %></span></td>
-                <td class="col-9 d-flex flex-wrap">
-                  <% category.tags.each do |tag| %>
-                    <label class="tag_area d-flex">
-                      <input class= "tag_input" type="checkbox" value="<%= tag.id %>" name="post[tags][]" id="post_tags_<%= tag.id %>">
-                      <div class="tag_list d-flex">
-                        <label for="post_tags_<%= tag.id %>" class= "tag_link"><div class="tag_text"><%= tag.name %></div></label>
-                      </div>
-                    </label>
-                  <% end %>
-                </td>
-              </tr>
+              <ul class="accordion-area">
+                <li>
+                  <span class="category-name"><%= category.name %></span>
+                  <div class="box">
+                    <div class="d-flex flex-wrap">
+                      <% category.tags.each do |tag| %>
+                        <label class="tag_area d-flex">
+                          <input class= "tag_input" type="checkbox" value="<%= tag.id %>" name="post[tags][]" id="post_tags_<%= tag.id %>">
+                          <div class="tag_list d-flex">
+                            <label for="post_tags_<%= tag.id %>" class= "tag_link"><div class="tag_text"><%= tag.name %></div></label>
+                          </div>
+                        </label>
+                      <% end %>
+                    </div>
+                  </div>
+                </li>
+              </ul>
               <% end %>
-            </table>
+            </div>
           </div>
           <div>
             <%= f.hidden_field :latitude,:value =>"緯度", id: :lat %>

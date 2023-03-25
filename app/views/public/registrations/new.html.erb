@@ -24,7 +24,7 @@
             </div>
 
             <div class="form-group row">
-              <%= f.label :place, '住んでいる地域', class:'col-4'%>
+              <%= f.label :place, '好きな場所', class:'col-4'%>
               <%= f.text_field :place, placeholder: "都道府県名や海沿いなど何でもありです", autocomplete: "place", class:'col-3 form-control' %>
             </div>
 
@@ -38,24 +38,29 @@
               <%= f.password_field :password_confirmation, autocomplete: "new-password", class:'col-3 form-control' %>
             </div>
             <div class="form-group row">
-              <span class = "col-2 offset-1 pl-0"><strong>タグ選択</strong></span>
-              <table class="col-10 my-4 mx-auto">
-                <% @categories.each do |category| %>
-                <tr>
-                  <td class="col-3 align-top"><span class="mr-3"><%= category.name %></span></td>
-                  <td class="col-9 d-flex flex-wrap">
-                    <% category.tags.each do |tag| %>                    <label class="tag_area d-flex">
-                        <input class= "tag_input" type="checkbox" value="<%= tag.id %>" name="user[tags][]" id="post_tags_<%= tag.id %>">
-                        <div class="tag_list d-flex">
-                          <label for="post_tags_<%= tag.id %>" class= "tag_link"><div class="tag_text"><%= tag.name %></div></label>
-                        </div>
-                      </label>
-                    <% end %>
-                  </td>
-                </tr>
-                <% end %>
-              </table>
+            <span class = "col-2 offset-1 pl-0"><strong>タグ選択</strong></span>
+            <div class="col-10 my-4 mx-auto">
+              <% @categories.each do |category| %>
+              <ul class="accordion-area">
+                <li>
+                  <span class="category-name"><%= category.name %></span>
+                  <div class="box">
+                    <div class="d-flex flex-wrap">
+                      <% category.tags.each do |tag| %>
+                        <label class="tag_area d-flex">
+                          <input class= "tag_input" type="checkbox" value="<%= tag.id %>" name="user[tags][]" id="post_tags_<%= tag.id %>">
+                          <div class="tag_list d-flex">
+                            <label for="post_tags_<%= tag.id %>" class= "tag_link"><div class="tag_text"><%= tag.name %></div></label>
+                          </div>
+                        </label>
+                      <% end %>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              <% end %>
             </div>
+          </div>
 
           <div class="online-btns row" id="bottom">
             <%= f.submit "新規登録", class:'col-2 offset-4 online-btn'%>
