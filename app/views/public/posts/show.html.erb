@@ -36,7 +36,7 @@
                 <td class="pb-3"><strong>post status</strong></td>
                 <td class="pl-5 pb-3">
                   <%= @post.status_i18n %>
-                  <%= link_to edit_post_path, class:"link ml-2" do%>
+                  <%= link_to edit_post_path, class:"link ml-2", data: {toggle: "tooltip", placement: "right"}, title: "編集する" do%>
                     <i class="fas fa-edit"></i>
                   <% end %>
                 </td>
@@ -97,6 +97,3 @@
     </div>
   </div>
 </div>
-
-
-
