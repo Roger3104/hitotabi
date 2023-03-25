@@ -16,6 +16,7 @@ import '@fortawesome/fontawesome-free/js/all';
 import '../stylesheets/application.css';
 import './preview';
 import './script';
+import './scroll.js';
 // import './jquery.jscroll.min.js';
 
 Rails.start();
@@ -37,4 +38,10 @@ $(document).ready(function () {
       });
     }
   });
+
+    $('[data-toggle="tooltip"]').tooltip()
+
+
+
 })
+

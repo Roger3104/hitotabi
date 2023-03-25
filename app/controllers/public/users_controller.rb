@@ -8,8 +8,10 @@ class Public::UsersController < ApplicationController
     if params[:format].present?
       @user = User.find(params[:format])
       @post = Post.find(params[:id])
+      @posts = @user.posts.published.page(params[:page])
     else
       @user = current_user
+      @posts = @user.posts.published.page(params[:page])
     end
     # @tags = @user.tag_id
   end

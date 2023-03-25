@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12 mx-6 mx-sm-auto px-auto my-5">
+    <div class="col-md-8 col-sm-12 mx-6 mx-sm-auto px-auto my-5">
       <div class="content-wrap">
         <header class="page-header heading">
           <h1 class="mb-5 heading__ttl">
@@ -30,7 +30,7 @@
             <%= f.label :date, class:'col-2 offset-1 pl-0' do%>
               <span><strong>撮影日時</strong></span>
             <% end %>
-            <%= f.date_field :date, value: @post.date.to_date, class:'col-3 mx-auto form-control' %>
+            <%= f.date_field :date, value: @post.date, class:'col-3 mx-auto form-control' %>
             <span class="col-4"></span>
           </div>
           <div class="form-group row">
@@ -51,8 +51,7 @@
               <tr>
                 <td class="col-3 align-top"><span class="mr-3"><%= category.name %></span></td>
                 <td class="col-9 d-flex flex-wrap">
-                  <% category.tags.each do |tag| %>
-                    <label class="tag_area d-flex">
+                  <% category.tags.each do |tag| %>                    <label class="tag_area d-flex">
                       <input class= "tag_input" type="checkbox" value="<%= tag.id %>" name="post[tags][]" id="post_tags_<%= tag.id %>">
                       <div class="tag_list d-flex">
                         <label for="post_tags_<%= tag.id %>" class= "tag_link"><div class="tag_text"><%= tag.name %></div></label>
@@ -64,27 +63,13 @@
               <% end %>
             </table>
           </div>
-
-
-          <div class="form-group row">
-            <% tag_ids = @post.tags.pluck(:id) %>
-            <%= f.collection_check_boxes :tags, Tag.all, :id, :name do |t|%>
-              <% if t.object.id.in?(tag_ids) %>
-                <%= t.label {t.check_box(checked: true) + t.text} %>
-              <% else %>
-                <%= t.label {t.check_box(checked: false) + t.text} %>
-              <% end %>
-            <% end %>
-          </div>
-
-
           <div>
-            <%= f.hidden_field :latitude,:value =>@post.latitude, id: :lat %>
-            <%= f.hidden_field :longitude,:value =>@post.longitude, id: :lng %>
+            <%= f.hidden_field :latitude,:value =>"緯度", id: :lat %>
+            <%= f.hidden_field :longitude,:value =>"経度", id: :lng %>
           </div>
-          <h2 class="sub-header" id="bottom">位置情報</h2>
+          <h2 class="sub-header">位置情報</h2>
           <div class="row d-flex justify-content-center pb-5 border-bottom">
-            <%= render "edit_map", post: @post %>
+            <%= render "new_map" %>
           </div>
           <div class="form-group row d-flex justify-content-center mt-5">
             <p class="text-center font-weight-light pb-3 ">個人情報の記載がないか、<br>
@@ -109,16 +94,59 @@
 
 
 
-
-
-
+      <%= form_with model: @post do |f| %>
+        <h2 class="sub-header">画像</h2>
+        <%= f.label :image, class:'col-4 file-area pr-0' do%>
+          <%= f.label :image, '画像を選択する', class:'pl-0 pr-1 file-label'%>
+          <span class="label-text_bar"></span>
+          <span class="label-text_bar"></span>
+          <%= f.file_field :image, accept: "image/*", class:'col-3 px-0 mx-auto file-input' %><!--accept: "image/*で画像のみに限定-->
+        <% end %>
+        <div id="new-image" class="mt-4 d-flex justify-content-center"><!--プレビュー--></div>
+        <h2 class="sub-header mt-5">内容</h2>
+        <div class="form-group row">
+          <%= f.label :title, 'タイトル', class:'col-3 px-0 mx-auto' %>
+          <%= f.text_field :title, autofocus: true, class:'col-7 mx-auto form-control' %>
+        </div>
+        <div class="form-group row">
+          <%= f.label :date, '撮影日時', class:'col-3 px-0 mx-auto' %>
+          <%= f.date_field :date, value: @post.date, class:'col-3 mx-auto form-control' %>
+          <span class="col-4"></span>
+        </div>
+        <div class="form-group row">
+          <%= f.label :content, '紹介文', class:'col-3 px-0 mx-auto' %>
+          <%= f.text_area :content, class:'col-7 mx-auto form-control' %>
+        </div>
+        <div class="form-group row">
+          <%# @categories.each do |category| %>
+            <%#= category.name %>
+            <% tag_ids = @post.tags.pluck(:id) %>
+            <%= f.collection_check_boxes :tags, Tag.all, :id, :name do |t|%>
+              <% if t.object.id.in?(tag_ids) %>
+                <%= t.label {t.check_box(checked: true) + t.text} %>
+              <% else %>
+                <%= t.label {t.check_box(checked: false) + t.text} %>
+              <% end %>
+            <% end %>
+          <%# end %>
+        </div>
+        <div class="row">
+          <%= f.hidden_field :latitude,:value =>@post.latitude, id: :lat %>
+          <%= f.hidden_field :longitude,:value =>@post.longitude, id: :lng %>
+        </div>
+        <div class="row">
+          <%= render "edit_map", post: @post %>
+        </div>
+        <div class="form-group row online-btns">
+          <span class="col-5"></span>
+          <%= f.select :status, Post.statuses.keys.map { |k| [t("enums.post.status.#{k}"),k]}, {}, {class: "custom-select w-25"} %>
+          <%= f.button "投稿", type: 'button', onclick: "submit();", class: "online-btn col-4" %> <!--Enter Keyで投稿処理を行わないためにf.buttonに変更-->
+        </div>
         <div class="row online-btns my-5 ">
           <span class="col-4"></span>
           <%= link_to "delete post", @post, method: :delete, data: { confirm: '本当に削除しますか？' }, class: "online-btn col-4 text-center" %>
         </div>
-
-
-
+      <% end %>
     </div>
   </div>
 </div>

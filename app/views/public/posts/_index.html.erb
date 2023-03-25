@@ -1,20 +1,19 @@
-<div class="jscroll">
+<ul class="gallery">
   <% posts.each do |post| %>
-    <div class='col-lg-4 col-md-4 col-sm-6 my-5'>
-      <%= link_to post_path(post.id), class:"a" do %>
-        <% if post.image.attached? %>
-          <%= image_tag post.image, class:'rounded shadow post-image' %>
-         <% else %>
-          <%= image_tag 'no_image', class:'rounded shadow post-image' %>
+      <li>
+        <%= link_to post_path(post.id), class:"image_link" do %>
+          <% if post.image.attached? %>
+            <%= image_tag post.image %>
+           <% else %>
+            <%= image_tag 'no_image' %>
+          <% end %>
+          <!--<div class="row mt-2 ml-1">-->
+          <!--  <span class="index-post-ttl mr-2"><%#= post.title %></span>-->
+          <!--  <div class= "favorite-<%#= post.id %>">-->
+          <!--    <%#= render "/public/favorites/btn", post: post %>-->
+          <!--  </div>-->
+          <!--</div>-->
         <% end %>
-        <!--<div class="row mt-2 ml-1">-->
-        <!--  <span class="index-post-ttl mr-2"><%= post.title %></span>-->
-        <!--  <div class= "favorite-<%= post.id %>">-->
-        <!--    <%= render "/public/favorites/btn", post: post %>-->
-        <!--  </div>-->
-        <!--</div>-->
-      <% end %>
-    </div>
+      </li>
   <% end %>
-  <%= paginate posts %>
 </div>

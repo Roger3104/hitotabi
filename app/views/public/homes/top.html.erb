@@ -19,7 +19,7 @@
             <li><%= link_to "タグから探す", tags_path, class:"link" %></li>
           </ul>
         </div>
-        <div class="row">
+        <div class="row" id="bottom">
           <div class='col-md-12 mb-5'>
             <div class="d-flex align-content-start row flex-wrap py-1">
               <%= render '/public/posts/index', posts: @posts %>

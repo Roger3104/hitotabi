@@ -1,7 +1,3 @@
-html {
-  scroll-behavior: smooth;/*ページ内リンク用*/
-}
-
 header {
   background-color: #F3F2EE !important
 }
@@ -70,10 +66,6 @@ a{
   flex-wrap: wrap;
 }
 
-.pagination {
-  visibility: hidden;
-  }
-
 /*-----------------------------------------------*/
 /*-----------------------------------------------*/
 /*========= ナビゲーションのためのCSS ===============*/
@@ -113,8 +105,8 @@ a{
     /*ナビゲーション天地中央揃え*/
     position: absolute;
     z-index: 999;
-    top:30% !important;
-    left:30% !important;
+    top:35% !important;
+    left:40% !important;
     transform: translate(-50%,-50%);
 }
 
@@ -189,119 +181,104 @@ a{
 /*-----------------------------------------------*/
 /*-----------------------------------------------*/
 /*スクロールダウンアニメーション*/
-/* アニメーション設定 */
-.arrowWrap {
-  margin-top: 50vh;
+/*スクロールリンクの形状*/
+.scroll-top {
+  /*表示位置*/
+  position: fixed;
+  right: 20px;
+  bottom: 10px;
+  z-index: 2;
+  /*はじめは非表示*/
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .5s, visibility .5s; /*それぞれに0.5秒の変化のアニメーション*/
+  /*縦書き*/
+  -webkit-writing-mode: vertical-rl;
+    -ms-writing-mode: tb-rl;
+    writing-mode: vertical-rl;
+  /*改行禁止*/
+    white-space: nowrap;
+  /*矢印の動き*/
+  animation: arrowmove 1s ease-in-out infinite;
 }
 
-.arrow1 {
-  width: 15px;
-  margin: 0 auto;
-  -webkit-animation: arrow1 2s linear 0s infinite normal;
-  animation: arrow1 2s linear 0s infinite normal;
+@keyframes arrowmove{
+      0%{bottom:20px;}
+      50%{bottom:25px;}
+     100%{bottom:20px;}
+ }
+
+
+/*.scroll-viewクラスがついたら出現*/
+.scroll-top.scroll-view {
+  opacity: 1;
+  visibility: visible;
 }
 
-.arrow2 {
-  width: 15px;
-  margin: 0 auto;
-  -webkit-animation: arrow2 2s linear 0s infinite;
-  animation: arrow2 2s linear 0s infinite;
+/*リンク全体の aタグの形状*/
+.scroll-top a {
+  text-decoration: none;
+  color: #666;
+  text-transform: uppercase;
+  font-size:0.9rem;
+    display: block;
 }
 
-.arrow1 span,
-.arrow2 span {
-  position: relative;
-  display: block;
-  left: 50%;
-}
+/*スクロールリンクの形状*/
 
-.arrow1 span {
-  margin-top: -10px;
-}
-
-.arrow1 span:before,
-.arrow2 span:before {
-  content: '';
-  width: 15px;
-  height: 15px;
-  border: 0;
-  border-top: solid 2px #333;
-  border-right: solid 2px #333;
-  -webkit-transform: rotate(135deg);
-  transform: rotate(135deg);
+.js-scroll a::after{
+  content:"";
   position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  margin: auto;
-  box-sizing: border-box;
+  top:0;
+  right:0;
+  width:1px;
+  height: 50px;
+  background:#666;
 }
 
-@keyframes arrow1 {
-  0% {
-    -webkit-transform: translate3d(-50%, 0, 0);
-    transform: translate3d(-50%, 0, 0);
-  }
-
-  20% {
-    -webkit-transform: translate3d(-50%, 0, 0);
-    transform: translate3d(-50%, 0, 0);
-  }
-
-  40% {
-    -webkit-transform: translate3d(-50%, 10px, 0);
-    transform: translate3d(-50%, 10px, 0);
-  }
-
-  60% {
-    -webkit-transform: translate3d(-50%, 10px, 0);
-    transform: translate3d(-50%, 10px, 0);
-  }
-
-  80% {
-    -webkit-transform: translate3d(-50%, 0, 0);
-    transform: translate3d(-50%, 0, 0);
-  }
-
-  100% {
-    -webkit-transform: translate3d(-50%, 0, 0);
-    transform: translate3d(-50%, 0, 0);
-  }
+.js-scroll a::before {
+    content: "";
+    position: absolute;
+    top: 30px;
+    right: -6px;
+    width: 1px;
+    height: 20px;
+    background: #666;
+    transform: skewX(-31deg);
 }
 
-@keyframes arrow2 {
-  0% {
-    -webkit-transform: translate3d(-50%, 10px, 0);
-    transform: translate3d(-50%, 10px, 0);
-  }
-
-  20% {
-    -webkit-transform: translate3d(-50%, 20px, 0);
-    transform: translate3d(-50%, 20px, 0);
-  }
-
-  40% {
-    -webkit-transform: translate3d(-50%, 20px, 0);
-    transform: translate3d(-50%, 20px, 0);
-  }
-
-  60% {
-    -webkit-transform: translate3d(-50%, 20px, 0);
-    transform: translate3d(-50%, 20px, 0);
-  }
-
-  80% {
-    -webkit-transform: translate3d(-50%, 10px, 0);
-    transform: translate3d(-50%, 10px, 0);
-  }
-
-  100% {
-    -webkit-transform: translate3d(-50%, 10px, 0);
-    transform: translate3d(-50%, 10px, 0);
-  }
+/*Edge IE11 hack*/
+_:-ms-lang(x), .js-scroll a::before{
+  right:-11px;
 }
 
+/*ページトップリンクの形状*/
+
+.js-pagetop a::after{
+  content:"";
+  position: absolute;
+  top:0;
+  right:0;
+  width:1px;
+  height: 50px;
+  background:#666;
+}
+
+.js-pagetop a::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -6px;
+    width: 1px;
+    height: 20px;
+    background: #666;
+    transform: skewX(31deg);
+}
+
+/*Edge IE11 hack*/
+_:-ms-lang(x), .js-pagetop a::before{
+  right:0;
+}
 /*-----------------------------------------------*/
 /*-----------------------------------------------*/
 
@@ -344,15 +321,15 @@ a{
 /*Serach*/
 .search-control{
   color: #1E1D1C !important;
-  background-color: #EBE9E4 !important;
-  border: #EBE9E4 !important;
+  background-color: #f3f2ee !important;
+  border: #f3f2ee !important;
   border-radius: 2rem !important;
   border-top-right-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
 }
 
 .search-control::placeholder {
-  color: #EBE9E4 !important;
+  color: #adb5bd !important;
 }
 
 .search-control:focus{
@@ -361,6 +338,20 @@ a{
 
 .search-control:hover{
   box-shadow: 0 0 0 0.2rem #f8f9fa38 !important;
+}
+
+.search-btn:hover{
+  box-shadow: 0 0 0 0.2rem #f8f9fa38 !important;
+}
+
+.search-btn{
+  color: #1e1d1c !important;
+  background-color: #f3f2ee !important;
+  border-color: #f3f2ee !important;
+  border-left: 2px;
+  border-radius: 2rem !important;
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
 }
 
 /*-----------------------------------------------*/
@@ -550,7 +541,7 @@ td > .link:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 100px;
+  max-width: 150px;
   height: 34px;
   padding: 0 1em;
   background-color: transparent;
@@ -622,6 +613,117 @@ td > .link:hover {
 }
 /*-----------------------------------------------*/
 /*-----------------------------------------------*/
+/*==================================================
+ギャラリーのためのcss
+===================================*/
+.gallery{
+  columns: 3;/*段組みの数*/
+  padding: 0px;
+  margin-top: 50px;
+}
+
+.gallery li {
+    margin-bottom: 20px;/*各画像下に余白をつける*/
+}
+
+/*ギャラリー内のイメージは横幅100%にする*/
+.gallery img{
+  width:100%;
+  height:auto;
+  vertical-align: bottom;/*画像の下にできる余白を削除*/}
+
+/*　横幅900px以下の段組み設定　*/
+@media only screen and (max-width: 900px) {
+  .gallery{
+  columns:3;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .gallery{
+  columns: 2;
+  }
+}
+/*========= レイアウトのためのCSS ===============*/
+ul{
+  margin:0;
+  padding: 0;
+  list-style: none;
+}
+
+/*画像を出現させるアニメーションCSS*/
+
+.flipLeft{
+animation-name: flipLeft;
+animation-duration:0.5s;
+animation-fill-mode:forwards;
+perspective-origin: left center;
+opacity: 0;
+}
+
+@keyframes flipLeft{
+  from {
+   transform: perspective(600px) translate3d(0, 0, 0) rotateY(30deg);
+  opacity: 0;
+  }
+
+  to {
+  transform: perspective(600px) translate3d(0, 0, 0) rotateY(0deg);
+  opacity: 1;
+  }
+}
+/*-----------------------------------------------*/
+/*-----------------------------------------------*/
+/*画像一覧マスク用*/
+.image_link{
+ display:block;
+ position:relative;
+ text-decoration:none;
+}
+.image_link img{
+  display:block;
+  width:100%;
+}
+.image_link:before{
+  content:"";
+  display:block;
+  width:100%;
+  height:100%;
+  position:absolute;
+  z-index:2;
+  background:#000;/*好みの色に変えてください。*/
+  opacity:0;
+  transition:0.3s;
+}
+.image_link:after{
+  content:"READ MORE";/*好みの文章に変更してください。*/
+  display:block;
+  color:#fff;
+  line-height:48px;
+  width:180px;
+  border:solid 1px #fff;
+  border-radius:5px;
+  text-align:center;
+  position:absolute;
+  top:50%;
+  left:50%;
+  margin-top:-1em;
+  margin-left:-90px;
+  opacity:0;
+  z-index:3;
+  transition:0.3s;
+  font-weight:bold;
+  letter-spacing:0.2em;
+}
+.image_link:hover:before{
+  opacity:0.5;
+}
+.image_link:hover:after{
+  opacity:1;
+  margin-top:-0.5em;
+}
+/*-----------------------------------------------*/
+/*-----------------------------------------------*/
 /*image preview*/
 .new-img{
   width: 100%;
@@ -662,7 +764,7 @@ td > .link:hover {
   height: 2px;
   right: 0;
   background-color: #2c2c2c;
-  margin-right: 13px;
+  margin-right: 20px;
 }
 /*-----------------------------------------------*/
 /*-----------------------------------------------*/
@@ -678,6 +780,8 @@ td > .link:hover {
   font-weight: 700;
   line-height: 1.8;
   letter-spacing: 0.1em;
+  text-align: center;
+  margin-top: 25px;
 }
 
 .sub-header{

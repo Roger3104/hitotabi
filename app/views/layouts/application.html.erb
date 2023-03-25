@@ -11,17 +11,22 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" type="text/css" href="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/reset.css">
     <link rel="stylesheet" type="text/css" href="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/5-1-14/css/5-1-14.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.10.0/css/lightbox.min.css" />
     <script src="//unpkg.com/jscroll/dist/jquery.jscroll.min.js"></script>
   </head>
 
   <body>
+
     <%= render 'layouts/header' %>
     <%= render 'layouts/hamburger' %>
     <div class="openbtn1"><span></span><span></span><span></span></div>
     <main>
       <%= yield %>
     </main>
+    <!--スクロール表記-->
+
+    <p class="js-scroll scroll-top scroll-view"><a href="#bottom">Scroll</a></p>
+    <p class="js-pagetop scroll-top"><a href="#">Page Top</a></p>
     <%= render 'layouts/footer' %>
-    <!--<script src="/javascript/packs/script.js"></script>-->
   </body>
 </html>

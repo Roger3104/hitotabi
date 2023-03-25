@@ -19,18 +19,20 @@
           <li class="is-current"><%= link_to "タグから探す", tags_path, class:"link" %></li>
         </ul>
       </div>
-      <div>
+      <div id="bottom">
         <% @categories.each do |category| %>
           <div class="border-bottom">
             <div class="row offset-1 my-4">
               <span class="col-4"><%= category.name %></span>
-              <% category.tags.each do |tag| %>
-                <div class= "tag_area">
-                  <div class= "tag_list d-flex">
-                    <span class="tag_link flex-fill"><%=link_to tag.name, tag_path(tag.id), class:"tag_text"%></span>
+              <div class="col-8 d-flex flex-wrap">
+                <% category.tags.each do |tag| %>
+                  <div class= "tag_area d-flex">
+                    <div class= "tag_list d-flex">
+                      <span class="tag_link"><%=link_to tag.name, tag_path(tag.id), class:"tag_text"%></span>
+                    </div>
                   </div>
-                </div>
-              <% end %>
+                <% end %>
+              </div>
             </div>
           </div>
         <% end %>

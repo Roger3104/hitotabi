@@ -17,7 +17,7 @@
         </ul>
       </div>
       <% @posts.each do |tag_id, posts| %>
-        <div class="row">
+        <div class="row" id="bottom">
         <div class='col-md-12 mb-5'>
           <div>
            <strong>#<%= Tag.find(tag_id).name %></strong>

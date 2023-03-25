@@ -13,7 +13,7 @@
         <div class="d-flex align-content-start row flex-wrap py-1">
           <%= render '/public/posts/index', posts: @tag_posts %>
         </div>
-        <div class="text-center row py-1">
+        <div class="text-center row py-1" id="bottom">
           <%= paginate @tag_posts %>
         </div>
       </div>

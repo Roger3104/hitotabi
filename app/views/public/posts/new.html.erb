@@ -12,19 +12,19 @@
       <div class="col-lg-7 col-md-8 col-sm-12 mx-auto">
         <%= form_with model: @post, url: posts_path do |f| %>
           <h2 class="sub-header">画像</h2>
-          <div class="col-4 file-area">
-            <%= f.label :image, '画像を選択する', class:'px-0 mx-auto file-label' %>
+          <%= f.label :image, class:'col-4 file-area pr-0' do%>
+            <%= f.label :image, '画像を選択する', class:'pl-0 pr-1 file-label'%>
             <span class="label-text_bar"></span>
             <span class="label-text_bar"></span>
             <%= f.file_field :image, accept: "image/*", class:'col-3 px-0 mx-auto file-input' %><!--accept: "image/*で画像のみに限定-->
-          </div>
+          <% end %>
           <div id="new-image" class="mt-4 d-flex justify-content-center"><!--プレビュー--></div>
           <h2 class="sub-header mt-5">内容</h2>
           <div class="form-group row mt-5">
             <%= f.label :title, class:'col-2 offset-1 pl-0' do%>
               <span><strong>タイトル</strong></span>
             <% end %>
-            <%= f.text_field :title, autofocus: true, class:'col-7 mx-auto form-control' %>
+            <%= f.text_field :title, class:'col-7 mx-auto form-control' %>
           </div>
           <div class="form-group row">
             <%= f.label :date, class:'col-2 offset-1 pl-0' do%>
@@ -49,17 +49,16 @@
             <table class="col-10 my-4 mx-auto">
               <% @categories.each do |category| %>
               <tr>
-                <td><span class="mr-3"><%= category.name %></span></td>
-                <% category.tags.each do |tag| %>
-                <td>
-                  <label class="tag_area">
-                    <input class= "tag_input" type="checkbox" value="<%= tag.id %>" name="post[tags][]" id="post_tags_<%= tag.id %>">
-                    <div class="tag_list">
-                      <label for="post_tags_<%= tag.id %>" class= "tag_link"><div class="tag_text"><%= tag.name %></div></label>
-                    </div>
-                  </label>
+                <td class="col-3 align-top"><span class="mr-3"><%= category.name %></span></td>
+                <td class="col-9 d-flex flex-wrap">
+                  <% category.tags.each do |tag| %>                    <label class="tag_area d-flex">
+                      <input class= "tag_input" type="checkbox" value="<%= tag.id %>" name="post[tags][]" id="post_tags_<%= tag.id %>">
+                      <div class="tag_list d-flex">
+                        <label for="post_tags_<%= tag.id %>" class= "tag_link"><div class="tag_text"><%= tag.name %></div></label>
+                      </div>
+                    </label>
+                  <% end %>
                 </td>
-                <% end %>
               </tr>
               <% end %>
             </table>
@@ -68,12 +67,14 @@
             <%= f.hidden_field :latitude,:value =>"緯度", id: :lat %>
             <%= f.hidden_field :longitude,:value =>"経度", id: :lng %>
           </div>
-          <h2 class="sub-header">位置情報</h2>
+          <h2 class="sub-header" id="bottom">位置情報</h2>
           <div class="row d-flex justify-content-center pb-5 border-bottom">
             <%= render "new_map" %>
           </div>
           <div class="form-group row d-flex justify-content-center mt-5">
-            <p class="text-center font-weight-light pb-3 ">個人情報の記載がないか、<br>投稿内容を再度確認した上での投稿をお願いいたします。</p>
+            <p class="text-center font-weight-light pb-3 ">個人情報の記載がないか、<br>
+            投稿内容を再度確認した上での投稿をお願いいたします。<br>
+            *下書きの場合は公開されません</p>
             <%= f.button "投稿する", type: 'button', onclick: "submit();", class: "link-btn-lg col-6" %> <!--Enter Keyで投稿処理を行わないためにf.buttonに変更-->
           </div>
         <% end %>

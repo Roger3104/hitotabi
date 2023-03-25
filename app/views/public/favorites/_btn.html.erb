@@ -1,16 +1,16 @@
 <% if user_signed_in? %>
   <% if post.favorited?(current_user) %>
     <%= link_to post_favorites_path(post.id), method: :delete, class:"favorite-btn", remote: true do %>
-      <i class="fas fa-map-marker-alt" aria-hidden="true" style="color: red;"></i>
+      <i class="fas fa-map-marker-alt" aria-hidden="true" style="color: red;" data-toggle="tooltip", data-placement="top", title="行ってみたい場所から外す"></i>
     <% end %>
   <% else %>
     <%= link_to post_favorites_path(post.id), method: :post,class:"favorite-btn", remote: true do %>
-      <i class="fas fa-map-marker-alt" aria-hidden="true" style="color: gray;"></i>
+      <i class="fas fa-map-marker-alt" aria-hidden="true" style="color: gray;" data-toggle="tooltip", data-placement="top", title="行ってみたい場所に追加"></i>
     <% end %>
   <% end %>
 <% else %>
   <%= link_to new_user_session_path, class:"favorite-btn" do %>
-    <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+    <i class="fas fa-map-marker-alt" aria-hidden="true" data-toggle="tooltip", data-placement="top", title="利用にはログインが必要です"></i>
   <% end %>
 <% end %>
 

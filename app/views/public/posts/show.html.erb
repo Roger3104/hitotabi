@@ -1,20 +1,12 @@
 <div class="container">
   <div class="col-lg-12 col-md-12 col-sm-12 mx-6 mx-sm-auto px-auto my-5">
     <div class="row justify-content-center">
-      <div class="col-lg-8 col-md-8 col-sm-12 offset-lg-1 post-img pb-0 text-center my-4">
+      <div class="col-lg-8 col-md-8 col-sm-12 post-img pb-0 text-center">
         <% if @post.image.attached? %>
           <%= image_tag @post.image %>
         <% else %>
           <%= image_tag 'no_image' %>
         <% end %>
-      </div>
-      <div class="arrowWrap col-lg-1 col-md-1 d-none d-md-block"> <!--スクロール表記-->
-        <div class="arrow1">
-          <span></span>
-        </div>
-        <div class="arrow2">
-          <span></span>
-        </div>
       </div>
       <div class="col-lg-8 col-md-8 col-sm-12">
         <h1 class="post-header_ttl">
@@ -23,7 +15,7 @@
           </span>
           <%= @post.title %>
         </h1>
-        <h2 class="sub-header">outline</h2>
+        <h2 class="sub-header" id="bottom">outline</h2>
         <table>
           <tbody>
             <tr>
@@ -105,5 +97,6 @@
     </div>
   </div>
 </div>
+
 
 
