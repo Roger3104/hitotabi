@@ -1,10 +1,10 @@
 <% if user_signed_in? %>
   <% if post.favorited?(current_user) %>
-    <%= link_to post_favorites_path(post.id), method: :delete, class:"favorite-btn", id:"favorite-btn1", remote: true, data: {toggle: "tooltip", placement: "left"},  title: "行ってみたいから外す" do %>
-      <i class="fas fa-map-marker-alt" aria-hidden="true" style="color: red;" ></i>
+    <%= link_to post_favorites_path(post.id), method: :delete, class:"favorite-btn", id:"ajax-btn1", remote: true, data: {toggle: "tooltip", placement: "left"},  title: "行ってみたいから外す" do %>
+      <i class="fas fa-map-marker-alt" aria-hidden="true" style="color: #c50202;" ></i>
     <% end %>
   <% else %>
-    <%= link_to post_favorites_path(post.id), method: :post, class:"favorite-btn", id:"favorite-btn2", remote: true, data: {toggle: "tooltip", placement: "left"}, title: "行ってみたいに追加" do %>
+    <%= link_to post_favorites_path(post.id), method: :post, class:"favorite-btn", id:"ajax-btn2", remote: true, data: {toggle: "tooltip", placement: "left"}, title: "行ってみたいに追加" do %>
       <i class="fas fa-map-marker-alt" aria-hidden="true" style="color: gray;"></i>
     <% end %>
   <% end %>
@@ -14,13 +14,13 @@
   <% end %>
 <% end %>
 
-<!--ツールチップ切り替え用-->
+<!--ツールチップを非同期通信に対応させる用-->
 <script>
   $(document).ready(function() {
     $('[data-toggle="tooltip"]').tooltip();
   });
-  btn1 = document.getElementById('favorite-btn1')
-  btn2 = document.getElementById('favorite-btn2')
+  btn1 = document.getElementById('ajax-btn1')
+  btn2 = document.getElementById('ajax-btn2')
   if (btn1) {
     btn1.addEventListener('click', function(){
     $(btn1).tooltip('hide');

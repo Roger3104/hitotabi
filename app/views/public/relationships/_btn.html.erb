@@ -1,9 +1,29 @@
 <% if current_user && current_user.following?(user) && current_user != post.user %>
-  <%= link_to users_relationships_path(user_id: user.id, post_id: post.id), method: :delete, class:"link", remote: true, data: {toggle: "tooltip", placement: "right"}, title: "フォロー済み" do%>
-    <sapn class="btn-text"><i class="fas fa-user" style="color: black;"></i></span>
+  <%= link_to users_relationships_path(user_id: user.id, post_id: post.id), method: :delete, class:"link", id:"relationship-btn1", remote: true, data: {toggle: "tooltip", placement: "right"}, title: "フォロー済み" do%>
+    <sapn class="btn-text"><i class="fas fa-user-check" style="color: #ad0000;"></i></span>
   <% end %>
 <% elsif current_user && current_user != post.user %>
-  <%= link_to users_relationships_path(user_id: user.id, post_id: post.id), method: :post, class:"link", remote: true, data: {toggle: "tooltip", placement: "right"}, title: "フォローする" do %>
+  <%= link_to users_relationships_path(user_id: user.id, post_id: post.id), method: :post, class:"link", id:"relationship-btn2", remote: true, data: {toggle: "tooltip", placement: "right"}, title: "フォローする" do %>
     <span class="btn-text"><i class="fas fa-user-plus" style="color: black;"></i></span>
   <% end %>
 <% end %>
+<!--ツールチップを非同期通信に対応させる用-->
+<script>
+  $(document).ready(function() {
+    $('[data-toggle="tooltip"]').tooltip();
+  });
+  btn3 = document.getElementById('relationship-btn1')
+  btn4 = document.getElementById('relationship-btn2')
+  if (btn3) {
+    btn3.addEventListener('click', function(){
+    $(btn3).tooltip('hide');
+    $(btn3).tooltip();
+    });
+  }
+  if (btn4) {
+   btn4.addEventListener('click', function(){
+    $(btn4).tooltip('hide');
+    $(btn4).tooltip();
+    });
+  }
+</script>

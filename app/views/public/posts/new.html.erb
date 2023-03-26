@@ -19,6 +19,7 @@
             <%= f.file_field :image, accept: "image/*", class:'col-3 px-0 mx-auto file-input' %><!--accept: "image/*で画像のみに限定-->
           <% end %>
           <div id="new-image" class="mt-4 d-flex justify-content-center"><!--プレビュー--></div>
+          <hr>
           <h2 class="sub-header mt-5">内容</h2>
           <div class="form-group row mt-5">
             <%= f.label :title, class:'col-2 offset-1 pl-0' do%>
@@ -72,6 +73,7 @@
             <%= f.hidden_field :latitude,:value =>"緯度", id: :lat %>
             <%= f.hidden_field :longitude,:value =>"経度", id: :lng %>
           </div>
+          <hr>
           <h2 class="sub-header" id="bottom">位置情報</h2>
           <div class="row d-flex justify-content-center pb-5 border-bottom">
             <%= render "new_map" %>

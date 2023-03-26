@@ -5,9 +5,8 @@ class Post < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_one_attached :image
-  
-  
 
+  #公開の場合のバリデーション
   with_options presence: true, if: :post_published? do |v|
     v.validates :date
     v.validates :image
@@ -17,8 +16,11 @@ class Post < ApplicationRecord
     status == "published"
   end
 
+  # 下書きでも必要なバリデーション
   validate :date_to_today
   validates :title, presence: true
+
+  enum status: { published: 0, draft: 1 } #下書き機能用
 
   def date_to_today #日付指定用
     return if date.blank?
@@ -32,10 +34,8 @@ class Post < ApplicationRecord
   geocoded_by :address    #Geocoding用
   after_validation :geocode
 
-  enum status: { published: 0, draft: 1 } #下書き機能用
-
   def self.looks(word)
-    @posts = Post.where("title LIKE?","%#{word}%")
+    @posts = Post.where("title LIKE?","%#{word}%") #Contentも含めるとより検索の幅が広がる
   end
 
 end
