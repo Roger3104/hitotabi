@@ -10,7 +10,7 @@ Admin.create!(
     email: 'hitotabi@admin',
     password: 'hitotabi'
 )
-puts "Adminをさくせいしました"
+puts "Adminを作成しました"
 
 user = User.create!(
     email: 'testuser@testuser',

@@ -1,4 +1,4 @@
-if (document.URL.match(/new|edit/)){
+if (document.URL.match(/new|edit/)){ //時間があればポストページのみに対応できるようにする必要あり
   document.addEventListener('DOMContentLoaded', () => {
     const createImageHTML = (blob) => {
       const imageElement = document.getElementById('new-image');
