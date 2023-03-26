@@ -444,7 +444,10 @@ td > .link:hover {
   padding: 0 0.1rem 0.5rem;
   text-decoration: none;
 }
-.page-list li a:hover{
+.page-list li a {
+  transition: 0.3s;
+}
+.page-list li a:hover, .sub-header a:hover{
   background-color: #D9FC18;
 }
 
@@ -618,55 +621,52 @@ td > .link:hover {
 /*-----------------------------------------------*/
 /*-----------------------------------------------*/
 /*==================================================
-ギャラリーのためのcss
+masonry index
 ===================================*/
-.gallery{
-  columns: 3;/*段組みの数*/
-  padding: 0px;
-  margin-top: 50px;
+/** {*/
+/*  margin: 0;*/
+/*  padding: 0;*/
+/*  box-sizing: border-box;*/
+/*}*/
+/*img {*/
+/*  vertical-align: middle;*/
+/*}*/
+/*上記はなくても問題ナシかも*/
+.masonry-wrapper {
+  padding: 1.5rem;
+  max-width: 1200px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.masonry {
+  display: grid;
+  gap: 10px;  /*grid-auto-rowsが"0"の場合、ギャップに 0 は指定できない*/
+  grid-template-columns: repeat( auto-fill, minmax( 300px, 1fr ) );
+  grid-auto-rows: 0; /*0を指定*/
 }
 
-.gallery li {
-    margin-bottom: 20px;/*各画像下に余白をつける*/
+.detailed_index .masonry-wrapper .masonry{
+  display: grid;
+  gap: 10px;  /*grid-auto-rowsが"0"の場合、ギャップに 0 は指定できない*/
+  grid-template-columns: repeat( auto-fill, minmax( 200px, 1fr ) );
+  grid-auto-rows: 0; /*0を指定*/
 }
 
-/*ギャラリー内のイメージは横幅100%にする*/
-.gallery img{
-  width:100%;
-  height:auto;
-  vertical-align: bottom;/*画像の下にできる余白を削除*/}
-
-/*　横幅768px以下の段組み設定　*/
-@media only screen and (max-width: 768px) {
-  .gallery{
-  columns: 2;
-  }
-}
-/*========= レイアウトのためのCSS ===============*/
-ul{
-  margin:0;
-  padding: 0;
-  list-style: none;
+.masonry-content {
+  max-width: 100%;
 }
 
-/*画像を出現させるアニメーションCSS*/
-
-.flipLeft{
-animation-name: flipLeft;
-animation-duration:0.5s;
-animation-fill-mode:forwards;
-perspective-origin: left center;
-opacity: 0;
+/* グリッドアイテム（masonry-item）にアニメーションを追加 */
+.masonry-item {
+  animation: checked_animation 1s ease-in-out both;
 }
-
-@keyframes flipLeft{
-  from {
-   transform: perspective(600px) translate3d(0, 0, 0) rotateY(30deg);
+@keyframes checked_animation {
+  0% {
+  transform: translate(0, 300px);
   opacity: 0;
   }
-
-  to {
-  transform: perspective(600px) translate3d(0, 0, 0) rotateY(0deg);
+  100% {
+  transform: translate(0, 0);
   opacity: 1;
   }
 }
@@ -676,11 +676,12 @@ opacity: 0;
 .image_link{
  display:block;
  position:relative;
- text-decoration:none;
+ text-decoration:none !important;
 }
 .image_link img{
   display:block;
   width:100%;
+  border-radius: 3px;
 }
 .image_link:before{
   content:"";
@@ -689,12 +690,13 @@ opacity: 0;
   height:100%;
   position:absolute;
   z-index:2;
-  background:#000;/*好みの色に変えてください。*/
+  background:#000;/*hover背景色。*/
   opacity:0;
   transition:0.3s;
+  text-decoration: none !important;
 }
 .image_link:after{
-  content:"READ MORE";/*好みの文章に変更してください。*/
+  content:"READ MORE";/*hover文章*/
   display:block;
   color:#fff;
   line-height:48px;
@@ -712,6 +714,12 @@ opacity: 0;
   transition:0.3s;
   font-weight:bold;
   letter-spacing:0.2em;
+}
+
+.detailed_index .image_link:after{
+  font-weight:normal;
+  line-height: 25px;
+  font-size: small;
 }
 .image_link:hover:before{
   opacity:0.5;
@@ -878,6 +886,14 @@ opacity: 0;
 
 /*-----------------------------------------------*/
 /*-----------------------------------------------*/
+/*edit preview area*/
+.edit-preview{
+  width: 100%;
+  max-height: 250px;
+  object-fit: contain;
+}
+/*-----------------------------------------------*/
+/*-----------------------------------------------*/
 /*favorite button*/
 
 .favorite-btn:hover{
@@ -928,12 +944,16 @@ opacity: 0;
 
 }
 .category-name::after{
-    top:48%;
-    left: 15px;
-    transform: rotate(90deg);
-
+  top:48%;
+  left: 15px;
+  transform: rotate(90deg);
 }
 /*　closeというクラスがついたら形状変化　*/
+.category-name.close{
+  font-size: 1.1rem !important;
+  line-height: 2 !important;
+
+}
 .category-name.close::before{
   transform: rotate(45deg);
 }

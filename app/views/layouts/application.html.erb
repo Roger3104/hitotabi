@@ -10,10 +10,10 @@
     <link rel="stylesheet" type="text/css" href="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/reset.css">
     <link rel="stylesheet" type="text/css" href="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/5-1-14/css/5-1-14.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.10.0/css/lightbox.min.css" />
-    <!--<script src="//unpkg.com/jscroll/dist/jquery.jscroll.min.js"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue-infinite-loading@2.4.5/dist/vue-infinite-loading.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script>
+    <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
   </head>
   <body>
     <%= render 'layouts/header' %>
@@ -31,10 +31,43 @@
         $('[data-toggle="tooltip"]').tooltip();
       });
     </script>
+    <!------------masonry用-------------->
     <script>
-      $(function() {
-        $("img.lazyload").lazyload();
+      const grid = document.getElementsByClassName('masonry')[0];
+      const allItems = document.getElementsByClassName('masonry-item');
+      const rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'));
+      const rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-row-gap'));
+
+      const resizeGridItem = (item) => {
+        const rowSpan = Math.ceil((item.querySelector('.masonry-content').getBoundingClientRect().height + rowGap) / (rowHeight + rowGap));
+        item.style.gridRowEnd = 'span ' + rowSpan;
+      }
+
+      const resizeAllGridItems = () => {
+        for( let i=0; i < allItems.length; i++){
+          resizeGridItem(allItems[i]);
+        }
+      }
+
+      let timer = false;
+      window.addEventListener('resize', () => {
+        if (timer !== false) {
+          clearTimeout(timer);
+        }
+        timer = setTimeout(function() {
+          resizeAllGridItems();
+        }, 200);
+      });
+
+      window.addEventListener('load', () => {
+        for(i=0; i<allItems.length; i++){
+          imagesLoaded( allItems[i], (instance) => {
+            const item = instance.elements[0];
+            resizeGridItem(item);
+          });
+        }
       });
     </script>
+    <!---------------------------------------------------->
   </body>
 </html>

@@ -49,7 +49,7 @@ class Public::UsersController < ApplicationController
   def favorites
     @user = current_user
     favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
-    @favorite_posts = Post.where(id: favorites).page(params[:page])
+    @favorite_posts = Post.where(id: favorites)
   end
 
   def recommend
@@ -57,9 +57,8 @@ class Public::UsersController < ApplicationController
     # @user_tags = UserTag.where(user_id: @user.id).pluck(:tag_id).sort_by{rand}.first(3)
     # @posts = Post.published.joins(:post_tags).where('post_tags.tag_id in (?)', @user_tags).page(params[:page])
     @posts = {}
-    UserTag.where(user_id: @user.id).pluck(:tag_id).sort_by{rand}.first(3).each do |tag_id|
-      # byebug
-      @posts[tag_id] = Post.published.joins(:post_tags).where('post_tags.tag_id = ?', tag_id).sort_by{rand}.first(3)
+    UserTag.where(user_id: @user.id).pluck(:tag_id).sort_by{rand}.first(5).each do |tag_id| #ユーザーが持っているタグをランダムに並べ替えて最初の3個を取得
+      @posts[tag_id] = Post.published.joins(:post_tags).where('post_tags.tag_id = ?', tag_id).sort_by{rand}.first(9)#それぞれ9件表示
     end
   end
 

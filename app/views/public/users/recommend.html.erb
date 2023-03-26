@@ -17,13 +17,13 @@
         </ul>
       </div>
       <% @posts.each do |tag_id, posts| %>
-        <div class="row" id="bottom">
-          <div class='col-lg-10 col-md-12 mb-5'>
+        <div class="row d-flex justify-content-center" id="bottom">
+          <div class='col-lg-10 col-md-10'>
             <div>
-             <strong>#<%= Tag.find(tag_id).name %></strong>
+              <h2 class="sub-header mb-0">#<%= link_to Tag.find(tag_id).name, tag_path(tag_id), class:"link" %></h2>
             </div>
-            <div class=" row flex-wrap py-1">
-              <%= render 'recommend_index', posts: posts %>
+            <div class=" row flex-wrap py-1 detailed_index">
+              <%= render 'public/posts/index', posts: posts %>
             </div>
           </div>
         </div>
