@@ -1,11 +1,12 @@
 <ul class="gallery">
   <% posts.each do |post| %>
     <li class="flipLeft list">
-      <%= link_to post_path(post.id), class:"image_link lazyload" do %>
+      <%= link_to post_path(post.id), class:"image_link" do %>
         <% if post.image.attached? %>
-          <%= image_tag post.image %>
+          <%#= lazysizes_image_tag post.image %>
+          <%= image_tag post.image, loading:"lazy" %>
          <% else %>
-          <%= image_tag 'no_image' %>
+          <%= lazysizes_image_tag 'no_image' %>
         <% end %>
         <!--<div class="row mt-2 ml-1">-->
         <!--  <span class="index-post-ttl mr-2"><%#= post.title %></span>-->
