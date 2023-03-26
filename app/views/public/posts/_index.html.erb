@@ -1,7 +1,7 @@
 <ul class="gallery">
   <% posts.each do |post| %>
     <li class="flipLeft list">
-      <%= link_to post_path(post.id), class:"image_link", data: {"turbolinks" => false} do %>
+      <%= link_to post_path(post.id), class:"image_link lazyload", data: {"turbolinks" => false} do %>
         <% if post.image.attached? %>
           <%= image_tag post.image %>
          <% else %>

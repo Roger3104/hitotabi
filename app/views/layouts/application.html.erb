@@ -13,6 +13,7 @@
     <!--<script src="//unpkg.com/jscroll/dist/jquery.jscroll.min.js"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue-infinite-loading@2.4.5/dist/vue-infinite-loading.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"></script>
   </head>
   <body>
     <%= render 'layouts/header' %>
@@ -28,6 +29,11 @@
     <script>
       $(document).ready(function() {
         $('[data-toggle="tooltip"]').tooltip();
+      });
+    </script>
+    <script>
+      $(function() {
+        $("img.lazyload").lazyload();
       });
     </script>
   </body>

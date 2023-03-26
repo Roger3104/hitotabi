@@ -621,7 +621,7 @@ td > .link:hover {
 ギャラリーのためのcss
 ===================================*/
 .gallery{
-  columns: 3;/*段組みの数*/
+  columns: 4;/*段組みの数*/
   padding: 0px;
   margin-top: 50px;
 }

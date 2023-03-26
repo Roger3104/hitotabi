@@ -30,7 +30,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.published.page(params[:page]).per(15)
+    @posts = Post.published
   end
 
   def show
