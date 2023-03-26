@@ -68,7 +68,7 @@
             再度確認した上での変更をお願いいたします。</p>
           </div>
           <div class="form-group row d-flex justify-content-center">
-            <%= f.button "保存", type: 'button', onclick: "submit();", class: "link-btn-lg col-6" %> <!--Enter Keyで投稿処理を行わないためにf.buttonに変更-->
+            <%= f.submit "保存", class: "link-btn-lg col-6" %> <!--Enter Keyで投稿処理を行わないためにf.buttonに変更-->
           </div>
           <div class="form-group row my-5 online-btns">
             <%= link_to "退会", check_users_path, class:'online-btn col-2 offset-11 text-center' %>

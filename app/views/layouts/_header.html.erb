@@ -42,34 +42,17 @@
                 <div class="nav-link a-header">ログイン</div>
               <%end%>
             </li>
-
           <% elsif user_signed_in? %>
             <li>
-              <%= link_to users_path, class:"a-header" do %>
-                <div class="nav-link a-header mt-2">マイページ</div>
+              <%= link_to users_path, class:"d-flex justify-content-start", class:"a-header" do %>
+                <div class="nav-link a-header mt-2"><i class="fas fa-user-circle"></i> <%= current_user.name %>さん</div>
               <%end%>
             </li>
             <li>
-              <%= link_to posts_path, class:"a-header" do %>
-                <div class="nav-link a-header mt-2">ひと旅</div>
-              <%end%>
-            </li>
-            <li>
-              <%= link_to favorites_users_path(@user), class:"a-header" do %>
-                <div class="nav-link a-header mt-2">行きたい場所</div>
-              <%end%>
-            </li>
-            <li>
-              <%= link_to new_post_path, class:"a-header" do %>
+              <%= link_to new_post_path, data: {"turbolinks" => false}, class:"a-header" do %>
                 <div class="nav-link a-header mt-2"><i class="fa fa-camera mr-2" aria-hidden="true"></i>投稿する</div>
               <%end%>
             </li>
-            <li>
-              <%= link_to destroy_user_session_path, class:"a-header", method: :delete do %>
-                <div class="nav-link a-header mt-2">ログアウト</div>
-              <%end%>
-            </li>
-
           <% else %>
             <li>
               <%= link_to about_path, class:"a-header" do %>

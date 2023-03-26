@@ -28,7 +28,7 @@ class Public::UsersController < ApplicationController
 
   def update
     @user = current_user
-    if @user.update(user_params)
+    if @user.update(edit_user_params)
       redirect_to users_path
     else
       redirect_to request.referer
@@ -69,6 +69,10 @@ class Public::UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :place, :email, :tag_id)
+  end
+
+  def edit_user_params
+    params.require(:user).permit(:name, :place, :email).merge(tag_ids: params[:user][:tags].reject(&:empty?))
   end
 
   def set_user
