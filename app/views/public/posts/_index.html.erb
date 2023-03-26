@@ -1,19 +1,40 @@
 <ul class="gallery">
   <% posts.each do |post| %>
-      <li class="flipLeft">
-        <%= link_to post_path(post.id), class:"image_link" do %>
-          <% if post.image.attached? %>
-            <%= image_tag post.image %>
-           <% else %>
-            <%= image_tag 'no_image' %>
-          <% end %>
-          <!--<div class="row mt-2 ml-1">-->
-          <!--  <span class="index-post-ttl mr-2"><%#= post.title %></span>-->
-          <!--  <div class= "favorite-<%#= post.id %>">-->
-          <!--    <%#= render "/public/favorites/btn", post: post %>-->
-          <!--  </div>-->
-          <!--</div>-->
+    <li class="flipLeft list">
+      <%= link_to post_path(post.id), class:"image_link" do %>
+        <% if post.image.attached? %>
+          <%= image_tag post.image %>
+         <% else %>
+          <%= image_tag 'no_image' %>
         <% end %>
-      </li>
+        <!--<div class="row mt-2 ml-1">-->
+        <!--  <span class="index-post-ttl mr-2"><%#= post.title %></span>-->
+        <!--  <div class= "favorite-<%#= post.id %>">-->
+        <!--    <%#= render "/public/favorites/btn", post: post %>-->
+        <!--  </div>-->
+        <!--</div>-->
+      <% end %>
+    </li>
   <% end %>
 </div>
+<script>
+  methods: {
+    // 無限スクロール
+    infiniteHandler($state) {
+      // 全部ロードし終わっていたら$state.complete(), まだあるなら $state.loaded()
+      if (this.totalCount <= this.articles.length > 100) {
+        console.log(gagagag)
+        $state.complete()
+      } else {
+        this.fetchArticles()
+        $state.loaded()
+      }
+    },
+    fetchArticles() {
+      axios.get("https://*******").then((rs) => {
+	this.articles.push(rs.data.articles)
+	this.totalCount = rs.data.total
+      })
+    }
+  }
+</script>
