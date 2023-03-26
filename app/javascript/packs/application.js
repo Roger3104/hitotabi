@@ -20,27 +20,27 @@ import './scroll.js';
 // import './jquery.jscroll.min.js';
 
 Rails.start();
-// Turbolinks.start()
+Turbolinks.start()
 ActiveStorage.start();
 
 
 // ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 // 無限スクロールの処理
 /*global $ */
-$(document).ready(function () {
-  $(window).on('scroll', function() {
-    var scrollHeight = $(document).height();
-    var scrollPosition = $(window).height() + $(window).scrollTop();
-    if ( (scrollHeight - scrollPosition) / scrollHeight <= 0.05) {
-      $('.jscroll').jscroll({
-        contentSelector: '.jscroll',
-        nextSelector: 'a[rel~="next"]',  // 次ページリンクのセレクタ
-        autoTrigger: true,
-        loadingHtml: '読み込み中',
-      });
-    }
-  });
-})
+// $(document).ready(function () {
+//   $(window).on('scroll', function() {
+//     var scrollHeight = $(document).height();
+//     var scrollPosition = $(window).height() + $(window).scrollTop();
+//     if ( (scrollHeight - scrollPosition) / scrollHeight <= 0.05) {
+//       $('.jscroll').jscroll({
+//         contentSelector: '.jscroll',
+//         nextSelector: 'a[rel~="next"]',  // 次ページリンクのセレクタ
+//         autoTrigger: true,
+//         loadingHtml: '読み込み中',
+//       });
+//     }
+//   });
+// })
 
 // ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
