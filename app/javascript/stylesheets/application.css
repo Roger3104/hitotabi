@@ -75,6 +75,8 @@ a{
   padding: 0.35rem 1.25rem !important;
   border-radius: 2rem !important;
   border: none !important;
+  width: 100% !important;
+  text-align: center !important;
 }
 
 .alert-success {

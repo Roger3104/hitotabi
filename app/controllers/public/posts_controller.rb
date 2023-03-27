@@ -22,8 +22,8 @@ class Public::PostsController < ApplicationController
       flash[:success] = 'Success!'
     else
       @categories = Category.all
-      render 'new'
       flash.now[:danger] = 'Failed'
+      render 'new'
     end
   end
 
@@ -60,6 +60,7 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
     redirect_to user_index_path(current_user.id)
+    flash[:success] = 'Deleted!'
   end
 
 

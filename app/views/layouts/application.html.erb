@@ -16,13 +16,13 @@
     <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
   </head>
   <body>
+    <div class="row d-flex justify-content-center">
+      <%= render 'layouts/flash_messages' %>
+    </div>
     <%= render 'layouts/header' %>
     <%= render 'layouts/hamburger' %>
     <div class="openbtn1"><span></span><span></span><span></span></div>
     <main>
-      <div class="row d-flex justify-content-center">
-        <%= render 'layouts/flash_messages' %>
-      </div>
       <%= yield %>
     </main>
     <!--スクロール表記-->

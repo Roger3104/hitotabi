@@ -18,7 +18,7 @@ class Public::UsersController < ApplicationController
 
   def user_index
     @user = User.find(params[:id])
-    @posts = @user.posts.published.page(params[:page])
+    @posts = @user.posts.published
   end
 
   def edit

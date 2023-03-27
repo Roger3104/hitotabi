@@ -44,7 +44,7 @@ ActiveStorage.start();
 
 // ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
-//アコーディオンをクリックした時の動作
+//アコーディオンパネルをクリックした時の動作
 $(document).ready(function () {
   $('.category-name').on('click', function() {//タイトル要素をクリックしたら
     var findElm = $(this).next(".box");//直後のアコーディオンを行うエリアを取得し
@@ -59,5 +59,8 @@ $(document).ready(function () {
   });
 })
 
-$(".flash").fadeOut(10000);
+//--------Flash message--------------//
+$(function(){
+  $('.alert').fadeOut(5000);  //４秒かけて消えていく
+});
 
