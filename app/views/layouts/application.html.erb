@@ -20,6 +20,9 @@
     <%= render 'layouts/hamburger' %>
     <div class="openbtn1"><span></span><span></span><span></span></div>
     <main>
+      <div class="row d-flex justify-content-center">
+        <%= render 'layouts/flash_messages' %>
+      </div>
       <%= yield %>
     </main>
     <!--スクロール表記-->

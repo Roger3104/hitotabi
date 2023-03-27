@@ -19,9 +19,11 @@ class Public::PostsController < ApplicationController
         end
       end
       redirect_to post_path(@post)
+      flash[:success] = 'Success!'
     else
       @categories = Category.all
       render 'new'
+      flash.now[:danger] = 'Failed'
     end
   end
 

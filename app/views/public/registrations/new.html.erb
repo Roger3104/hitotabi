@@ -13,62 +13,81 @@
           </header>
         </div>
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-            <div class="form-group row my-3">
-              <%= f.label :name, 'ユーザー名', class:'col-4'%>
-              <%= f.text_field :name, placeholder: "Hitota", autocomplete: "name", class: "col-3 form-control" %>
-            </div>
 
-            <div class="form-group row">
-              <%= f.label :email, 'メールアドレス', class:'col-4' %>
-              <%= f.email_field :email, placeholder: "hitota@gmail.com", autocomplete: "email", class:'col-3 form-control' %>
-            </div>
-
-            <div class="form-group row">
-              <%= f.label :place, '好きな場所', class:'col-4'%>
-              <%= f.text_field :place, placeholder: "都道府県名や海沿いなど何でもありです", autocomplete: "place", class:'col-3 form-control' %>
-            </div>
-
-            <div class="form-group row">
-              <%= f.label :password, 'パスワード(6文字以上)', class:'col-4' %>
-              <%= f.password_field :password, autocomplete: "new-password", class:'col-3 form-control' %>
-            </div>
-
-            <div class="form-group row">
-              <%= f.label :password_confirmation, 'パスワード(確認用)',class:'col-4' %>
-              <%= f.password_field :password_confirmation, autocomplete: "new-password", class:'col-3 form-control' %>
-            </div>
-            <div class="form-group row">
-            <span class = "col-2 offset-1 pl-0"><strong>タグ選択</strong></span>
-            <div class="col-10 my-4 mx-auto">
-              <% @categories.each do |category| %>
-              <ul class="accordion-area">
-                <li>
-                  <span class="category-name"><%= category.name %></span>
-                  <div class="box">
-                    <div class="d-flex flex-wrap">
-                      <% category.tags.each do |tag| %>
-                        <label class="tag_area d-flex">
-                          <input class= "tag_input" type="checkbox" value="<%= tag.id %>" name="user[tags][]" id="post_tags_<%= tag.id %>">
-                          <div class="tag_list d-flex">
-                            <label for="post_tags_<%= tag.id %>" class= "tag_link"><div class="tag_text"><%= tag.name %></div></label>
-                          </div>
-                        </label>
-                      <% end %>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-              <% end %>
-            </div>
+          <div class="form-group row mt-5">
+            <%= f.label :name, class:'col-2 offset-1 pl-0' do%>
+              <span><strong>user name</strong></span>
+            <% end %>
+            <%= f.text_field :name, placeholder: "Hitota", autocomplete: "name", class:'col-7 mx-auto form-control' %>
+          </div>
+          <div class="form-group row">
+            <%= f.label :email, class:'col-2 offset-1 pl-0' do%>
+              <span><strong>email</strong></span>
+            <% end %>
+            <%= f.text_field :email, placeholder: "hitota@gmail.com", autocomplete: "email", class:'col-7 mx-auto form-control' %>
+          </div>
+          <div class="form-group row">
+            <%= f.label :place, class:'col-2 offset-1 pl-0' do%>
+              <span class="text-nowrap"><strong>favorite place</strong></span>
+            <% end %>
+            <%= f.text_field :place, placeholder: "都道府県名や海沿いなど何でもありです", class:'col-7 mx-auto form-control' %>
           </div>
 
-          <div class="online-btns row" id="bottom">
-            <%= f.submit "新規登録", class:'col-2 offset-4 online-btn'%>
+          <div class="form-group row">
+            <%= f.label :password, class:'col-2 offset-1 pl-0' do%>
+              <span class="text-nowrap"><strong>password</strong></span>
+            <% end %>
+            <%= f.password_field :password, placeholder: "(6文字以上)", autocomplete: "new-password", class:'col-7 mx-auto form-control' %>
+          </div>
+
+          <div class="form-group row">
+            <%= f.label :password_confirmation,class:'col-2 offset-1 pl-0' do%>
+              <span class="text-nowrap"><strong>password confirmation</strong></span>
+            <% end %>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "確認用", class:'col-7 mx-auto form-control' %>
+          </div>
+          <div class="form-group row mt-5">
+            <ul class="accordion-area">
+              <li>
+                <section>
+                  <span class = "category-name"><strong>クリックして興味のあるタグを選択</strong></span>
+                  <table class="box mt-4 ml-5">
+                    <% @categories.each do |category| %>
+                      <tr>
+                        <td class="col-3 align-top"><span class="mr-3"><%= category.name %></span></td>
+                        <td class="d-flex flex-wrap mb-3">
+                          <% category.tags.each do |tag| %>
+                            <label class="tag_area d-flex">
+                              <input class= "tag_input" type="checkbox" value="<%= tag.id %>" name="user[tags][]" id="user_tags_<%= tag.id %>">
+                              <div class="tag_list d-flex">
+                                <label for="user_tags_<%= tag.id %>" class= "tag_link"><div class="tag_text"><%= tag.name %></div></label>
+                              </div>
+                            </label>
+                          <% end %>
+                        </td>
+                      </tr>
+                    <% end %>
+                  </table>
+                </section>
+              </li>
+            </ul>
+          </div>
+          <div class="form-group row ml-5">
+            <p class="text-sm mt-0">タグを登録することで、<br>
+            関連した投稿をおすすめすることができます。</p>
+          </div>
+          <div class="form-group row d-flex justify-content-center mt-4 border-top">
+            <p class="text-center text-sm">個人情報の記載がないか、<br>
+            再度確認した上での登録をお願いいたします。</p>
+          </div>
+          <div class="form-group row d-flex justify-content-center">
+            <%= f.submit "保存", class: "link-btn-lg col-6" %> <!--Enter Keyで投稿処理を行わないためにf.buttonに変更-->
           </div>
         <% end %>
-        <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
-        <h3 class="mb-5 pt-3 border-bottom "><span>すでに登録済みの方</span></h3>
+
+        <h2 class="sub-header" id="bottom">すでに登録済みの方</h2>
         <p class="form-group form-inline offset-4"><%= render "public/shared/links" %>からログインしてください</p>
+        <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
       </div>
     </div>
   </div>

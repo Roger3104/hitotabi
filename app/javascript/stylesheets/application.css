@@ -70,6 +70,18 @@ a{
   flex-wrap: wrap;
 }
 
+/*----------flash messages-------------*/
+.alert {
+  padding: 0.35rem 1.25rem !important;
+  border-radius: 2rem !important;
+  border: none !important;
+}
+
+.alert-success {
+  color: #fff;
+  background-color: #538c81;
+}
+
 /*-----------------------------------------------*/
 /*-----------------------------------------------*/
 /*========= ナビゲーションのためのCSS ===============*/

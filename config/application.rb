@@ -12,6 +12,7 @@ module Hitotabi
     config.load_defaults 6.1
     config.time_zone = 'Tokyo' #日本時間に設定
     config.i18n.default_locale = :ja #enum_help
+    config.i18n.load_path += Dir[Rails.root.join('config/locales/**/*.yml').to_s]
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

@@ -68,7 +68,7 @@ class Public::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :place, :email, :tag_id)
+    params.require(:user).permit(:name, :place, :email, :tag_ids)
   end
 
   def edit_user_params

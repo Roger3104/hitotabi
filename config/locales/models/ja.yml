@@ -1,0 +1,12 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      post: 投稿
+      category: カテゴリー
+      tag: タグ
+    attributes:
+      user:
+        name: 名前
+        place: お気に入りの場所
+        email: メールアドレス
