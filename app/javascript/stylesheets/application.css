@@ -73,7 +73,6 @@ a{
 /*----------flash messages-------------*/
 .alert {
   padding: 0.35rem 1.25rem !important;
-  border-radius: 2rem !important;
   border: none !important;
   width: 100% !important;
   text-align: center !important;
@@ -84,7 +83,29 @@ a{
   background-color: #538c81;
 }
 
+.alert-danger{
+
+}
+
+.error_alert{
+  text-align: left!important;
+}
+
+.error_alert ul li {
+    margin: 10px;
+    padding-left: 10px;
+}
+
+.field_with_errors {
+    display: contents;
+}
+
+
 /*-----------------------------------------------*/
+
+.btn:focus {
+  box-shadow: none !important;
+}
 /*-----------------------------------------------*/
 /*========= ナビゲーションのためのCSS ===============*/
 

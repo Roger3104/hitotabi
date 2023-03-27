@@ -6,25 +6,25 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_one_attached :image
 
+  # 下書きでも必要なバリデーション
+  validates :title, presence: true
+
+  enum status: { published: 0, draft: 1 } #下書き機能用
+
   #公開の場合のバリデーション
   with_options presence: true, if: :post_published? do |v|
     v.validates :date
-    v.validates :image
+    v.validates :image, presence: { message: 'を選択してください' }
   end
+  validate :date_to_today
 
   def post_published?
     status == "published"
   end
 
-  # 下書きでも必要なバリデーション
-  validate :date_to_today
-  validates :title, presence: true
-
-  enum status: { published: 0, draft: 1 } #下書き機能用
-
   def date_to_today #日付指定用
     return if date.blank?
-    errors.add(:date, "今日までの日付を指定してください") if date >Date.today
+    errors.add(:date, "は今日までの日付を指定してください") if date >Date.today
   end
 
   def favorited?(user) #行ってみたいボタン用

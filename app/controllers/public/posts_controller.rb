@@ -22,7 +22,6 @@ class Public::PostsController < ApplicationController
       flash[:success] = 'Success!'
     else
       @categories = Category.all
-      flash.now[:danger] = 'Failed'
       render 'new'
     end
   end
@@ -50,7 +49,8 @@ class Public::PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update(edit_post_params)
-      redirect_to post_path(@post), notice: "投稿を更新しました"
+      redirect_to post_path(@post)
+      flash[:success] = 'Success!'
     else
       render "edit"
     end

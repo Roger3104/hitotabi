@@ -1,9 +1,7 @@
  <div class='container'>
     <div class='row'>
       <div class="col-lg-8 col-md-10 col-sm-12 mx-6 mx-sm-auto px-auto my-5">
-
         <p class= "text-center text-danger"><%= flash[:withdrawal] %></p>
-
         <div class="content-wrap">
           <header class="page-header heading">
             <h1 class="mb-5 heading__ttl">
@@ -13,38 +11,35 @@
           </header>
         </div>
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-
-          <div class="form-group row mt-5">
-            <%= f.label :name, class:'col-2 offset-1 pl-0' do%>
+          <div class="form-group row mt-5 mb-4">
+            <%= f.label :name, class:'col-2 offset-md-2 pl-0' do%>
               <span><strong>user name</strong></span>
             <% end %>
-            <%= f.text_field :name, placeholder: "Hitota", autocomplete: "name", class:'col-7 mx-auto form-control' %>
+            <%= f.text_field :name, placeholder: "Hitota", autocomplete: "name", class:'col-4 form-control' %>
           </div>
-          <div class="form-group row">
-            <%= f.label :email, class:'col-2 offset-1 pl-0' do%>
+          <div class="form-group row mb-4">
+            <%= f.label :email, class:'col-2 offset-md-2 pl-0' do%>
               <span><strong>email</strong></span>
             <% end %>
-            <%= f.text_field :email, placeholder: "hitota@gmail.com", autocomplete: "email", class:'col-7 mx-auto form-control' %>
+            <%= f.text_field :email, placeholder: "hitota@gmail.com", autocomplete: "email", class:'col-4 form-control' %>
           </div>
-          <div class="form-group row">
-            <%= f.label :place, class:'col-2 offset-1 pl-0' do%>
+          <div class="form-group row mb-4">
+            <%= f.label :place, class:'col-2 offset-md-2 pl-0' do%>
               <span class="text-nowrap"><strong>favorite place</strong></span>
             <% end %>
-            <%= f.text_field :place, placeholder: "都道府県名や海沿いなど何でもありです", class:'col-7 mx-auto form-control' %>
+            <%= f.text_field :place, placeholder: "都道府県名や海沿いなど何でもありです", class:'col-4 form-control' %>
           </div>
-
-          <div class="form-group row">
-            <%= f.label :password, class:'col-2 offset-1 pl-0' do%>
+          <div class="form-group row mb-4">
+            <%= f.label :password, class:'col-2 offset-md-2 pl-0' do%>
               <span class="text-nowrap"><strong>password</strong></span>
             <% end %>
-            <%= f.password_field :password, placeholder: "(6文字以上)", autocomplete: "new-password", class:'col-7 mx-auto form-control' %>
+            <%= f.password_field :password, placeholder: "(6文字以上)", autocomplete: "new-password", class:'col-4 form-control' %>
           </div>
-
           <div class="form-group row">
-            <%= f.label :password_confirmation,class:'col-2 offset-1 pl-0' do%>
-              <span class="text-nowrap"><strong>password confirmation</strong></span>
+            <%= f.label :password_confirmation,class:'col-2 offset-md-2 pl-0' do%>
+              <span><strong>password confirmation</strong></span>
             <% end %>
-            <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "確認用", class:'col-7 mx-auto form-control' %>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "確認用", class:'col-4 form-control' %>
           </div>
           <div class="form-group row mt-5">
             <ul class="accordion-area">
@@ -81,13 +76,11 @@
             再度確認した上での登録をお願いいたします。</p>
           </div>
           <div class="form-group row d-flex justify-content-center">
-            <%= f.submit "保存", class: "link-btn-lg col-6" %> <!--Enter Keyで投稿処理を行わないためにf.buttonに変更-->
+            <%= f.submit "新規登録", class: "link-btn-lg col-6" %> <!--Enter Keyで投稿処理を行わないためにf.buttonに変更-->
           </div>
         <% end %>
-
         <h2 class="sub-header" id="bottom">すでに登録済みの方</h2>
-        <p class="form-group form-inline offset-4"><%= render "public/shared/links" %>からログインしてください</p>
-        <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
+        <p class="form-group form-inline offset-4"><strong><%= render "public/shared/links" %></strong>からログインしてください</p>
       </div>
     </div>
   </div>

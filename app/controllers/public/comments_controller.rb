@@ -6,7 +6,7 @@ class Public::CommentsController < ApplicationController
     @comment = current_user.comments.new(comment_params)
     @comment.post_id = @post.id
     if @comment.save
-      redirect_to post_path(@post)
+      render :post_comments
     else
       render 'public/posts/show'  #!!!!!!ここでエラーが起きる
     end
@@ -16,7 +16,7 @@ class Public::CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = @post.comments.find(params[:id])
     @comment.destroy
-    redirect_to post_path(params[:post_id])
+    render :post_comments
   end
 
   private

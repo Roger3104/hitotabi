@@ -58,7 +58,7 @@
           <%= link_to "コメントを投稿", {anchor: "in_page_link-comment"}, class: "in_page_link" %>
         </div>
         <div class="border-top border-bottom">
-          <div class="post-content my-3 py-4"><%= @post.content %></div>
+          <div class="post-content my-3 py-4"><%= safe_join(@post.content.split("\n"),tag(:br)) %></div>
         </div>
         <div class="row justify-content-center my-4">
           <div id="favorite2-<%= @post.id %>" class="col-lg-5 col-md-5 col-sm-10 ml-lg-2 ml-md-2 mb-4">
@@ -85,13 +85,13 @@
       </div>
       <h2 class="sub-header" id="in_page_link-comment">comment</h2>
       <div class="row">
-        <div class="mx-auto col-lg-9 col-md-9 col-sm-12 mb-5">
-          <%= render "public/comments/index", post: @post %>
+        <div class="mx-auto col-lg-9 col-md-9 col-sm-12">
+          <%= render "public/comments/form", post: @post, comment: @comment %>
         </div>
       </div>
       <div class="row">
-        <div class="mx-auto col-lg-9 col-md-9 col-sm-12">
-          <%= render "public/comments/form", post: @post, comment: @comment %>
+        <div id="comments-area" class="mx-auto col-lg-9 col-md-9 col-sm-12 mb-5">
+          <%= render "public/comments/index", post: @post %>
         </div>
       </div>
     </div>

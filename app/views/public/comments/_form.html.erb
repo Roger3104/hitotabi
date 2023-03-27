@@ -1,5 +1,5 @@
-<%= form_with(model: comment, url: post_comments_path(post.id), method: :post) do |f| %>
-  <%= f.text_area :content, rows:'5',placeholder: "コメントをここに", class: "w-100 form-control comment-textarea" %>
+<%= form_with(model: comment, url: post_comments_path(post.id), method: :post, local: false) do |f| %>
+  <%= f.text_area :content, rows:'3',placeholder: "コメントをここに", class: "w-100 form-control comment-textarea" %>
   <div class="d-flex justify-content-end">
     <%= button_tag type: "送信", class: "btn btn-default" do %>
       <span><i class="fas fa-paper-plane mr-1"></i>送信</span>

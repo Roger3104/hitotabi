@@ -55,11 +55,6 @@
             </li>
           <% else %>
             <li>
-              <%= link_to about_path, class:"a-header" do %>
-                <div class="nav-link a-header">About</div>
-              <%end%>
-            </li>
-            <li>
               <%= link_to posts_path, class:"a-header" do %>
                 <div class="nav-link a-header">ひと旅</div>
               <%end%>
@@ -72,6 +67,11 @@
             <li>
               <%= link_to new_user_session_path, class:"a-header" do %>
                 <div class="nav-link a-header">ログイン</div>
+              <%end%>
+            </li>
+            <li>
+              <%= link_to users_guest_sign_in_path, method: :post, class:"a-header" do %>
+                <div class="nav-link a-header">ゲストログイン</div>
               <%end%>
             </li>
           <% end %>
