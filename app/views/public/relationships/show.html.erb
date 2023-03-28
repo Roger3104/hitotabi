@@ -13,11 +13,11 @@
         <div class="d-flex col-lg-9 col-md-8 col-sm-12 mx-auto">
           <% if @users.exists? %>
             <% @users.each do |user| %>
-            <%#byebug%>
                 <div class="card col-4">
                   <%#= image_tag user.posts.published.last.image, class:'bd-placeholder-img card-img-top' %>
-                  <% user.posts.published.each do |post|%>
+                  <% user.posts.published.each_with_index do |post, i|%>
                     <%= image_tag post.image, class:'bd-placeholder-img card-img-top' %>
+                    <% break if i == 0 %>
                   <% end %>
                   <%#= image_tag "no_image", class:'bd-placeholder-img card-img-top' %>
                   <div class="card-body">

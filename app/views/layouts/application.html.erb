@@ -35,43 +35,5 @@
         $('[data-toggle="tooltip"]').tooltip();
       });
     </script>
-    <!------------masonry用-------------->
-    <script>
-      const grid = document.getElementsByClassName('masonry')[0];
-      const allItems = document.getElementsByClassName('masonry-item');
-      const rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'));
-      const rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-row-gap'));
-
-      const resizeGridItem = (item) => {
-        const rowSpan = Math.ceil((item.querySelector('.masonry-content').getBoundingClientRect().height + rowGap) / (rowHeight + rowGap));
-        item.style.gridRowEnd = 'span ' + rowSpan;
-      }
-
-      const resizeAllGridItems = () => {
-        for( let i=0; i < allItems.length; i++){
-          resizeGridItem(allItems[i]);
-        }
-      }
-
-      let timer = false;
-      window.addEventListener('resize', () => {
-        if (timer !== false) {
-          clearTimeout(timer);
-        }
-        timer = setTimeout(function() {
-          resizeAllGridItems();
-        }, 200);
-      });
-
-      window.addEventListener('load', () => {
-        for(i=0; i<allItems.length; i++){
-          imagesLoaded( allItems[i], (instance) => {
-            const item = instance.elements[0];
-            resizeGridItem(item);
-          });
-        }
-      });
-    </script>
-    <!---------------------------------------------------->
   </body>
 </html>
