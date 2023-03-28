@@ -59,6 +59,15 @@ $(document).ready(function () {
   });
 })
 
+//--------home page image--------------//
+$(function(){
+  $('.home-image').hide().fadeIn(1000);
+  $('.home-logo').hide().fadeIn(3000);
+  $('.home-text-area').hide().fadeIn(6000);
+
+});
+//----------------------//
+
 //--------Flash message--------------//
 //--------Flash message--------------//
 $(function(){

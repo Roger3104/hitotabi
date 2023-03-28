@@ -59,8 +59,39 @@ a{
     border-bottom: 1px solid #D1CDC5 !important;
 }
 
+.home-box{
+  position: relative;
+}
 
+.home-logo{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30% !important;
+}
 
+.home-text-area{
+  position: absolute;
+  bottom: 25px;
+  left: 25px;
+}
+
+.home-text span{
+  background-color: #F3F2EE;
+  padding: 5px;
+}
+
+.home-text-area:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 45px;
+        height: 4.5px;
+    border-radius: 2px;
+    background-color: #1E1D1C;
+}
 /*----------flash messages-------------*/
 .alert {
   padding: 0.35rem 1.25rem !important;
