@@ -22,8 +22,10 @@ class Public::RelationshipsController < ApplicationController
     user = User.find(params[:user_id])
     @users = user.followers
   end
-  
-  def follow_list
-    
+
+  def show
+    @user = current_user
+    @users = @user.followings
+    # user.posts.published.order(created_at: :desc).limit(1)
   end
 end

@@ -66,6 +66,11 @@
               <%end%>
             </li>
             <li>
+              <%= link_to users_relationships_path, class:"d-flex justify-content-start" do %>
+                <div class="nav-link a-header mt-2 pr-3"><i class="fas fa-user-circle" style="color: #000000;"></i></i> フォロー中</div>
+              <%end%>
+            </li>
+            <li>
               <%= link_to destroy_user_session_path, class:"d-flex justify-content-start", method: :delete do %>
                 <div class="nav-link a-header mt-2 pr-3"><i class="fas fa-sign-out-alt" style="color: black;"></i> ログアウト</div>
               <%end%>
