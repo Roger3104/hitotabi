@@ -59,16 +59,7 @@ a{
     border-bottom: 1px solid #D1CDC5 !important;
 }
 
-.jscroll{
-  width:100% !important;
-  display: flex !important;
-}
 
-.jscroll-inner{
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-}
 
 /*----------flash messages-------------*/
 .alert {
