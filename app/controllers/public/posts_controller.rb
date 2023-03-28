@@ -31,7 +31,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.published
+    @posts = Post.published.shuffle
   end
 
   def show

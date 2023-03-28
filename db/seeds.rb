@@ -45,10 +45,10 @@ Tag.create!(
         ]
     )
 
-Post.create!(
-  [
-    {title: 'ひまわりと風車', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample1.jpeg"), filename:"sample1.jpeg"), address: nil, latitude: nil, longitude: nil, status: "draft", date: nil, user_id: users[1].id },
-    {title: '今日の東京タワー', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/tokyo-min.jpg"), filename:"tokyo-min.jpg"), latitude: 35.6585805, longitude: 139.7454329, date: nil, content: nil, status: "draft", user_id: users[2].id },
-    {title: 'ぶどう園の犬', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/inu.jpeg"), filename:"inu.jpeg"), date: nil, status: "draft", user_id: users[3].id },
-  ]
-)
+# Post.create!(
+#   [
+#     {title: 'ひまわりと風車', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample1.jpeg"), filename:"sample1.jpeg"), address: nil, latitude: nil, longitude: nil, status: "draft", date: nil, user_id: users[1].id },
+#     {title: '今日の東京タワー', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/tokyo-min.jpg"), filename:"tokyo-min.jpg"), latitude: 35.6585805, longitude: 139.7454329, date: nil, content: nil, status: "draft", user_id: users[2].id },
+#     {title: 'ぶどう園の犬', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/inu.jpeg"), filename:"inu.jpeg"), date: nil, status: "draft", user_id: users[3].id },
+#   ]
+# )

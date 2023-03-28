@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     resource :users, only: [:show, :edit, :update] do
       get :check, on: :collection
       patch :withdrawal, on: :collection
-      resource :relationships, only: [:create, :destroy]
+      resource :relationships, only: [:show, :create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
       member do
@@ -51,6 +51,6 @@ Rails.application.routes.draw do
   sessions: "admin/sessions"
   }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  
+
   get "search" => "searches#search"
 end

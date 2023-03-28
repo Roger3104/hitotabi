@@ -24,7 +24,7 @@ class Post < ApplicationRecord
 
   def date_to_today #日付指定用
     return if date.blank?
-    errors.add(:date, "は今日までの日付を指定してください") if date >Date.today
+    errors.add(:date, "は今日までの日付を指定してください") if date >Date.tomorrow
   end
 
   def favorited?(user) #行ってみたいボタン用

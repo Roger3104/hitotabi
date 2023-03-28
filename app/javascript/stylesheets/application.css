@@ -83,6 +83,11 @@ a{
   background-color: #538c81;
 }
 
+.alert-alert{
+  background-color: #f33e4e;
+  color: #ffff;
+}
+
 .error_alert{
   text-align: left!important;
 }

@@ -20,16 +20,16 @@
             <tr>
               <td class="pb-3"><strong>name</strong></td>
               <td class="pl-5 pb-3">
-                  <% if current_user %>
+                  <% if @user == current_user %>
                     <%= @user.name %>
                     <%= link_to edit_users_path, class:"link ml-2", data: {toggle: "tooltip", placement: "right"}, title: "編集する" do%>
                       <i class="fas fa-edit"></i>
                     <% end %>
                   <% elsif @user != current_user %>
-                    <span class= "follow-<%= @user.id %> pl-3 mb-0">
                       <%= @user.name %>
-                      <%= render "/public/relationships/btn", user: @user, post: @post %>
-                    </span>
+                      <span class= "follow-<%= @user.id %> pl-3 mb-0">
+                        <%= render "/public/relationships/btn", user: @user, post: @post %>
+                      </span>
                   <% end %>
               </td>
             </tr>
@@ -56,18 +56,20 @@
       </div>
       <hr>
       <div class="row justify-content-center my-4">
-        <div id="follow2-<%= @user.id %>" class="col-lg-5 col-md-5 col-sm-10 ml-lg-2 ml-md-2 mb-4">
-          <% if current_user %>
+        <% if @user == current_user %>
+          <div class="col-lg-5 col-md-5 col-sm-10 ml-lg-2 ml-md-2 mb-4">
             <%= link_to "編集", edit_users_path, class: "link-btn" %>
-          <% else%>
-            <%= render "relationship_btn", post: @post, user: @user %>
-          <% end %>
-        </div>
+          </div>
+        <% else%>
+          <div id="follow2-<%= @user.id %>" class="col-lg-5 col-md-5 col-sm-10 ml-lg-2 ml-md-2 mb-4">
+            <%= render "/public/posts/relationship_btn", post: @post, user: @user %>
+          </div>
+        <% end %>
         <div id="follow2-<%= @user.id %>" class="col-lg-5 col-md-5 col-sm-10 ml-lg-2 ml-md-2 mb-4">
-          <% if current_user %>
+          <% if @user == current_user %>
             <%= link_to "下書き一覧", confirm_posts_path, class: "link-btn" %>
           <% else%>
-            <%= render "投稿一覧", user_index_path(@user.id), class: "link-btn" %>
+            <%= link_to "投稿一覧", user_index_path(@user.id), class: "link-btn" %>
           <% end %>
         </div>
       </div>

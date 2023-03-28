@@ -18,7 +18,7 @@ class Public::UsersController < ApplicationController
 
   def user_index
     @user = User.find(params[:id])
-    @posts = @user.posts.published
+    @posts = @user.posts.published.order(created_at: :desc)
   end
 
   def edit
