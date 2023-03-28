@@ -11,7 +11,7 @@ Admin.create!(
     password: 'hitotabi'
 )
 
-users = User.create!(
+User.create!(
         [
             {name: 'あどみん', email: 'admin@admin', password: 'hitotabi'},
             {name: 'イエスマン', email: 'yes@yes', password: 'hitotabi'},
