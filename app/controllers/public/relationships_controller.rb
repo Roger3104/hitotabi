@@ -2,14 +2,14 @@ class Public::RelationshipsController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @post = Post.find(params[:post_id])
-    current_user.follow(params[:user_id])
+    current_user.follow(@user.id)
     render :replace
   end
 
   def destroy
     @user = User.find(params[:user_id])
     @post = Post.find(params[:post_id])
-    current_user.unfollow(params[:user_id])
+    current_user.unfollow(@user.id)
     render :replace
   end
 
@@ -26,6 +26,6 @@ class Public::RelationshipsController < ApplicationController
   def show
     @user = current_user
     @users = @user.followings
-    # user.posts.published.order(created_at: :desc).limit(1)
+     #user.posts.published.order(created_at: :desc).first
   end
 end

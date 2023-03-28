@@ -13,8 +13,13 @@
         <div class="d-flex col-lg-9 col-md-8 col-sm-12 mx-auto">
           <% if @users.exists? %>
             <% @users.each do |user| %>
+            <%#byebug%>
                 <div class="card col-4">
-                  <%= image_tag "no_image", class:'bd-placeholder-img card-img-top' %>
+                  <%#= image_tag user.posts.published.last.image, class:'bd-placeholder-img card-img-top' %>
+                  <% user.posts.published.each do |post|%>
+                    <%= image_tag post.image, class:'bd-placeholder-img card-img-top' %>
+                  <% end %>
+                  <%#= image_tag "no_image", class:'bd-placeholder-img card-img-top' %>
                   <div class="card-body">
                     <h5 class="col-12 card-title"><%= link_to user.name, user_index_path(user.id), class:"link"%></h5>
                     <p class="card-text">favorite place : <%= user.place %></p>

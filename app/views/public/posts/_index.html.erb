@@ -2,11 +2,11 @@
   <div class="masonry">
     <% posts.each do |post| %>
       <div class="masonry-item">
-          <%= link_to post_path(post.id), class:"masonry-content image_link" do %>
+          <%= link_to post_path(id: post.id, user_id: post.user_id), class:"masonry-content image_link" do %>
             <% if post.image.attached? %>
               <%= image_tag post.image, loading:"lazy" %>
              <% else %>
-              <%= image_tag 'no_image', loading:"lazy" %>
+              <%= image_tag 'no_image.png', loading:"lazy" %>
             <% end %>
           <% end %>
       </div>

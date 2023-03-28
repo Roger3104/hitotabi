@@ -37,7 +37,7 @@ class Public::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @tags = @post.tag_id
-    @user = User.find_by(params[:id])
+    @user = @post.user
     @comment = Comment.new
     # @post_tags = PostTag.where(post_id: @post.id).pluck(:tag_id)
     # @related_posts = @post_tags.posts.published.sort_by{rand}.first(15)
