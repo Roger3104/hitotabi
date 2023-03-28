@@ -9,21 +9,18 @@
             </h1>
           </header>
         </div>
-
-        <div class="d-flex col-lg-9 col-md-8 col-sm-12 mx-auto">
+        <div class="row d-flex justify-content-center">
           <% if @users.exists? %>
             <% @users.each do |user| %>
-                <div class="card col-4">
-                  <%#= image_tag user.posts.published.last.image, class:'bd-placeholder-img card-img-top' %>
+                <div class="card col-3 mx-1 mb-2">
                   <% user.posts.published.each_with_index do |post, i|%>
                     <%= image_tag post.image, class:'bd-placeholder-img card-img-top' %>
                     <% break if i == 0 %>
                   <% end %>
-                  <%#= image_tag "no_image", class:'bd-placeholder-img card-img-top' %>
-                  <div class="card-body">
-                    <h5 class="col-12 card-title"><%= link_to user.name, user_index_path(user.id), class:"link"%></h5>
-                    <p class="card-text">favorite place : <%= user.place %></p>
-                  </div>
+                  <%= link_to user_index_path(user.id), class:"card-body" do%>
+                    <span class="col-12 card-title pl-0 user-name link"><%= user.name %></span>
+                    <p class="card-text user-place">favorite place : <%= user.place %></p>
+                  <% end %>
                 </div>
             <% end %>
           <% else %>

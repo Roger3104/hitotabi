@@ -36,11 +36,14 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @tags = @post.tag_id
     @user = @post.user
     @comment = Comment.new
-    # @post_tags = PostTag.where(post_id: @post.id).pluck(:tag_id)
-    # @related_posts = @post_tags.posts.published.sort_by{rand}.first(15)
+    @tag = @post.tags.shuffle.first
+    if @tag.present?
+      @related_posts = @tag.posts.published.sort_by{rand}.first(9)
+    else
+      @related_posts = Post.published.shuffle.first(9)
+    end
   end
 
   def edit

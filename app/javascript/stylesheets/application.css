@@ -148,7 +148,7 @@ a{
     /*ナビゲーション天地中央揃え*/
     position: absolute;
     z-index: 999;
-    top:35% !important;
+    top:40% !important;
     left:40% !important;
     transform: translate(-50%,-50%);
 }
@@ -1015,4 +1015,28 @@ masonry index
 
 .accordion-area li section{
   padding: 0px 0px;
+}
+
+/*----------カード設定 フォロー用ーーーーーー*/
+.card{
+  padding: 0 !important;
+  border: none !important;
+}
+
+.card-body{
+  background-color: #EEECE7 !important;
+}
+
+.user-name{
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+.user-place{
+  font-size: 0.75rem;
+  color: #7b7875;
+}
+
+.card-body:hover{
+  color: #212529 !important;
 }

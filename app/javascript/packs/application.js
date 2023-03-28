@@ -62,6 +62,6 @@ $(document).ready(function () {
 //--------Flash message--------------//
 //--------Flash message--------------//
 $(function(){
-  $('.flash').fadeOut(3500);  //3.5秒かけて消えていく
+  $('.flash').fadeOut(4000);  //3.5秒かけて消えていく
 });
 
