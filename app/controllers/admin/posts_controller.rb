@@ -9,7 +9,7 @@ class Admin::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.published.page(params[:page])
+    @posts = Post.published
   end
 
   def destroy

@@ -92,6 +92,9 @@ a{
     border-radius: 2px;
     background-color: #1E1D1C;
 }
+.about-text{
+  line-height: 50px;
+}
 /*----------flash messages-------------*/
 .alert {
   padding: 0.35rem 1.25rem !important;

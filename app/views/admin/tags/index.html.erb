@@ -23,14 +23,14 @@
           <%= f.submit "追加", class: "online-btn col-4" %>
         </div>
       <% end %>
-      <div>
+      <div class="border-top">
         <% @categories.each do |category| %>
           <div class="border-bottom">
             <div class="row my-4">
-              <span class="col-4"><%= category.name %></span>
-              <div class="col-6 d-flex flex-row">
+              <span class="col-3"><%= category.name %></span>
+              <div class="col-9 d-flex flex-wrap">
                 <% category.tags.each do |tag| %>
-                  <div class= "text-center px-3 py-2 mr-3 border border-secondary d-flex">
+                  <div class= "text-center px-3 py-2 mr-3 mb-3 border border-secondary d-flex">
                     <%=link_to tag.name, tag_path(tag.id), class:"text-dark mr-4 text-nowrap" %>
                     <%= link_to edit_admin_tag_path(tag), class: "text-dark mr-2" do %>
                       <i class="fas fa-edit"></i>
