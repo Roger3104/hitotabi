@@ -39,6 +39,8 @@ class Public::PostsController < ApplicationController
     @tags = @post.tag_id
     @user = User.find_by(params[:id])
     @comment = Comment.new
+    # @post_tags = PostTag.where(post_id: @post.id).pluck(:tag_id)
+    # @related_posts = @post_tags.posts.published.sort_by{rand}.first(15)
   end
 
   def edit
@@ -52,6 +54,7 @@ class Public::PostsController < ApplicationController
       redirect_to post_path(@post)
       flash[:success] = 'Success!'
     else
+      @categories = Category.all
       render "edit"
     end
   end

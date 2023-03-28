@@ -12,6 +12,7 @@
       <% tag_ids = @post.tags.pluck(:id) %> <!--tagを引っ張る、毎回読み込んでしまうからEACH文には置かないほうが良い-->
       <div class="col-lg-7 col-md-8 col-sm-12 mx-auto">
         <%= form_with model: @post do |f| %>
+          <%= render 'layouts/error_messages', model: f.object %>
           <h2 class="sub-header">画像</h2>
           <%= f.label :image, class:'col-4 file-area pr-0' do%>
             <%= f.label :image, '画像を選択する', class:'pl-0 pr-1 file-label'%>
