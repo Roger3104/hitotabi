@@ -78,13 +78,9 @@ a{
   text-align: center !important;
 }
 
-.alert-success {
+.alert-success, .alert-notice {
   color: #fff;
   background-color: #538c81;
-}
-
-.alert-danger{
-
 }
 
 .error_alert{
