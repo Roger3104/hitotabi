@@ -4,8 +4,17 @@
       <div class="masonry-item">
           <%= link_to post_path(post.id), class:"masonry-content image_link" do %>
             <% if post.image.attached? %>
-              <%= image_tag post.image, loading:"lazy" %>
-             <% else %>
+              <%= image_tag post.image, loading:"lazy", class:"" %>
+              <div class="image-content-hide">
+                <%= post.title %>
+              </div>
+              <% if post.favorited?(current_user) %>
+                  <div class="favorite-hide">
+                    <i class="fas fa-map-marked-alt fa-lg" style="color: #ffffff;"></i>
+                  </div>
+              <% else %>
+              <% end %>
+            <% else %>
               <%= image_tag 'no_image.png', loading:"lazy" %>
             <% end %>
           <% end %>
