@@ -61,8 +61,8 @@
               <%end%>
             </li>
             <li>
-              <%= link_to new_post_path, class:"d-flex justify-content-start" do %>
-                <div class="nav-link a-header mt-2 pr-3"><i class="fa fa-camera mr-2" aria-hidden="true"></i>投稿する</div>
+              <%= link_to tags_path, class:"d-flex justify-content-start" do %>
+                <div class="nav-link a-header mt-2 pr-3"><i class="fas fa-tag" style="color: #000000;"></i></i> タグから探す</div>
               <%end%>
             </li>
             <li>
@@ -73,6 +73,11 @@
             <li>
               <%= link_to destroy_user_session_path, class:"d-flex justify-content-start", method: :delete do %>
                 <div class="nav-link a-header mt-2 pr-3"><i class="fas fa-sign-out-alt" style="color: black;"></i> ログアウト</div>
+              <%end%>
+            </li>
+            <li>
+              <%= link_to about_path, class:"d-flex justify-content-start align-bottom" do %>
+                <div class="nav-link a-header mt-2 pr-3 ">About</div>
               <%end%>
             </li>
           <% else %>

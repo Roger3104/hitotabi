@@ -7,20 +7,20 @@
           <div class="home-text-area">
             <p class="home-text mt-5 d-none d-lg-block"><span>あなたもひと旅いかがですか?</span></p>
             <p class="home-text d-none d-lg-block"><span>土地の風景などを投稿し、</span></p>
-            <p class="home-text d-none d-lg-block"><span>穏やかにその雰囲気を味わうこととができるSNSです。</span></p>
+            <p class="home-text d-none d-lg-block"><span>穏やかにその雰囲気を味わうことができるSNSです。</span></p>
           </div>
         </div>
         <div class="content-wrap">
           <header class="page-header heading">
             <h1 class="mb-5 heading__ttl">
               <span class="text-en">home</span>
-              <span class="text-ja">ページ</span>
+              <span class="text-ja">ホームページ</span>
             </h1>
           </header>
         </div>
         <div class="archive-nav">
           <ul class="page-list">
-            <li class="is-current"><%= link_to "すべて", posts_path, class:"link" %></li>
+            <li class="is-current"><%= link_to "ひと旅", posts_path, class:"link" %></li>
             <% if user_signed_in? %>
               <li><%= link_to "行ってみたい場所", favorites_users_path(@user), class:"link" %></li>
               <li><%= link_to "おすすめ", recommend_users_path(@user), class:"link" %></li>
