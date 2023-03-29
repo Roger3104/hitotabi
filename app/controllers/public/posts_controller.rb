@@ -78,7 +78,8 @@ class Public::PostsController < ApplicationController
     end
 
     def edit_post_params
-      params.require(:post).permit(:user_id, :title, :date, :content, :address, :latitude, :longitude, :image, :status).merge(tag_ids: params[:post][:tags].reject(&:empty?))
+      params.require(:post).permit(:user_id, :title, :date, :content, :address, :latitude, :longitude, :image, :status).merge(tag_ids: params[:post][:tags]&.reject(&:empty?))
+      # ボッチ演算使用 "&"
     end
 end
 

@@ -20,7 +20,11 @@
             <span class="label-text_bar"></span>
             <%= f.file_field :image, accept: "image/*", class:'col-3 px-0 mx-auto file-input' %><!--accept: "image/*で画像のみに限定-->
           <% end %>
-          <div id="new-image" class="mt-4 d-flex justify-content-center"><%= image_tag @post.image, class:"edit-preview" %></div><!--プレビュー-->
+          <div id="new-image" class="mt-4 d-flex justify-content-center">
+            <% if @post.image.attached? %>
+              <%= image_tag @post.image, class:"edit-preview" %>
+            <% end %>
+          </div><!--プレビュー-->
           <h2 class="sub-header mt-5">内容</h2>
           <div class="form-group row mt-5">
             <%= f.label :title, class:'col-2 offset-1 pl-0' do%>
