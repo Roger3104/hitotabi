@@ -8,11 +8,13 @@
               <div class="image-content-hide">
                 <%= post.title %>
               </div>
-              <% if post.favorited?(current_user) %>
-                  <div class="favorite-hide">
-                    <i class="fas fa-map-marked-alt" style="color: #ffffff;"></i>
-                  </div>
-              <% else %>
+              <% if user_signed_in? %>
+                <% if post.favorited?(current_user) %>
+                    <div class="favorite-hide">
+                      <i class="fas fa-map-marked-alt" style="color: #ffffff;"></i>
+                    </div>
+                <% else %>
+                <% end %>
               <% end %>
             <% else %>
               <%= image_tag 'no_image.png', loading:"lazy" %>
