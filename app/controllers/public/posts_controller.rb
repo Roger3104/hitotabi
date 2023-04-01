@@ -1,5 +1,6 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_user! , only: [:edit, :create, :destroy]
+  before_action :set_post , only: [:show, :edit, :update, :destroy]
 
   def new
     @post = Post.new
@@ -35,7 +36,6 @@ class Public::PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
     @user = @post.user
     @comment = Comment.new
     @tag = @post.tags.shuffle.first
@@ -47,12 +47,10 @@ class Public::PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
     @categories = Category.all
   end
 
   def update
-    @post = Post.find(params[:id])
     if @post.update(edit_post_params)
       redirect_to post_path(@post)
       flash[:success] = 'Success!'
@@ -63,7 +61,6 @@ class Public::PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
     @post.destroy
     redirect_to user_index_path(current_user.id)
     flash[:success] = 'Deleted!'
@@ -80,6 +77,10 @@ class Public::PostsController < ApplicationController
     def edit_post_params
       params.require(:post).permit(:user_id, :title, :date, :content, :address, :latitude, :longitude, :image, :status).merge(tag_ids: params[:post][:tags]&.reject(&:empty?))
       # ボッチ演算使用 "&"
+    end
+
+    def set_post
+      @post = Post.find(params[:id])
     end
 end
 

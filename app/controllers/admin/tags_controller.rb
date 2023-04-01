@@ -1,5 +1,6 @@
 class Admin::TagsController < ApplicationController
   before_action :authenticate_admin!
+  before_action :set_tag, only: [:edit, :update, :destroy]
 
   def index
     @categories = Category.all
@@ -17,11 +18,9 @@ class Admin::TagsController < ApplicationController
   end
 
   def edit
-    @tag = Tag.find(params[:id])
   end
 
   def update
-    @tag = Tag.find(params[:id])
     if @tag.update(tag_params)
       redirect_to admin_tags_path
     else
@@ -30,7 +29,6 @@ class Admin::TagsController < ApplicationController
   end
 
   def destroy
-    @tag = Tag.find(params[:id])
     @tag.destroy
     redirect_to admin_tags_path
   end
@@ -42,4 +40,7 @@ class Admin::TagsController < ApplicationController
       params.require(:tag).permit(:name, :category_id)
     end
 
+    def set_tag
+      @tag = Tag.find(params[:id])
+    end
 end
