@@ -246,6 +246,7 @@ a{
     transform: translateY(-6px) rotate(45deg);
     width: 30%;
 }
+
 /*-----------------------------------------------*/
 /*-----------------------------------------------*/
 /*スクロールダウンアニメーション*/
@@ -1054,4 +1055,20 @@ a:hover .image-content-hide{
   width: 100%;
   height: 200px;
   object-fit: cover;
+}
+
+
+/*--------------------------------------------------------------------*/
+/*responsive*/
+
+@media screen and (max-width:480px) {
+  #g-nav.panelactive{
+    width: 100% !important;
+  }
+  .logo_sub{
+    display: none;
+  }
+  .logos{
+    justify-content: center !important;
+  }
 }
