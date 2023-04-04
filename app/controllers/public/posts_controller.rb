@@ -1,6 +1,7 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_user! , only: [:edit, :create, :destroy]
   before_action :set_post , only: [:show, :edit, :update, :destroy]
+  before_action :is_matching_login_user , only: [:edit, :update, :destroy]
 
   def new
     @post = Post.new
@@ -68,6 +69,8 @@ class Public::PostsController < ApplicationController
 
 
 
+
+
   private
 
     def post_params
@@ -81,6 +84,12 @@ class Public::PostsController < ApplicationController
 
     def set_post
       @post = Post.find(params[:id])
+    end
+
+    def is_matching_login_user
+      unless @post.user_id == current_user.id
+        redirect_to post_path(@post.id)
+      end
     end
 end
 
