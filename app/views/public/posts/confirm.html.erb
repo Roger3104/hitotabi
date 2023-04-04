@@ -9,11 +9,30 @@
           </h1>
         </header>
       </div>
-      <div class='col-md-12 mb-5' id="bottom">
-        <div class="d-flex align-content-start row flex-wrap py-1">
-          <%= render 'index', posts: @posts %>
-        </div>
+      <div class="row d-flex justify-content-center">
+        <% if @posts.exists? %>
+          <% @posts.each do |post| %>
+              <div class="card col-3 mx-1 mb-2">
+                <%= link_to post_path(post.id) do %>
+                  <% if post.image.attached? %>
+                    <%= image_tag post.image, loading:"lazy", class:'bd-placeholder-img card-img-top'%>
+                  <% else %>
+                    <%= image_tag 'no_image.png', loading:"lazy", class:'bd-placeholder-img card-img-top' %>
+                  <% end %>
+                <% end %>
+                <%= link_to post_path(post.id), class:"card-body" do%>
+                  <span class="col-12 card-title pl-0 user-name link"><%= post.title %></span>
+                  <p class="card-text user-place">created at : <%= l post.created_at, format: :short %></p>
+                <% end %>
+              </div>
+          <% end %>
+        <% else %>
+          <p>下書きはありません</p>
+        <% end %>
+        <div class="col-3 mx-1 mb-2"></div>
+        <div class="col-3 mx-1 mb-2"></div>
       </div>
+      <div id="bottom"></div>
     </div>
   </div>
 </div>
