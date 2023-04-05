@@ -55,7 +55,8 @@
           </tbody>
         </table>
         <div class="row py-4">
-          <%= link_to "コメントを投稿", {anchor: "in_page_link-comment"}, class: "in_page_link" %>
+          <a href="#jump-comment" class="in_page_link">コメントを投稿</a>
+          <%#= link_to "コメントを投稿", {anchor: "jump-comment"}, class: "in_page_link" %>
         </div>
         <div class="border-top border-bottom">
           <div class="post-content my-3 py-4"><%= safe_join(@post.content.split("\n"),tag(:br)) %></div>
@@ -83,7 +84,7 @@
           <%= render "show_map", post: @post %>
         </div>
       </div>
-      <h2 class="sub-header" id="in_page_link-comment">comment</h2>
+      <h2 class="sub-header" id="jump-comment">comment</h2>
       <div class="row">
         <div class="mx-auto col-lg-9 col-md-9 col-sm-12">
           <%= render "public/comments/form", post: @post, comment: @comment %>
@@ -101,3 +102,18 @@
     </div>
   </div>
 </div>
+
+
+<!--ページ内リンクスムーススクロール用-->
+<script>
+  $(function(){
+  $('a[href^="#"]').click(function(){
+    var speed = 1000;
+    var href= $(this).attr("href");
+    var target = $(href == "#" || href == "" ? 'html' : href);
+    var position = target.offset().top;
+    $("html, body").animate({scrollTop:position}, speed, "swing");
+    return false;
+  });
+});
+</script>
