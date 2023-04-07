@@ -512,7 +512,7 @@ td > .link:hover {
 .page-list li a {
   transition: 0.3s;
 }
-.page-list li a:hover, .sub-header a:hover{
+.page-list li a:hover, .sub-header a:hover, .guest-link:hover, .new-link:hover{
   background-color: #D9FC18;
 }
 
