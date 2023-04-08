@@ -64,7 +64,8 @@ $(function(){
   $('.home-image').hide().fadeIn(1000);
   $('.home-logo').hide().fadeIn(2000);
   $('.home-text-area').hide().fadeIn(4000);
-
+  $('.about-logo').hide().fadeIn(2000);
+  $('.about-text-area').hide().fadeIn(3000);
 });
 //----------------------//
 
