@@ -12,7 +12,7 @@
         <div class="row d-flex justify-content-center">
           <% if @users.exists? %>
             <% @users.each do |user| %>
-                <div class="card col-3 mx-1 mb-2">
+                <div class="card col-md-3 mx-1 mb-2">
                   <% user.posts.published.each_with_index do |post, i|%>
                     <%= image_tag post.image, class:'bd-placeholder-img card-img-top' %>
                     <% break if i == 0 %>

@@ -1077,4 +1077,11 @@ a:hover .image-content-hide{
   .image-content-hide{
     transform: translateY(0%) !important;
   }
+  .file-area {
+    max-width: 55%;
+  }
+  .label-text_bar {
+    top: calc(19 / 1500 * 390vw);
+    margin-right: 13px;
+  }
 }
