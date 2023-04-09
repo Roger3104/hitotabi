@@ -1071,4 +1071,10 @@ a:hover .image-content-hide{
   .logos{
     justify-content: center !important;
   }
+  .home-box{
+    display: none !important;
+  }
+  .image-content-hide{
+    transform: translateY(0%) !important;
+  }
 }
