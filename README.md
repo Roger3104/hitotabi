@@ -40,7 +40,7 @@
 - OS：Linux(CentOS)
 - 言語：HTML, CSS, JavaScript, SQL, Ruby 3.1.2
 - フレームワーク：Ruby on Rails 6.1.7.2
-- JSライブラリ：jQuery, lazyload
+- JSライブラリ：jQuery
 - IDE：Cloud9
 
 ## 使用素材

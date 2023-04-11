@@ -23,27 +23,6 @@ Rails.start();
 // Turbolinks.start()
 ActiveStorage.start();
 
-
-// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-// 無限スクロールの処理
-/*global $ */
-// $(document).ready(function () {
-//   $(window).on('scroll', function() {
-//     var scrollHeight = $(document).height();
-//     var scrollPosition = $(window).height() + $(window).scrollTop();
-//     if ( (scrollHeight - scrollPosition) / scrollHeight <= 0.05) {
-//       $('.jscroll').jscroll({
-//         contentSelector: '.jscroll',
-//         nextSelector: 'a[rel~="next"]',  // 次ページリンクのセレクタ
-//         autoTrigger: true,
-//         loadingHtml: '読み込み中',
-//       });
-//     }
-//   });
-// })
-
-// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-
 //アコーディオンパネルをクリックした時の動作
 $(document).ready(function () {
   $('.category-name').on('click', function() {//タイトル要素をクリックしたら
