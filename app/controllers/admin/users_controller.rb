@@ -1,6 +1,6 @@
 class Admin::UsersController < ApplicationController
   before_action :authenticate_admin!
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user, only: [:show, :edit, :update, :user_index]
 
 
   def index
@@ -16,6 +16,10 @@ class Admin::UsersController < ApplicationController
   def update
     @user.update(user_params)
     redirect_to admin_user_path(user.id)
+  end
+
+  def user_index
+    @posts = @user.posts.published.order(created_at: :desc)
   end
 
   private
