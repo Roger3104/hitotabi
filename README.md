@@ -37,7 +37,7 @@
 + [アプリケーション詳細設計書(修正中)](https://github.com/Roger3104/hitotabi/files/11128380/Hitotabi_WBS.-.pdf)
 
 ## 開発環境
-- OS：Linux(CentOS)
+- OS：Amazon Linux 2
 - 言語：HTML, CSS, JavaScript, SQL, Ruby 3.1.2
 - フレームワーク：Ruby on Rails 6.1.7.2
 - JSライブラリ：jQuery
