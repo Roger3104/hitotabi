@@ -33,15 +33,17 @@
 
 ## 設計書
 + [ER図](https://user-images.githubusercontent.com/119906602/229263863-0aa3e77c-1aed-4fab-a3bc-8172c6ea2fff.png)
-+ [テーブル定義書 (修正中)](https://user-images.githubusercontent.com/119906602/229263943-3fa29b9a-2699-4c56-bae7-628c00466604.png)
-+ [アプリケーション詳細設計書(修正中)](https://github.com/Roger3104/hitotabi/files/11128380/Hitotabi_WBS.-.pdf)
++ [テーブル定義書](https://user-images.githubusercontent.com/119906602/232664942-822d7245-b077-406d-af54-df17b27e4fc8.png)
++ [アプリケーション詳細設計書](https://github.com/Roger3104/hitotabi/files/11128380/Hitotabi_WBS.-.pdf)
 
 ## 開発環境
 - OS：Amazon Linux 2
 - 言語：HTML, CSS, JavaScript, SQL, Ruby 3.1.2
 - フレームワーク：Ruby on Rails 6.1.7.2
+- ライブラリ : devise, kaminari, pry-byebug
 - JSライブラリ：jQuery
 - IDE：Cloud9
+- 外部API : Google Maps API
 
 ## 使用素材
 - 無料画像: pixaboy https://pixabay.com/ja/photos/%e6%9c%a8-%e3%83%88%e3%83%a9%e3%83%b3%e3%82%af-%e3%83%ab%e3%83%bc%e3%83%84-%e5%90%a0%e3%81%88%e3%82%8b-569275/
