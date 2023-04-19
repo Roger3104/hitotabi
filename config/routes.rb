@@ -26,6 +26,9 @@ Rails.application.routes.draw do
       end
     end
     resources :tags, only: [:index, :show]
+    resources :users, only: [:show, :edit, :update, :index] do
+     resources :reports, only: [:new, :create]
+    end
   end
 
   # 顧客用
@@ -45,6 +48,8 @@ Rails.application.routes.draw do
     resources :tags, except: [:new, :show]
     resources :orders, only: [:show, :update]
     resources :order_products, only: [:update]
+    resources :reports, only: [:index, :show, :update]
+    resources :users, only: [:index, :show, :update, :edit]
   end
   # 管理者用
   # URL /admin/sign_in ...

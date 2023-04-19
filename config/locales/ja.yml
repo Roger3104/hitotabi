@@ -4,6 +4,11 @@ ja:
       status:
         published: '公開'
         draft: '下書き'
+    report:
+      status:
+        waiting: "対応待ち"
+        keep: "保留"
+        finish: "対応済み"
   views:
     pagination:
       truncate: "..."
