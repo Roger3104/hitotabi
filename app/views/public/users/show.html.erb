@@ -51,6 +51,11 @@
                 <% end %>
               </td>
             </tr>
+            <tr>
+              <% if @user != current_user %>
+                <%= link_to "ユーザーを通報", new_user_report_path(@user), class: "btn btn-danger" %>
+              <% end %>
+            </tr>
           </tbody>
         </table>
       </div>
