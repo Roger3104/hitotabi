@@ -51,11 +51,6 @@
                 <% end %>
               </td>
             </tr>
-            <tr>
-              <% if @user != current_user %>
-                <%= link_to "ユーザーを通報", new_user_report_path(@user), class: "btn btn-danger" %>
-              <% end %>
-            </tr>
           </tbody>
         </table>
       </div>
@@ -74,7 +69,9 @@
           <% if @user == current_user %>
             <%= link_to "下書き一覧", confirm_posts_path, class: "link-btn" %>
           <% else%>
-            <%= link_to "投稿一覧", user_index_path(@user.id), class: "link-btn" %>
+            <%= link_to new_user_report_path(@user), class: "link-btn" do %>
+              <i class="fas fa-exclamation-triangle" style="color: #171717;"></i> ユーザーを通報
+            <% end %>
           <% end %>
         </div>
       </div>
