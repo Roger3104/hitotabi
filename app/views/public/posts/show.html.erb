@@ -52,7 +52,14 @@
                 <% end %>
               </td>
             </tr>
-          </tbody>
+            <tr>
+              <% if @user =! current_user %>
+                <%= link_to new_user_report_path(@user), class: "link-btn" do %>
+                  <i class="fas fa-exclamation-triangle" style="color: #171717;"></i> ユーザーを通報
+                <% end %>
+              <% end %>
+            </tbody>
+          </tr>
         </table>
         <div class="row py-4">
           <a href="#jump-comment" class="in_page_link">コメントを投稿</a>
