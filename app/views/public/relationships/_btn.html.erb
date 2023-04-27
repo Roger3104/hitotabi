@@ -1,9 +1,9 @@
 <% if current_user && current_user.following?(user) && current_user != post.user %>
-  <%= link_to users_relationships_path(user_id: user.id, post_id: post.id), method: :delete, class:"link", id:"relationship-btn1", remote: true, data: {toggle: "tooltip", placement: "right"}, title: "フォロー済み" do%>
+  <%= link_to users_relationships_path(user_id: user.id, post_id: post.id), method: :delete, class:"link", id:"relationship-btn1", remote: true, data: {toggle: "tooltip", placement: "top"}, title: "フォロー済み" do%>
     <sapn class="btn-text"><i class="fas fa-user-check" style="color: #ad0000;"></i></span>
   <% end %>
 <% elsif current_user && current_user != post.user %>
-  <%= link_to users_relationships_path(user_id: user.id, post_id: post.id), method: :post, class:"link", id:"relationship-btn2", remote: true, data: {toggle: "tooltip", placement: "right"}, title: "フォローする" do %>
+  <%= link_to users_relationships_path(user_id: user.id, post_id: post.id), method: :post, class:"link", id:"relationship-btn2", remote: true, data: {toggle: "tooltip", placement: "top"}, title: "フォローする" do %>
     <span class="btn-text"><i class="fas fa-user-plus" style="color: black;"></i></span>
   <% end %>
 <% end %>

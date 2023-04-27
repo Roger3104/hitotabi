@@ -25,6 +25,11 @@
                 <span class= "follow-<%= @user.id %> pl-3 mb-0">
                   <%= render "/public/relationships/btn", user: @user, post: @post %>
                 </span>
+                <% if @user != current_user %>
+                  <%= link_to new_user_report_path(@user), class:"ml-3", data: {toggle: "tooltip", placement: "top"}, title: "通報する" do %>
+                    <i class="fas fa-exclamation-triangle fa-xs" style="color: #171717;"></i>
+                  <% end %>
+                <% end %>
               </td>
             </tr>
             <tr>
@@ -52,18 +57,10 @@
                 <% end %>
               </td>
             </tr>
-            <tr>
-              <% if @user =! current_user %>
-                <%= link_to new_user_report_path(@user), class: "link-btn" do %>
-                  <i class="fas fa-exclamation-triangle" style="color: #171717;"></i> ユーザーを通報
-                <% end %>
-              <% end %>
-            </tbody>
-          </tr>
+          </tbody>
         </table>
         <div class="row py-4">
           <a href="#jump-comment" class="in_page_link">コメントを投稿</a>
-          <%#= link_to "コメントを投稿", {anchor: "jump-comment"}, class: "in_page_link" %>
         </div>
         <div class="border-top border-bottom">
           <div class="post-content my-3 py-4"><%= safe_join(@post.content.split("\n"),tag(:br)) %></div>
