@@ -24,11 +24,9 @@ Rails.application.routes.draw do
         get :favorites
         get :recommend
       end
+      resources :reports, only: [:new, :create]
     end
     resources :tags, only: [:index, :show]
-    resources :users, only: [:show, :edit, :update, :index] do
-     resources :reports, only: [:new, :create]
-    end
   end
 
   # 顧客用
