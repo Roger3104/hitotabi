@@ -10,7 +10,7 @@
           </header>
         </div>
         <div class="col-lg-7 col-md-8 col-sm-12 mx-auto">
-          <%= form_with model:[@user, @report] do |f| %>
+          <%= form_with model:[@user, @report], url: users_reports_path do |f| %>
             <div class="form-group">
               <%= f.label :reason, class:'col-lg-2 offset-1 pl-0' do%>
                 <span><strong>通報理由</strong></span>
