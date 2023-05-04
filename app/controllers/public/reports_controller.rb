@@ -6,7 +6,7 @@ class Public::ReportsController < ApplicationController
   end
 
   def create
-    @user = User.find(params[:format])
+    @user = User.find(params[:user_id])
     @report = Report.new(report_params)
     @report.reporter_id = current_user.id
     @report.reported_id = @user.id
