@@ -24,7 +24,10 @@ Rails.application.routes.draw do
         get :favorites
         get :recommend
       end
-      resources :reports, only: [:new, :create]
+      # resources :reports, only: [:new, :create]
+    end
+    resources :users, except: [:show, :edit, :update, :index] do
+     resources :reports, only: [:new, :create]
     end
     resources :tags, only: [:index, :show]
   end
