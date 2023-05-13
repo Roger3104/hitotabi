@@ -26,7 +26,7 @@ Rails.application.routes.draw do
       end
       # resources :reports, only: [:new, :create]
     end
-    resources :users, except: [:show, :edit, :update, :index] do
+    resources :users, only: [:index] do
      resources :reports, only: [:new, :create]
     end
     resources :tags, only: [:index, :show]

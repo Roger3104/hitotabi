@@ -2,7 +2,7 @@ class Public::ReportsController < ApplicationController
 
   def new
     @report = Report.new
-    @user = User.find(params[:id])
+    @user = User.find(params[:format])
   end
 
   def create

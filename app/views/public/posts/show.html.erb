@@ -26,7 +26,7 @@
                   <%= render "/public/relationships/btn", user: @user, post: @post %>
                 </span>
                 <% if @user != current_user %>
-                  <%= link_to new_user_report_path(@user), class:"ml-3", data: {toggle: "tooltip", placement: "top"}, title: "通報する" do %>
+                  <%= link_to new_user_report_path(@user), class:"ml-3", data: {toggle: "tooltip", placement: "top"}, title: "ユーザーを通報する" do %>
                     <i class="fas fa-exclamation-triangle fa-xs" style="color: #171717;"></i>
                   <% end %>
                 <% end %>
