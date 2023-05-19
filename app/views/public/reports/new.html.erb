@@ -15,11 +15,11 @@
               <%= f.label :reason, class:'col-lg-2 offset-1 pl-0' do%>
                 <span><strong>通報理由</strong></span>
               <% end %>
-              <%= f.text_area :reason, rows:'3', class:"form-control" %>
+              <%= f.text_area :reason, rows:'3', class:"form-control mb-3" %>
               <%= f.label :url, class:'col-lg-2 offset-1 pl-0' do%>
                 <span><strong>該当URL</strong></span>
               <% end %>
-              <%= f.text_field :url, class:"form-control", placeholder:"url" %>
+              <%= f.text_field :url, class:"form-control mb-5", placeholder:"url" %>
               <div class="form-group row d-flex justify-content-center">
                 <%= f.button "通報する", type: 'button', onclick: "submit();", class: "link-btn-lg col-6" %> <!--Enter Keyで投稿処理を行わないためにf.buttonに変更-->
               </div>
