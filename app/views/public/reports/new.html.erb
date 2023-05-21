@@ -1,6 +1,6 @@
 <div class='container'>
     <div class='row'>
-      <div class="col-lg-12 col-md-10 col-sm-12 mx-6 mx-sm-auto px-auto my-5">
+      <div class="col-lg-9 col-md-9 col-sm-12 mx-6 mx-sm-auto px-auto my-5">
         <div class="content-wrap">
           <header class="page-header heading">
             <h1 class="mb-5 heading__ttl">
@@ -12,11 +12,11 @@
         <div class="col-lg-7 col-md-8 col-sm-12 mx-auto">
           <%= form_with model:[@user, @report], url: user_reports_path do |f| %>
             <div class="form-group">
-              <%= f.label :reason, class:'col-lg-2 offset-1 pl-0' do%>
+              <%= f.label :reason, class:'col-lg-9 offset-1 pl-0' do%>
                 <span><strong>通報理由</strong></span>
               <% end %>
               <%= f.text_area :reason, rows:'3', class:"form-control mb-3" %>
-              <%= f.label :url, class:'col-lg-2 offset-1 pl-0' do%>
+              <%= f.label :url, class:'col-lg-9 offset-1 pl-0' do%>
                 <span><strong>該当URL</strong></span>
               <% end %>
               <%= f.text_field :url, class:"form-control mb-5", placeholder:"url" %>
