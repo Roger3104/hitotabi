@@ -5,7 +5,7 @@
           <header class="page-header heading">
             <h1 class="mb-5 heading__ttl">
               <span class="text-en">reports</span>
-              <span class="text-ja">通報一覧</span>
+              <span class="text-ja">通報リスト</span>
             </h1>
           </header>
         </div>
@@ -25,13 +25,13 @@
                   <%= link_to report.id, admin_report_path(report) %>
                 </td>
                 <td>
-                  <%= report.reported.name %>
+                  <%= link_to report.reported.name, admin_report_path(report) %>
                 </td>
                 <td>
-                  <%= report.reporter.name %>
+                  <%= link_to report.reporter.name, admin_report_path(report) %>
                 </td>
                 <td>
-                  <%= report.status_i18n %>
+                  <%= link_to report.status_i18n, admin_report_path(report) %>
                 </td>
               </tr>
             <% end %>
