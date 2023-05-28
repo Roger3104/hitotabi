@@ -20,7 +20,7 @@
           </thead>
           <tbody>
             <% @reports.each do |report| %>
-              <tr>
+              <tr class="report_index">
                 <td>
                   <%= link_to report.id, admin_report_path(report), class:"link" %>
                 </td>
