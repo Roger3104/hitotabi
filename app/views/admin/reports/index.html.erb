@@ -20,20 +20,22 @@
           </thead>
           <tbody>
             <% @reports.each do |report| %>
-              <tr class="report_index">
-                <td>
-                  <%= link_to report.id, admin_report_path(report), class:"link" %>
-                </td>
-                <td>
-                  <%= link_to report.reported.name, admin_report_path(report), class:"link" %>
-                </td>
-                <td>
-                  <%= link_to report.reporter.name, admin_report_path(report), class:"link" %>
-                </td>
-                <td>
-                  <%= link_to report.status_i18n, admin_report_path(report), class:"link" %>
-                </td>
-              </tr>
+              <%= link_to admin_report_path(report) do%>
+                <tr class="report_index">
+                  <td>
+                    <%= report.id, class:"report_list" %>
+                  </td>
+                  <td>
+                    <%= report.reported.name, class:"report_list" %>
+                  </td>
+                  <td>
+                    <%= report.reporter.name, class:"report_list" %>
+                  </td>
+                  <td>
+                    <%= report.status_i18n, class:"report_list" %>
+                  </td>
+                </tr>
+               <% end %>
             <% end %>
           </tbody>
         </table>
