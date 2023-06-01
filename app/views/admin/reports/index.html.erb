@@ -20,25 +20,29 @@
           </thead>
           <tbody>
             <% @reports.each do |report| %>
-              <%= link_to admin_report_path(report) do%>
-                <tr class="report_index">
-                  <td>
-                    <%= report.id, class:"report_list" %>
-                  </td>
-                  <td>
-                    <%= report.reported.name, class:"report_list" %>
-                  </td>
-                  <td>
-                    <%= report.reporter.name, class:"report_list" %>
-                  </td>
-                  <td>
-                    <%= report.status_i18n, class:"report_list" %>
-                  </td>
-                </tr>
-               <% end %>
+              <tr class= "report_index"data-link="<%= admin_report_path(report) %>" >
+                <td>
+                  <%= report.id %>
+                </td>
+                <td>
+                  <%= report.reported.name %>
+                </td>
+                <td>
+                  <%= report.reporter.name %>
+                </td>
+                <td>
+                  <%= report.status_i18n %>
+                </td>
+              </tr>
             <% end %>
           </tbody>
         </table>
       </div>
     </div>
   </div>
+
+  <script>
+    $("tr[data-link]").click(function() {
+      window.location = $(this).data("link")
+    })
+  </script>
