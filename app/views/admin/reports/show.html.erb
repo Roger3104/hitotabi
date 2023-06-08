@@ -17,7 +17,7 @@
             </tr>
             <tr>
               <td>会員名</td>
-              <td><%= link_to @report.reported.name, admin_user_path(@report.reported_id) %></td>
+              <td><%= link_to @report.reported.name, admin_user_path(@report.reported_id), class:"link" %></td>
             </tr>
             <tr>
               <td>理由</td>
@@ -29,14 +29,16 @@
             </tr>
             <tr>
               <td>通報者</td>
-              <td><%= link_to @report.reporter.name, admin_user_path(@report.reporter_id) %></td>
+              <td><%= link_to @report.reporter.name, admin_user_path(@report.reporter_id), class:"link" %></td>
             </tr>
             <tr>
               <td>対応ステータス</td>
               <td>
                 <%= form_with model:@report, url:admin_report_path(@report), method: :patch, local: true do |f| %>
-                  <%= f.select :status, Report.statuses.keys.map { |k| [t("enums.report.status.#{k}"), k] }, {}, {class: "custom-select w-25 col-3 mx-auto form-control"} %>
-                  <%= f.submit '更新' %>
+                  <div class="row">
+                    <%= f.select :status, Report.statuses.keys.map { |k| [t("enums.report.status.#{k}"), k] }, {}, {class: "custom-select w-25 col-3 form-control"} %>
+                    <%= f.submit '更新', class:"col-3 mx-auto" %>
+                  </div>
                 <% end %>
               </td>
             </tr>
