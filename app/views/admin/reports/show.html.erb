@@ -9,7 +9,7 @@
             </h1>
           </header>
         </div>
-        <table class="table">
+        <table class="table col-lg-9 mx-auto">
           <tbody>
             <tr>
               <td>通報ID</td>
@@ -36,7 +36,7 @@
               <td>
                 <%= form_with model:@report, url:admin_report_path(@report), method: :patch, local: true do |f| %>
                   <div class="row">
-                    <%= f.select :status, Report.statuses.keys.map { |k| [t("enums.report.status.#{k}"), k] }, {}, {class: "custom-select w-25 col-3 form-control"} %>
+                    <%= f.select :status, Report.statuses.keys.map { |k| [t("enums.report.status.#{k}"), k] }, {}, {class: "custom-select w-25 col-4 form-control"} %>
                     <%= f.submit '更新', class:"col-3 mx-auto" %>
                   </div>
                 <% end %>

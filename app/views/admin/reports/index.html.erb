@@ -12,7 +12,7 @@
         <table class="table">
           <thead>
             <tr>
-              <th>通報ID</th>
+              <th class="text-center">通報ID</th>
               <th>会員名</th>
               <th>通報者</th>
               <th>ステータス</th>
@@ -21,7 +21,7 @@
           <tbody>
             <% @reports.each do |report| %>
               <tr class= "report_index"data-link="<%= admin_report_path(report) %>" >
-                <td>
+                <td class="text-center">
                   <%= report.id %>
                 </td>
                 <td>
