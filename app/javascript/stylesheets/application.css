@@ -925,6 +925,12 @@ a:hover .image-content-hide{
   transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
+.report-status > .form-control {
+  text-align: center;
+  font-size: 1.2rem;
+  letter-spacing: 0.3em;
+}
+
 .form-control:focus {
   color: #495057;
   background-color: #ebe9e3;
