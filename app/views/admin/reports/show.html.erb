@@ -15,23 +15,23 @@
         <table class="table col-lg-8 mx-auto">
           <tbody>
             <tr>
-              <td>通報ID</td>
+              <td><strong>通報ID</strong></td>
               <td><%= @report.id %></td>
             </tr>
             <tr>
-              <td>会員名</td>
+              <td><strong>会員名</strong></td>
               <td><%= link_to @report.reported.name, admin_user_path(@report.reported_id), class:"link" %></td>
             </tr>
             <tr>
-              <td>理由</td>
+              <td><strong>理由</strong></td>
               <td><%= @report.reason %></td>
             </tr>
             <tr>
-              <td>URL等</td>
+              <td><strong>URL等</strong></td>
               <td><%= @report.url %></td>
             </tr>
             <tr>
-              <td>通報者</td>
+              <td><strong>通報者</strong></td>
               <td><%= link_to @report.reporter.name, admin_user_path(@report.reporter_id), class:"link" %></td>
             </tr>
           </tbody>
