@@ -9,6 +9,13 @@
             </h1>
           </header>
         </div>
+        <div class="archive-nav">
+          <ul class="page-list">
+            <li><%= link_to '新しい順', admin_reports_path(latest: "true"), class:"link" %></li>
+            <li><%= link_to '古い順', admin_reports_path(old: "true"), class:"link" %></li>
+            <li><%= link_to '評価の高い順', admin_reports_path(star_count: "true"), class:"link" %></li>
+          </ul>
+        </div>
         <table class="table">
           <thead>
             <tr>

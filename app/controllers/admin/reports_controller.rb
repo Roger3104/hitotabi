@@ -1,7 +1,17 @@
 class Admin::ReportsController < ApplicationController
 
   def index
-    @reports = Report.all
+
+    if params[:latest]
+      @reports = Report.latest
+    elsif params[:old]
+      @reports = Report.old
+    elsif params[:star_count]
+      @reports = Report.star_count
+    else
+      @reports = Report.all
+    end
+
   end
 
   def show
