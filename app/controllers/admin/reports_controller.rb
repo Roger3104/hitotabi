@@ -1,15 +1,16 @@
 class Admin::ReportsController < ApplicationController
+  before_action :authenticate_user!, only: [:index, :show]
 
   def index
 
     if params[:latest]
-      @reports = Report.latest
+      @reports = Report.latest.page(params[:page])
     elsif params[:old]
-      @reports = Report.old
+      @reports = Report.old.page(params[:page])
     elsif params[:star_count]
-      @reports = Report.star_count
+      @reports = Report.star_count.page(params[:page])
     else
-      @reports = Report.all
+      @reports = Report.all.page(params[:page])
     end
 
   end

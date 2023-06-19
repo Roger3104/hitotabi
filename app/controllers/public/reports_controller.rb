@@ -1,4 +1,5 @@
 class Public::ReportsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create]
 
   def new
     @report = Report.new
