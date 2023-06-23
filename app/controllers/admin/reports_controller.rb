@@ -7,8 +7,10 @@ class Admin::ReportsController < ApplicationController
       @reports = Report.latest.page(params[:page])
     elsif params[:old]
       @reports = Report.old.page(params[:page])
-    elsif params[:star_count]
-      @reports = Report.star_count.page(params[:page])
+    elsif params[:waiting]
+      @reports = Report.waiting.page(params[:page])
+      @reports = Report.keep.page(params[:page])
+      @reports = Report.finish.page(params[:page])
     else
       @reports = Report.all.page(params[:page])
     end

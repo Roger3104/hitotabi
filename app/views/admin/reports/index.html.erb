@@ -13,6 +13,7 @@
           <ul class="page-list">
             <li><%= link_to '新しい順', admin_reports_path(latest: "true"), class:"link" %></li>
             <li><%= link_to '古い順', admin_reports_path(old: "true"), class:"link" %></li>
+            <li><%= link_to '対応待ち', admin_reports_path(wating: "true"), class:"link" %></li>
             <li></li>
           </ul>
         </div>
