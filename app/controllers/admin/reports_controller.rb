@@ -8,9 +8,11 @@ class Admin::ReportsController < ApplicationController
     elsif params[:old]
       @reports = Report.old.page(params[:page])
     elsif params[:waiting]
-      @reports = Report.waiting.page(params[:page])
-      @reports = Report.keep.page(params[:page])
-      @reports = Report.finish.page(params[:page])
+      @reports = Report.where(status: [:waiting]).page(params[:page])
+    elsif params[:keep]
+      @reports = Report.where(status: [:keep]).page(params[:page])
+    elsif params[:finish]
+      @reports = Report.where(status: [:finish]).page(params[:page])
     else
       @reports = Report.all.page(params[:page])
     end
